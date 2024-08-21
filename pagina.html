@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indie Connekt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <h1>Indie Connekt</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Jogos</a></li>
+                    <li><a href="#">Comunidade</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>bem vindo</h2>
+            <p>Explore o pipip popopop pippip.</p>
+            <a href="#" class="cta-button">Começar</a>
+        </section>
+        <section class="jogos-list">
+            <h2>Jogos em Destaque</h2>
+            <div class="jogo">
+                <img src="jogo1.jpg" alt="Jogo 1">
+                <h3>Jogo 1</h3>
+                <p>Descrição do Jogo 1</p>
+            </div>
+            <div class="jogo">
+                <img src="jogo2.jpg" alt="Jogo 2">|
+                <h3>Jogo 2</h3>
+                <p>Descrição do Jogo 2</p>
+            </div>
+            <div class="jogo">
+                <img src="jogo3.jpg" alt="Jogo 3">
+                <h3>Jogo 3</h3>
+                <p>Descrição do Jogo 3</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; PRO</p>
+    </footer>
+</body>
+</html>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding-bottom: 3rem;
+    color: rgb(var(--bs-tertiary-color-rgb));
+    background: #141726;
+    color: #333;
+}
+
+header {
+    background-color: #3a2064;
+    color: white;
+    padding: 1em 0;
+}
+
+.navbar {
+    backdrop-filter: blur(50px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 0 2em;
+}
+
+.navbar .logo h1 {
+    margin: 0;
+    
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar nav ul li {
+    margin-left: 2em;
+}
+
+.navbar nav ul li a {
+    text-decoration: none;
+    color: white;
+    
+}
+
+.hero {
+    text-align: center;
+    padding: 5em 2em;
+    background-color: white;
+    color: #282c34;
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    margin: 0 0 0.5em;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin: 0 0 1em;
+}
+
+.cta-button {
+    background-color: white;
+    color: white;
+    padding: 0.75em 1.5em;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.jogos-list {
+    padding: 2em;
+    background-color: #141726;
+    text-align: center;
+}
+
+.jogos-list h2 {
+    margin-bottom: 1em;
+}
+
+.jogo {
+    display: inline-block;
+    width: 30%;
+    margin: 0 1.5%;
+    background-color: #f9f9f9;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.jogo img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.jogo h3 {
+    margin: 0.5em 0;
+}
+
+footer {
+    background-color: #3a2064;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+
+}
+</style>
