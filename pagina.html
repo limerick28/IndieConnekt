@@ -30,22 +30,30 @@
             <a href="#" class="cta-button">Começar</a>
         </section>
         <section class="jogos-list">
-            <h2>Jogos em Destaque</h2>
-            <div class="jogo">
-                <img src="jogo1.jpg" alt="Jogo 1">
-                <h3>Jogo 1</h3>
-                <p>Descrição do Jogo 1</p>
-            </div>
-            <div class="jogo">
-                <img src="jogo2.jpg" alt="Jogo 2">|
-                <h3>Jogo 2</h3>
-                <p>Descrição do Jogo 2</p>
-            </div>
-            <div class="jogo">
-                <img src="jogo3.jpg" alt="Jogo 3">
-                <h3>Jogo 3</h3>
-                <p>Descrição do Jogo 3</p>
-            </div>
+            <h2>Jogos em Destaque</h2>  
+              </div>
+              <div class="container">
+                <div class="card">
+                    <div class="placeholder" style="height: 150px;"></div>
+                    <h2>Card title</h2>
+                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <button>Go somewhere</button>
+                </div>
+                <div class="container">
+                    <div class="card">
+                        <div class="placeholder" style="height: 150px;"></div>
+                        <h2>Card title</h2>
+                        <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <button>Go somewhere</button>
+                    </div>
+                    <div class="card">
+                        <div class="placeholder" style="height: 150px;"></div>
+                        <div class="placeholder" style="width: 100%;"></div>
+                        <div class="placeholder" style="width: 70%;"></div>
+                        <div class="placeholder" style="width: 100%;"></div>
+                        <button>Go somewhere</button>
+                    </div>
+                </div>
         </section>
     </main>
     <footer>
@@ -69,7 +77,7 @@ header {
 }
 
 .navbar {
-    backdrop-filter: blur(50px);
+    backdrop-filter: Card titleblur(50px);
     display: flex;
     justify-content: space-between;
     align-items: center; 
@@ -95,7 +103,7 @@ header {
 .navbar nav ul li a {
     text-decoration: none;
     color: white;
-    
+    Card title
 }
 
 .hero {
@@ -142,6 +150,60 @@ header {
     padding: 1em;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+      
+        .card {
+            border-radius: 8px;
+            background-color: #222;
+            padding: 20px;
+            width: 300px;
+            display: inline-block ;
+        }
+
+        .placeholder {
+            background-color: #555;
+            margin-bottom: 10px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+.info {
+font-size: 16px;
+line-height: 1.5;
+}
+
+.buttons {
+display: flex;
+justify-content: space-between;
+margin-top: 10px;
+}
+
+
+.button {
+background-color: #eee;
+border: none;
+border-radius: 4px;
+color: #333;
+cursor: pointer;
+padding: 8px 16px;
 }
 
 .jogo img {
