@@ -4,7 +4,247 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indie Connekt</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos padrão */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Define a cor de fundo do corpo */
+        body {
+            font-family: Arial, sans-serif;
+            padding-bottom: 3rem;
+            background-color: rgb(255, 235, 235);
+            color: #333;
+        }
+
+        header {
+            background-color: #3a2064;
+            color: white;
+            padding: 1em 0;
+        }
+
+        .navbar {
+            backdrop-filter: blur(50px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            padding: 0 2em;
+        }
+
+        .navbar .logo h1 {
+            margin: 0;
+        }
+
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar nav ul li {
+            margin-left: 2em;
+        }
+
+        .navbar nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 5em 2em;
+            background-color: white;
+            color: #282c34;
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0 0 0.5em;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin: 0 0 1em;
+        }
+
+        .cta-button {
+            background-color: white;
+            color: #3a2064;
+            padding: 0.75em 1.5em;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .jogos-list {
+            padding: 2em;
+            background-color: #141726;
+            text-align: center;
+        }
+
+        .jogos-list h2 {
+            margin-bottom: 1em;
+        }
+
+        .jogo {
+            display: inline-block;
+            width: 30%;
+            margin: 0 1.5%;
+            background-color: #f9f9f9;
+            padding: 1em;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .jogo img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .jogo h3 {
+            margin: 0.5em 0;
+        }
+
+        footer {
+            background-color: #3a2064;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        /* Estilos para o container do carrossel */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            width: 800px;
+            height: 600px;
+            position: relative;
+        }
+
+        .main-heading {
+            padding: 2rem 0 2rem 0;
+        }
+
+        .content {
+            position: relative;
+            height: 500px;
+        }
+
+        /* Estilos do conteúdo do carrossel */
+        .carousel-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 50;
+        }
+
+        .carousel-heading {
+            font-size: 3rem;
+            color: #308d46;
+            margin-bottom: 1rem;
+        }
+
+        /* Estilos do slideshow */
+        .slideshow {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Wrapper que envolve todas as imagens do slideshow */
+        .slideshow-wrapper {
+            display: flex;
+            width: 400%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        /* Define largura e altura para as imagens */
+        .slide {
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Animações do slideshow */
+        @keyframes slideshow {
+            0%, 100% {
+                transform: translateX(0%);
+            }
+            25% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(-200%);
+            }
+            75% {
+                transform: translateX(-300%);
+            }
+        }
+
+        /* Estilos dos botões de controle do carrossel */
+        .slide-btn {
+            border: none;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            outline: none;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-15%);
+            z-index: 70;
+            font-size: 1.5rem;
+            color: #3a2064;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .slide-btn-left {
+            left: 1%;
+        }
+
+        .slide-btn-right {
+            right: 1%;
+        }
+
+        .slide-btn:hover {
+            color: #91ff00;
+            transform: scale(1.0);
+        }
+
+        .slide-btn-left::before {
+            content: '◀';
+            transform: translateY(-13%) scale(1.2);
+            margin-right: 10px;
+            width:15px;
+        }
+
+        .slide-btn-right::before {
+            content: '▶';
+            transform: translateY(-13%) scale(1.2);
+            margin-left: 3px;
+            width: 15px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -25,201 +265,90 @@
     </header>
     <main>
         <section class="hero">
-            <h2>bem vindo</h2>
+            <h2>Bem-vindo</h2>
             <p>Explore o pipip popopop pippip.</p>
+            <div class="content">
+                <div class="carousel-content">
+                    <h1 class="carousel-heading">
+                        IndieConnekt
+                    </h1>
+                    <h3>Uma plataforma para desenvolvedores Indies</h3>
+                </div>
+                <div class="slideshow">
+                    <button class="slide-btn slide-btn-left"></button>
+                    <button class="slide-btn slide-btn-right"></button>
+
+                    <div class="slideshow-wrapper">
+                        <div class="slide">
+                            <img class="slide-img"
+                                src="https://media.geeksforgeeks.org/wp-content/uploads/20210818140124/image1.png">
+                        </div>
+                        <div class="slide">
+                            <img class="slide-img"
+                                src="https://media.geeksforgeeks.org/wp-content/uploads/20210818140126/image2.png">
+                        </div>
+                        <div class="slide">
+                            <img class="slide-img"
+                                src="https://media.geeksforgeeks.org/wp-content/uploads/20210818190339/image5.png">
+                        </div>
+                        <div class="slide">
+                            <img class="slide-img"
+                                src="https://media.geeksforgeeks.org/wp-content/uploads/20210818141837/image4.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
             <a href="#" class="cta-button">Começar</a>
         </section>
         <section class="jogos-list">
-            <h2>Jogos em Destaque</h2>  
-              </div>
-              <div class="container">
-                <div class="card">
-                    <div class="placeholder" style="height: 150px;"></div>
-                    <h2>Card title</h2>
-                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <button>Go somewhere</button>
-                </div>
-                <div class="container">
-                    <div class="card">
-                        <div class="placeholder" style="height: 150px;"></div>
-                        <h2>Card title</h2>
-                        <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button>Go somewhere</button>
-                    </div>
-                    <div class="card">
-                        <div class="placeholder" style="height: 150px;"></div>
-                        <div class="placeholder" style="width: 100%;"></div>
-                        <div class="placeholder" style="width: 70%;"></div>
-                        <div class="placeholder" style="width: 100%;"></div>
-                        <button>Go somewhere</button>
-                    </div>
-                </div>
+            <h2>Jogos em Destaque</h2>
+            <div class="jogo">
+                <img src="jogo1.jpg" alt="Jogo 1">
+                <h3>Jogo 1</h3>
+                <p>Descrição do Jogo 1</p>
+            </div>
+            <div class="jogo">
+                <img src="jogo2.jpg" alt="Jogo 2">
+                <h3>Jogo 2</h3>
+                <p>Descrição do Jogo 2</p>
+            </div>
+            <div class="jogo">
+                <img src="jogo3.jpg" alt="Jogo 3">
+                <h3>Jogo 3</h3>
+                <p>Descrição do Jogo 3</p>
+            </div>
         </section>
-    </main>
+
+        <!-- Carrossel Responsivo -->
+
+            
     <footer>
         <p>&copy; PRO</p>
     </footer>
+
+    <script>
+        const slides = document.querySelector('.slideshow-wrapper');
+        const leftButton = document.querySelector('.slide-btn-left');
+        const rightButton = document.querySelector('.slide-btn-right');
+
+        let index = 0;
+
+        function updateSlide() {
+            const slideWidth = slides.clientWidth / 4; // considerando que há 4 slides
+            slides.style.transform = `translateX(-${index * slideWidth}px)`;
+        }
+
+        leftButton.addEventListener('click', () => {
+            index = (index > 0) ? index - 1 : 3;
+            updateSlide();
+        });
+
+        rightButton.addEventListener('click', () => {
+            index = (index < 3) ? index + 1 : 0;
+            updateSlide();
+        });
+    </script>
 </body>
 </html>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    padding-bottom: 3rem;
-    color: rgb(var(--bs-tertiary-color-rgb));
-    background: #141726;
-    color: #333;
-}
-
-header {
-    background-color: #3a2064;
-    color: white;
-    padding: 1em 0;
-}
-
-.navbar {
-    backdrop-filter: Card titleblur(50px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding: 0 2em;
-}
-
-.navbar .logo h1 {
-    margin: 0;
-    
-}
-
-.navbar nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar nav ul li {
-    margin-left: 2em;
-}
-
-.navbar nav ul li a {
-    text-decoration: none;
-    color: white;
-    Card title
-}
-
-.hero {
-    text-align: center;
-    padding: 5em 2em;
-    background-color: white;
-    color: #282c34;
-}
-
-.hero h2 {
-    font-size: 2.5em;
-    margin: 0 0 0.5em;
-}
-
-.hero p {
-    font-size: 1.2em;
-    margin: 0 0 1em;
-}
-
-.cta-button {
-    background-color: white;
-    color: white;
-    padding: 0.75em 1.5em;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-.jogos-list {
-    padding: 2em;
-    background-color: #141726;
-    text-align: center;
-}
-
-.jogos-list h2 {
-    margin-bottom: 1em;
-}
-
-.jogo {
-    display: inline-block;
-    width: 30%;
-    margin: 0 1.5%;
-    background-color: #f9f9f9;
-    padding: 1em;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-      
-        .card {
-            border-radius: 8px;
-            background-color: #222;
-            padding: 20px;
-            width: 300px;
-            display: inline-block ;
-        }
-
-        .placeholder {
-            background-color: #555;
-            margin-bottom: 10px;
-            height: 20px;
-            border-radius: 4px;
-        }
-
-        h2 {
-            margin-bottom: 10px;
-        }
-
-        p {
-            margin-bottom: 15px;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-.info {
-font-size: 16px;
-line-height: 1.5;
-}
-
-.buttons {
-display: flex;
-justify-content: space-between;
-margin-top: 10px;
-}
-
-
-.button {
-background-color: #eee;
-border: none;
-border-radius: 4px;
-color: #333;
-cursor: pointer;
-padding: 8px 16px;
-}
-
-.jogo img {
-    max-width: 100%;
-    border-radius: 5px;
-}
-
-.jogo h3 {
-    margin: 0.5em 0;
-}
-
-footer {
-    background-color: #3a2064;
-    color: white;
-    text-align: center;
-    padding: 1em 0;
-
-}
-</style>
