@@ -24,16 +24,21 @@
             padding: 1em 0;
         }
 
-        .navbar {
+            .navbar {
             backdrop-filter: blur(50px);
             display: flex;
             justify-content: space-between;
             align-items: center; 
-            padding: 0 2em;
+            padding: 10px;
+            height: 40px; 
         }
 
-        .navbar .logo h1 {
-            margin: 0;
+            .navbar .indielogo {
+            max-height: 50%; 
+            height: auto;
+            width: 87px;
+            object-fit: contain;
+            transform: translateY(8%);
         }
 
         .navbar nav ul {
@@ -276,7 +281,7 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <h1>Indie Connekt</h1>
+              <img src="images/indie_logo.png" alt="Bem-vindo" class="indielogo" />
             </div>
             <nav>
                 <ul>
