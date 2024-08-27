@@ -1,4 +1,4 @@
-<h2>Weekly Coding Challenge #1: Sign in/up Form</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form action="#">
@@ -8,52 +8,44 @@
 				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
-			<span>ou use seu email para </span>
-			<input type="text" placeholder="Name" />
+			<span>Ou use seu email para </span>
+			<input type="text" placeholder="Nome" />
 			<input type="email" placeholder="Email" />
-			<input type="senha" placeholder="Password" />
-			<button>Login</button>
+			<input type="password" placeholder="Senha" />
+			<button class="botao">Criar</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
 		<form action="#">
-			<h1>Sign in</h1>
+			<h1>Entrar</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
 				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
-			<span>or use your account</span>
+			<span>Ou use seu email para</span>
 			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
+			<input type="password" placeholder="Senha" />
+			<a href="#">Esqueceu sua senha?</a>
+			<button class="botao2">Entrar</button>
 		</form>
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" id="signIn">Sign In</button>
+				<h1>Bem vindo de volta!</h1>
+				<p>Se já estiver conosco, clique no botão abaixo para voltar de onde parou!</p>
+				<button class="ghost" id="signIn">Entrar</button>
 			</div>
 			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
+				<h1>Olá, seja bem vindo amigo!</h1>
+				<p>Caso não tenha uma conta, clique no botão abaixo e venha conosco nessa jornada</p>
+				<button class="ghost" id="signUp">Criar Conta</button>
 			</div>
 		</div>
 	</div>
 </div>
-
-<footer>
-	<p>
-		Created with <i class="fa fa-heart"></i> by
-		<a target="_blank" href="https://florin-pop.com">Florin Pop</a>
-		- Read how I created this and how you can join the challenge
-		<a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
-	</p>
-</footer>  
+ 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
@@ -102,8 +94,7 @@ a {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
+	border: 1px solid;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -143,6 +134,22 @@ input {
 	padding: 12px 15px;
 	margin: 8px 0;
 	width: 100%;
+}
+
+.botao{
+	background-color: #457a00;
+	border: none;
+	padding: 12px 8px;
+	margin: 8px 0;
+	width: 50%;
+}
+
+.botao2{
+	background-color: #3a2064;
+	border: none;
+	padding: 12px 8px;
+	margin: 8px 0;
+	width: 50%;
 }
 
 .container {
@@ -251,7 +258,13 @@ input {
 }
 
 .overlay-left {
-	transform: translateX(-20%);
+	background: #75cf00;
+	background: -webkit-linear-gradient(to right, #75cf00, #529100);
+	background: linear-gradient(to right, #75cf00, #457a00);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+    transform: translateX(-20%);
 }
 
 .container.right-panel-active .overlay-left {
