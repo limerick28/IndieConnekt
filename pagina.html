@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <link rel="icon" href="images/indie_logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indie Connekt</title>
@@ -17,6 +18,11 @@
             background-color: #1b0d24;
             color: #333;
         }
+    
+        .indielogo {
+            width: 500px;
+            height: auto;
+        }
 
         header {
             background-color: #3a2064;
@@ -25,16 +31,21 @@
         }
 
         .navbar {
-            backdrop-filter: blur(50px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center; 
-            padding: 0 2em;
-        }
+    backdrop-filter: blur(50px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px;
+    height: 40px; /* Defina a altura da navbar, ajuste conforme necessário */
+}
 
-        .navbar .logo h1 {
-            margin: 0;
-        }
+.navbar .indielogo {
+    max-height: 50%; /* A logo ocupará no máximo 100% da altura da navbar */
+    height: auto;
+    width: 87px;
+    object-fit: contain;
+    transform: translateY(8%);
+}
 
         .navbar nav ul {
             list-style: none;
@@ -155,7 +166,7 @@
             justify-content: center;
             align-items: center;
             margin: auto;
-            width: 400px;
+            width: 500px;
             height: 20px;
             position: relative;
         }
@@ -184,7 +195,7 @@
         }
 
         .slideshow {
-            height: 550px;
+            height: 650px;
             overflow: hidden;
             position: relative;
         }
@@ -203,9 +214,9 @@
         }
 
         .slide-img {
-            width: 90%;
+            width: 100%;
             height: 100%;
-            object-fit: fill;
+            object-fit: cover;
         }
 
         @keyframes slideshow {
@@ -275,8 +286,10 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <h1>Indie Connekt</h1>
+                <img src="images/indie_logo.png" alt="Bem-vindo" class="indielogo" />
             </div>
+           
+            </a>
             <nav>
                 <ul>
                     <li><a href="#">Início</a></li>
@@ -284,36 +297,41 @@
                     <li><a href="#">Comunidade</a></li>
                     <li><a href="#">Sobre</a></li>
                     <li><a href="#">Contato</a></li>
-                     <li><a href="LOGIN.html">Cadastre-se</a></li>
                 </ul>
             </nav>
         </div>
-    </header>
-    <main>
-        <section class="hero">
-            <h2>Bem-vindo</h2>
-            <p>Explore o mundo dos jogos indie.</p>
-            <div class="content">
-                <div class="slideshow">
-                    <button class="slide-btn slide-btn-left"></button>
-                    <button class="slide-btn slide-btn-right"></button>
-
+        <header>
+            <main>
+                <section class="hero">
+                    <div>
+                    <h2>bem vindo</h2>
+                    <p>Explore o mundo dos jogos indie.</p>
+                    </div>
+                    <div class="content">
+                        <div class="carousel-content">
+                            <h1 class="carousel-heading">IndieConnekt</h1>
+                            <h3>Uma plataforma para desenvolvedores Indies</h3>
+                        </div>
+                        <div class="slideshow">
+                            <button class="slide-btn slide-btn-left"></button>
+                            <button class="slide-btn slide-btn-right"></button>
+        
                     <div class="slideshow-wrapper">
                         <div class="slide">
                             <img class="slide-img"
-                                src="OneDrive/Imagens/final/hollowknighted.jpg">
+                                src="https://media.geeksforgeeks.org/wp-content/uploads/20210818140124/image1.png">
                         </div>
                         <div class="slide">
                             <img class="slide-img"
-                                src="OneDrive/Imagens/final/stardewvalleyed.jpg">
+                                src="https://media.geeksforgeeks.org/wp-content/uploads/20210818140126/image2.png">
                         </div>
                         <div class="slide">
                             <img class="slide-img"
-                                src="OneDrive/Imagens/final/conscripted.jpg">
+                                src="https://media.geeksforgeeks.org/wp-content/uploads/20210818190339/image5.png">
                         </div>
                         <div class="slide">
                             <img class="slide-img"
-                                src="OneDrive/Imagens/final/darklegendsed.jpg">
+                                src="https://media.geeksforgeeks.org/wp-content/uploads/20210818141837/image4.png">
                         </div>
                     </div>
                 </div>
