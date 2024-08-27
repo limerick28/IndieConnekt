@@ -210,7 +210,7 @@
             transform: translateY(-15%);
             z-index: 70;
             font-size: 1.5rem;
-            color: #3a2064;
+            color: #000000;
             background-color: transparent;
             display: flex;
             justify-content: center;
@@ -244,6 +244,45 @@
             margin-left: 3px;
             width: 15px;
         }
+
+     
+
+      
+        .card {
+            display: inline-block;
+            border-radius: 8px;
+            background-color: #222;
+            padding: 20px;
+            width: 300px;
+        }
+
+        .placeholder {
+            background-color: #555;
+            margin-bottom: 10px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .nomejogo {
+            margin-right: 200px;
+            color: white;
+            text-align: justify;
+            text-align-last: left;
+        }
+
+        .descriçao {
+            color: white;
+            text-align: left;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -264,7 +303,18 @@
         </div>
     </header>
     <main>
-        <section class="hero">
+        <section class="hero"> border: none;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            outline: none;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-15%);
+            z-index: 70;
+            font-size: 1.5rem;
+            color: #3a2064;
             <h2>Bem-vindo</h2>
             <p>Explore o pipip popopop pippip.</p>
             <div class="content">
@@ -300,29 +350,36 @@
             </div>
         </div>
     </main>
-            <a href="#" class="cta-button">Começar</a>
+           
         </section>
         <section class="jogos-list">
             <h2>Jogos em Destaque</h2>
-            <div class="jogo">
-                <img src="jogo1.jpg" alt="Jogo 1">
-                <h3>Jogo 1</h3>
-                <p>Descrição do Jogo 1</p>
+            <div class="card">
+                <div class="placeholder" style="height: 150px;"></div><br>
+                <h2>Jogo 1</h2>
+                <p>descriçao descriçao descriçao descriçao descriçao descriçaodescriçao descriçao.</p>
+                <button>Go somewhere</button>
             </div>
-            <div class="jogo">
-                <img src="jogo2.jpg" alt="Jogo 2">
-                <h3>Jogo 2</h3>
-                <p>Descrição do Jogo 2</p>
+            
+            <div class="card">
+                <div class="placeholder" style="height: 150px;"></div>
+                <h2 class="nomejogo">the dark legend of the colossus sa</h2>
+                <p class="descriçao">descriçao descriçao descriçao descriçao descriçao descriçaodescriçao descriçao.</p>
+                <button>Go somewhere</button>
             </div>
-            <div class="jogo">
-                <img src="jogo3.jpg" alt="Jogo 3">
-                <h3>Jogo 3</h3>
-                <p>Descrição do Jogo 3</p>
-            </div>
-        </section>
-
-        <!-- Carrossel Responsivo -->
-
+            <div class="container">
+                <div class="card">
+                    <div class="placeholder" style="height: 150px;"></div>
+                    <h2>Jogo 3</h2>
+                    <p>descriçao descriçao descriçao descriçao descriçao descriçaodescriçao descriçao.</p>
+                    <button>Go somewhere</button>
+                </div>
+                    <div class="card">
+                        <div class="placeholder" style="height: 150px;"></div>
+                            <h2>Jogo 3</h2>
+                                <p>descriçao descriçao descriçao descriçao descriçao descriçaodescriçao descriçao.</p>
+                            <button>Go somewhere</button>
+                        </div>
             
     <footer>
         <p>&copy; PRO</p>
