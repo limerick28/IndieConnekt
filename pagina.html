@@ -5,18 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indie Connekt</title>
     <style>
-        /* Estilos padrão */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        /* Define a cor de fundo do corpo */
         body {
             font-family: Arial, sans-serif;
             padding-bottom: 3rem;
-            background-color: rgb(255, 235, 235);
+            background-color: #1b0d24;
             color: #333;
         }
 
@@ -57,7 +55,7 @@
         .hero {
             text-align: center;
             padding: 5em 2em;
-            background-color: white;
+            background-color: #141726;
             color: #282c34;
         }
 
@@ -88,25 +86,50 @@
 
         .jogos-list h2 {
             margin-bottom: 1em;
+            color: white;
         }
 
-        .jogo {
-            display: inline-block;
-            width: 30%;
-            margin: 0 1.5%;
-            background-color: #f9f9f9;
-            padding: 1em;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .jogo img {
-            max-width: 100%;
-            border-radius: 5px;
+        .card {
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
 
-        .jogo h3 {
-            margin: 0.5em 0;
+        .placeholder {
+            background-color: #555;
+            margin-bottom: 10px;
+            height: 150px;
+            border-radius: 4px;
+        }
+
+        .nomejogo {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .descriçao {
+            text-align: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
         }
 
         footer {
@@ -116,15 +139,24 @@
             padding: 1em 0;
         }
 
-        /* Estilos para o container do carrossel */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(255, 235, 235);
+        }
+
         .container {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             margin: auto;
-            width: 800px;
-            height: 600px;
+            width: 500px;
+            height: 20px;
             position: relative;
         }
 
@@ -134,10 +166,8 @@
 
         .content {
             position: relative;
-            height: 500px;
         }
 
-        /* Estilos do conteúdo do carrossel */
         .carousel-content {
             position: absolute;
             top: 50%;
@@ -153,14 +183,12 @@
             margin-bottom: 1rem;
         }
 
-        /* Estilos do slideshow */
         .slideshow {
-            height: 100%;
+            height: 650px;
             overflow: hidden;
             position: relative;
         }
 
-        /* Wrapper que envolve todas as imagens do slideshow */
         .slideshow-wrapper {
             display: flex;
             width: 400%;
@@ -169,7 +197,6 @@
             transition: transform 0.6s ease-in-out;
         }
 
-        /* Define largura e altura para as imagens */
         .slide {
             width: 100%;
             height: 100%;
@@ -181,7 +208,6 @@
             object-fit: cover;
         }
 
-        /* Animações do slideshow */
         @keyframes slideshow {
             0%, 100% {
                 transform: translateX(0%);
@@ -197,7 +223,6 @@
             }
         }
 
-        /* Estilos dos botões de controle do carrossel */
         .slide-btn {
             border: none;
             border-radius: 50%;
@@ -210,7 +235,7 @@
             transform: translateY(-15%);
             z-index: 70;
             font-size: 1.5rem;
-            color: #000000;
+            color: #3a2064;
             background-color: transparent;
             display: flex;
             justify-content: center;
@@ -244,45 +269,6 @@
             margin-left: 3px;
             width: 15px;
         }
-
-     
-
-      
-        .card {
-            display: inline-block;
-            border-radius: 8px;
-            background-color: #222;
-            padding: 20px;
-            width: 300px;
-        }
-
-        .placeholder {
-            background-color: #555;
-            margin-bottom: 10px;
-            height: 20px;
-            border-radius: 4px;
-        }
-
-        .nomejogo {
-            margin-right: 200px;
-            color: white;
-            text-align: justify;
-            text-align-last: left;
-        }
-
-        .descriçao {
-            color: white;
-            text-align: left;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
@@ -303,25 +289,12 @@
         </div>
     </header>
     <main>
-        <section class="hero"> border: none;
-            border-radius: 50%;
-            width: 2rem;
-            height: 2rem;
-            outline: none;
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-15%);
-            z-index: 70;
-            font-size: 1.5rem;
-            color: #3a2064;
+        <section class="hero">
             <h2>Bem-vindo</h2>
-            <p>Explore o pipip popopop pippip.</p>
+            <p>Explore o mundo dos jogos indie.</p>
             <div class="content">
                 <div class="carousel-content">
-                    <h1 class="carousel-heading">
-                        IndieConnekt
-                    </h1>
+                    <h1 class="carousel-heading">IndieConnekt</h1>
                     <h3>Uma plataforma para desenvolvedores Indies</h3>
                 </div>
                 <div class="slideshow">
@@ -348,39 +321,42 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-           
         </section>
+
         <section class="jogos-list">
             <h2>Jogos em Destaque</h2>
-            <div class="card">
-                <div class="placeholder" style="height: 150px;"></div><br>
-                <h2>Jogo 1</h2>
-                <p>descriçao descriçao descriçao descriçao descriçao descriçaodescriçao descriçao.</p>
-                <button>Go somewhere</button>
-            </div>
-            
-            <div class="card">
-                <div class="placeholder" style="height: 150px;"></div>
-                <h2 class="nomejogo">the dark legend of the colossus sa</h2>
-                <p class="descriçao">descriçao descriçao descriçao descriçao descriçao descriçaodescriçao descriçao.</p>
-                <button>Go somewhere</button>
-            </div>
-            <div class="container">
+            <div class="card-container">
                 <div class="card">
-                    <div class="placeholder" style="height: 150px;"></div>
-                    <h2>Jogo 3</h2>
-                    <p>descriçao descriçao descriçao descriçao descriçao descriçaodescriçao descriçao.</p>
-                    <button>Go somewhere</button>
+                    <div class="placeholder"></div>
+                    <h2>Jogo 1</h2>
+                    <p>Descrição do jogo 1.</p>
+                    <button>Ver mais</button>
                 </div>
-                    <div class="card">
-                        <div class="placeholder" style="height: 150px;"></div>
-                            <h2>Jogo 3</h2>
-                                <p>descriçao descriçao descriçao descriçao descriçao descriçaodescriçao descriçao.</p>
-                            <button>Go somewhere</button>
-                        </div>
-            
+
+                <div class="card">
+                    <div class="placeholder"></div>
+                    <h2 class="nomejogo">The Dark Legend</h2>
+                    <p class="descriçao">Descrição do jogo 2.</p>
+                    <button>Ver mais</button>
+                </div>
+
+                <div class="card">
+                    <div class="placeholder"></div>
+                    <h2>Jogo 3</h2>
+                    <p>Descrição do jogo 3.</p>
+                    <button>Ver mais</button>
+                </div>
+
+                <div class="card">
+                    <div class="placeholder"></div>
+                    <h2>Jogo 4</h2>
+                    <p>Descrição do jogo 4.</p>
+                    <button>Ver mais</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer>
         <p>&copy; PRO</p>
     </footer>
