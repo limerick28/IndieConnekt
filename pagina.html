@@ -363,26 +363,29 @@
     </footer>
 
     <script>
-        const slides = document.querySelector('.slideshow-wrapper');
-        const leftButton = document.querySelector('.slide-btn-left');
-        const rightButton = document.querySelector('.slide-btn-right');
+      const slides = document.querySelector('.slideshow-wrapper');
+let index = 0;
+let intervalId = null;
 
-        let index = 0;
+function updateSlide() {
+    const slideWidth = slides.clientWidth / 4;
+    slides.style.transform = `translateX(-${index * slideWidth}px)`;
+}
 
-        function updateSlide() {
-            const slideWidth = slides.clientWidth / 4; // considerando que há 4 slides
-            slides.style.transform = `translateX(-${index * slideWidth}px)`;
-        }
+function startAutoSlide() {
+    intervalId = setInterval(() => {
+        index = (index < 3) ? index + 1 : 0;
+        updateSlide();
+    }, 1340);
+}
 
-        leftButton.addEventListener('click', () => {
-            index = (index > 0) ? index - 1 : 3;
-            updateSlide();
-        });
+function stopAutoSlide() {
+    clearInterval(intervalId);
+}
 
-        rightButton.addEventListener('click', () => {
-            index = (index < 3) ? index + 1 : 0;
-            updateSlide();
-        });
+document.querySelector('.slideshow').addEventListener('mouseover', startAutoSlide);
+document.querySelector('.slideshow').addEventListener('mouseout', stopAutoSlide);
+
     </script>
 </body>
 </html>
