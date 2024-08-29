@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações do Jogo</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #333;
+        }
+
+        main {
+            margin-bottom: 30px;
+        }
+
+        .user-info {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #eaeaea;
+        }
+
+        .user-info h2 {
+            margin: 0 0 10px 0;
+            color: #555;
+        }
+
+        .game-info {
+            margin-bottom: 30px;
+        }
+
+        .game-info h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        .game-info p {
+            margin: 0;
+            color: #666;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .download-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .download-link a {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #3a2064;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-link a:hover {
+            background-color: #2a1a4e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Detalhes do Jogo</h1>
+        </header>
+
+        <main>
+            <section class="user-info">
+                <h2>Postado por: João Silva</h2>
+                <p>Data de postagem: 26 de Agosto de 2024</p>
+                <p>Descrição do usuário: João Silva é um desenvolvedor de jogos com mais de 5 anos de experiência, especializado em jogos de plataforma e RPG.</p>
+            </section>
+
+            <section class="game-info">
+                <h3>Título do Jogo</h3>
+                <p><strong>Gênero:</strong> Ação/Aventura</p>
+                <p><strong>Descrição:</strong> Um jogo emocionante que leva você a uma aventura épica através de mundos fantásticos. Enfrente inimigos desafiadores, resolva quebra-cabeças e explore um vasto universo cheio de segredos.</p>
+            </section>
+
+            <section class="gallery">
+                <img src="imagem1.jpg" alt="Imagem do Jogo 1">
+                <img src="imagem2.jpg" alt="Imagem do Jogo 2">
+                <img src="imagem3.jpg" alt="Imagem do Jogo 3">
+            </section>
+
+            <section class="download-link">
+                <a href="link-para-download.zip" download>Baixar Jogo</a>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
