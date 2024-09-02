@@ -29,16 +29,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center; 
-            padding: 10px;
-            height: 40px; 
+            padding: 10px 20px;
+            height: 85px;
         }
 
-            .navbar .indielogo {
-            max-height: 50%; 
-            height: auto;
-            width: 87px;
+        .navbar .indielogo {
+            width: 130px;
+            transform: scaleY(90%);
             object-fit: contain;
-            transform: translateY(8%);
         }
 
         .navbar nav ul {
@@ -275,19 +273,25 @@
             width: 15px;
         }
         
+         li:hover{
+            background-color: #3a2064 ;
+            border-bottom: 10px thin white;
+            border-bottom-style: solid;
+        }
+        
     </style>
 </head>
 <body>
     <header>
         <div class="navbar">
             <div class="logo">
-                <img src="images/indie_logo.png" alt="Bem-vindo" class="indielogo" />
+                <img class="indielogo" src="images/indie_logo.png" alt="">
             </div>
             <nav>
                 <ul>
                     <li><a href="#">Início</a></li>
                     <li><a href="#">Jogos</a></li>
-                    <li><a href="comunidade.html">Comunidade</a></li>
+                    <li><a href="listadesejo.html">lista de desejos</a></li>
                     <li><a href="#">Sobre</a></li>
                     <li><a href="#">Contato</a></li>
                      <li><a href="LOGIN.html">Cadastre-se</a></li>
@@ -331,7 +335,7 @@
                     <div class="placeholder"></div>
                     <h2>Jogo 1</h2>
                     <p>Descrição do jogo 1.</p>
-                    <button>Ver mais</button>
+                    <button><a href="comunidade.html">Ver mais</a></button>
                 </div>
 
                 <div class="card">
@@ -363,29 +367,26 @@
     </footer>
 
     <script>
-      const slides = document.querySelector('.slideshow-wrapper');
-let index = 0;
-let intervalId = null;
+        const slides = document.querySelector('.slideshow-wrapper');
+        const leftButton = document.querySelector('.slide-btn-left');
+        const rightButton = document.querySelector('.slide-btn-right');
 
-function updateSlide() {
-    const slideWidth = slides.clientWidth / 4;
-    slides.style.transform = `translateX(-${index * slideWidth}px)`;
-}
+        let index = 0;
 
-function startAutoSlide() {
-    intervalId = setInterval(() => {
-        index = (index < 3) ? index + 1 : 0;
-        updateSlide();
-    }, 1340);
-}
+        function updateSlide() {
+            const slideWidth = slides.clientWidth / 4; // considerando que há 4 slides
+            slides.style.transform = `translateX(-${index * slideWidth}px)`;
+        }
 
-function stopAutoSlide() {
-    clearInterval(intervalId);
-}
+        leftButton.addEventListener('click', () => {
+            index = (index > 0) ? index - 1 : 3;
+            updateSlide();
+        });
 
-document.querySelector('.slideshow').addEventListener('mouseover', startAutoSlide);
-document.querySelector('.slideshow').addEventListener('mouseout', stopAutoSlide);
-
+        rightButton.addEventListener('click', () => {
+            index = (index < 3) ? index + 1 : 0;
+            updateSlide();
+        });
     </script>
 </body>
 </html>
