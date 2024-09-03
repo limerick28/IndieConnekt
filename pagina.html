@@ -23,20 +23,22 @@
             color: white;
             padding: 1em 0;
         }
-
         .navbar {
             backdrop-filter: blur(50px);
             display: flex;
             justify-content: space-between;
             align-items: center; 
-            padding: 10px 20px;
-            height: 85px;
+            padding: 10px;
+            height: 40px; 
         }
 
-        .navbar .indielogo {
-            width: 130px;
-            transform: scaleY(90%);
+            .navbar .indielogo {
+            max-height: 50%; 
+            height: auto;
+            width: 87px;
             object-fit: contain;
+            transform: translateY(8%);
+        }
         }
 
         .navbar nav ul {
@@ -285,7 +287,7 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <img class="indielogo" src="images/indie_logo.png" alt="">
+                <img src="images/indie_logo.png" alt="Bem-vindo" class="indielogo" />
             </div>
             <nav>
                 <ul>
