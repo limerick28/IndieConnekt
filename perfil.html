@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indie Connekt</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding-bottom: 3rem;
+            background-color: #1b0d24;
+            color: #333;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2e;
+            color: #ffffff;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #1a1a2e;
+        }
+    
+        .header .title {
+            margin-left: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .header .nav {
+            display: flex;
+            align-items: center;
+        }
+        .nav .login {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            margin-right: 20px
+        }
+        .nav .cadastro {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+        
+        .header .nav .get-app {
+            border: 1px solid #ffffff;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            padding: 10px 20px;
+            transform: translateX(-25%);
+            width: 500px;
+        }
+        .search-bar input {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+            border-color: gra;
+            border-radius: 5px;
+            background-color: #2a2a3e;
+            color: #ffffff;
+        }
+        
+        .navbar {
+            background-color: #3a2064;
+            backdrop-filter: blur(50px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            padding: 15px;
+            height: 60px; 
+        }
+
+            .navbar .indielogo {
+            max-height: 100px; 
+            height: 150px;
+            width: 150px;
+            object-fit: contain;
+           
+        }
+
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar nav ul li {
+            margin-left: 2em;
+        }
+
+        .navbar nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+        .hero {
+            text-align: center;
+            padding: 5em 2em;
+            background-color: #141726;
+            color: #282c34;
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0 0 0.5em;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin: 0 0 1em;
+        }
+
+        .cta-button {
+            background-color: white;
+            color: #3a2064;
+            padding: 0.75em 1.5em;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .header {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-image: url(images/darklegendsed.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        .profile {
+            position: absolute;
+            bottom: -50px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            transform: translateY(-50%);
+        }
+        .profile img {
+            border-radius: 50%;
+            border: 5px solid #1a1a1a;
+            width: 100px;
+            height: 100px;
+        }
+        .profile-info {
+            margin-left: 20px;
+        }
+        .profile-info h1 {
+            margin: 0;
+            font-size: 24px;
+            border-radius: 2px;
+        }
+        .profile-info p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #cccccc;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #2a2a2a;
+            border-top: 1px solid #444;
+        }
+        .nav .links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav .links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .nav .links a.active {
+            border-bottom: 2px solid #f1c40f;
+        }
+        .nav .follow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav .follow button {
+            background-color: #f1c40f;
+            border: none;
+            padding: 10px 20px;
+            color: #1a1a1a;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .nav .follow .followers {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+        
+    </style>
+        </head>
+            <body>
+        </head>
+<body>
+    <div class="navbar">
+            <img class="indielogo" height="30" src="images/indieconnektlogo.png"width="50"/>
+        <div class="indielogo">
+    </div>
+        <div class="search-bar">
+            <input placeholder="Procurar" type="text"/>
+            </div>
+            <div class="nav">
+                <a class="login" href="#">
+                Log in
+                </a>
+                <a class="cadastro" href="#">
+                Cadastrar-se
+                </a>
+            </div>
+            </div>
+                </div>
+                    </div>
+            
+                
+                            </nav>
+        </div>
+        <div class="header">
+            <div class="profile">
+             <img alt="Profile image of a pixel art character" height="100" src="images/darklegendsed.jpg" width="100"/>
+             <div class="profile-info">
+              <h1>
+               Myth Landers
+              </h1>
+              <p>
+               by Combat_Dices_Team @Combat_Dices_Team
+              </p>
+             </div>
+            </div>
+           </div>
+           <div class="nav">
+            <div class="links">
+             <a class="active" href="#">
+              Overview
+             </a>
+             <a href="#">
+              Comments
+              <span>
+               7
+              </span>
+             </a>
+             <a href="#">
+              Followers
+              <span>
+               131
+              </span>
+             </a>
+            </div>
+            <div class="follow">
+             <div class="followers">
+              <span>
+               131
+              </span>
+              <i class="fas fa-user">
+              </i>
+             </div>
+             <button>
+              Follow
+             </button>
+            </div>
+           </div>
+          </body>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="content">
+              
+        
+
+                
+
+    <footer>
+        <p>&copy; PRO</p>
+    </footer>
+
+</body>
+</html>
