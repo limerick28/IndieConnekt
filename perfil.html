@@ -128,97 +128,242 @@
             margin: 0 0 1em;
         }
 
-        .cta-button {
-            background-color: white;
-            color: #3a2064;
-            padding: 0.75em 1.5em;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
+        .container2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
         }
-        
-        
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: #ffffff;
-        }
-        .header {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            background-image: url(images/darklegendsed.jpg);
-            background-size: cover;
-            background-position: center;
-        }
-        .profile {
-            position: absolute;
-            bottom: -50px;
-            left: 20px;
+        .profile-header {
             display: flex;
             align-items: center;
-            transform: translateY(-50%);
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
         }
-        .profile img {
+        .profile-header img {
             border-radius: 50%;
-            border: 5px solid #1a1a1a;
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
         }
-        .profile-info {
-            margin-left: 20px;
+        .profile-header .profile-info {
+            display: flex;
+            flex-direction: column;
         }
-        .profile-info h1 {
+        .profile-header .profile-info h1 {
             margin: 0;
             font-size: 24px;
-            border-radius: 2px;
         }
-        .profile-info p {
-            margin: 5px 0 0;
-            font-size: 14px;
-            color: #cccccc;
+        .profile-header .profile-info p {
+            margin: 5px 0;
+            color: #aaaaaa;
         }
-        .nav {
+        .profile-header .profile-info .status {
+            display: flex;
+            align-items: center;
+        }
+        .profile-header .profile-info .status .online {
+            background-color: #00ff00;
+        }
+        .profile-edit {
+            margin-left: auto;
+        }
+        .profile-edit button {
+            background-color: transparent;
+            border: 1px solid #91ff10;
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .profile-edit button:hover{
+            background-color: #91ff10;
+            color: #000000;
+        }
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 800px;
+            background-color: #2e2e4e;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .profile-stats div {
+            text-align: center;
+        }
+        .profile-stats div p {
+            margin: 5px 0;
+        }
+        .profile-stats div .icon {
+            font-size: 24px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        .tabs button {
+            background-color: transparent;
+            border: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .tabs button.active {
+            border-bottom: 2px solid #d4d700;
+        }
+        .content {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+        .content img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        .content p {
+            color: #aaaaaa;
+        }
+        .sidebar {
+            
+            left: 60px;
+            top: 20px;
+            width: 200px;
+        }
+        .sidebar img {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .invite-link {
+            background-color: #2e2e4e;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .invite-link p {
+            margin: 5px 0;
+        }
+        .invite-link button {
+            background-color: #91ff10;
+            border: none;
+            color: #000000;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            background-color: #2a2a2a;
-            border-top: 1px solid #444;
-        }
-        .nav .links {
-            display: flex;
-            gap: 20px;
-        }
-        .nav .links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .nav .links a.active {
-            border-bottom: 2px solid #f1c40f;
-        }
-        .nav .follow {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .nav .follow button {
-            background-color: #f1c40f;
-            border: none;
-            padding: 10px 20px;
-            color: #1a1a1a;
-            font-size: 14px;
-            cursor: pointer;
+            padding: 10px 10px;
+            background-color: #111;
+            object-fit: cover;
             border-radius: 5px;
+            width: 500px;
+            height: 50px;
         }
-        .nav .follow .followers {
+        .main {
             display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 14px;
+            padding: 20px;
         }
+        .sidebar {
+            width: 250px;
+            background-color: #2e2e4e;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .sidebar .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .sidebar .stats div {
+            text-align: center;
+        }
+        .sidebar .share {
+            margin-bottom: 20px;
+        }
+        .sidebar .share input {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .sidebar .share button {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+        .sidebar .share .social {
+            display: flex;
+            justify-content: space-between;
+        }
+        .sidebar .comments {
+            margin-bottom: 20px;
+        }
+        .sidebar .comments input {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .sidebar .comments .comment {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+        .content .game {
+            background-color: #2e2e4e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 800px;
+            height: 400px;
+           
+
+        }
+        .content .game .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .content .game .header .title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .content .game .posts{
+            width: 200px;
+              
+        }
+        .content .game .posts .postsimagem{
+            width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 7px;
+        }
+        .content .game .details {
+            margin-bottom: 10px;
+        }
+        
+        
         
     </style>
         </head>
@@ -233,78 +378,172 @@
             <input placeholder="Procurar" type="text"/>
             </div>
             <div class="nav">
+                <a class="login" href="#">
+                Log in
                 </a>
-                <a class="cadastro" href="LOGIN.html">
+                <a class="cadastro" href="#">
                 Cadastrar-se
                 </a>
-                <a class="cadastro" href="listadesejo.html">
-                    lista de desejo
-                    </a>
-                    <a class="cadastro" href="perfil.html">
-                       Seu perfil
-                        </a>
             </div>
             </div>
                 </div>
                     </div>
             
                 
-                            </nav>
-        </div>
-        <div class="header">
-            <div class="profile">
-             <img alt="Profile image of a pixel art character" height="100" src="images/darklegendsed.jpg" width="100"/>
-             <div class="profile-info">
-              <h1>
-               Joe Doe
-              </h1>
-              <p>
-               by Combat_Dices_Team @Combat_Dices_Team
-              </p>
-             </div>
+        </nav>
+        <div class="container2">
+            <div class="profile-header">
+                <img alt="Profile picture" height="80" src="images/conscripted.jpg" width="80"/>
+                <div class="profile-info">
+                <h1>
+                <span>
+                @Usuarioo
+                </span>
+                </h1>
+            
+                <div class="status">
+                </div>
+                </div>
+                <div class="profile-edit">
+                <button>
+                Edit profile
+                </button>
+                </div>
             </div>
-           </div>
-           <div class="nav">
-            <div class="links">
-             <a class="active" href="#">
-              Overview
-             </a>
-             <a href="#">
-              Comments
-              <span>
-               7
-              </span>
-             </a>
-             <a href="#">
-              Followers
-              <span>
-               131
-              </span>
-             </a>
-            </div>
-            <div class="follow">
-             <div class="followers">
-              <span>
-               131
-              </span>
-              <i class="fas fa-user">
-              </i>
-             </div>
-             <button>
-              Follow
-             </button>
-            </div>
-           </div>
-          </body>
-    </header>
-    <main>
-        <section class="hero">
-            <div class="content">
-              
-        
-
+            <div class="profile-stats">
+                <div>
+                <p>
+                0
+                </p>
+                <p>
+                Seguindo
+                </p>
+                </div>
+                <div>
+                <p>
+                0
+                </p>
+                <p>
+                Seguidores
+                </p>
+                </div>
+                <div>
+                <p>
+                0
+                </p>
+                <p>
+                Likes
+                </p>
+                </div>
+                <div>
+                </i>
+                </div>
                 
-
+            </div>
+            <div class="tabs">
+        <button class="active">
+                Posts
+    </button>
+    
+  </div>
+  <div class="main">
+   <div class="sidebar">
+    <div class="stats">
+     <div>
+      <div>
+      </div>
+      <div>
+      </div>
+     </div>
+     <div>
+      <div>
+      </div>
+      <div>
+      </div>
+     </div>
+    </div>
+    <div class="share">
+     <div class="social">
+      <button>
+      redesocial1
+      </button>
+      <button>
+       redesocial2
+      </button>
+     </div>
+    </div>
+    <div class="comments">
+     <div>
+      Comentarios
+     </div>
+     <input placeholder="o que você está pensando?" type="text"/>
+     <div class="comment">
+      <div>
+       <strong>
+        usuario1
+       </strong>
+      </div>
+      <div>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, autem assumenda corporis perspiciatis, ullam unde commodi accusamus tempora nihil dolorem, similique tempore. Eum distinctio sapiente repellat ipsa odio perferendis corrupti.
+      </div>
+     </div>
+     <div class="comment">
+      <div>
+       <strong>
+        usuario2
+       </strong>
+      </div>
+      <div>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis consectetur necessitatibus incidunt, deserunt sequi iure debitis similique, adipisci soluta facilis autem dicta nobis molestias excepturi! Explicabo nulla ea voluptates ipsa?
+      </div>
+     </div>
+     <div class="comment">
+      <div>
+       <strong>
+        usuario3
+       </strong>
+      </div>
+      <div>
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio temporibus consectetur fuga, eaque vero dolore vitae eius enim ea perspiciatis doloribus debitis aliquam dolorem, doloremque suscipit sapiente minima! Nemo, vel!
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="game">
+     <div class="header">
+      <div class="title">
+      POST 1
+      </div>
+     </div>
+     <div class="posts">
+      <div>
+       <img src="images/stardewvalleyed.jpg" alt="" class="postsimagem">
+      </div>
+     </div>
+     <div class="download">
+      <div class="size">
+      </div>
+     </div>
+    </div>
+    <div class="game">
+     <div class="header">
+      <div class="title">
+       POST2
+      </div>
+      </div>
+     <div class="posts">
+      <div>
+        <img src="images/stardewvalleyed.jpg" alt="">   
+      </div>
+     </div>
+     <div class="download">
+      <div class="size">
+      </div>
+     </div>
+    </div>
+    
+   </div>
     <footer>
         <p>&copy; PRO</p>
     </footer>
