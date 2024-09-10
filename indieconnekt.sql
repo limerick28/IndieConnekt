@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 10-Set-2024 às 13:46
+-- Generation Time: 10-Set-2024 às 14:10
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 5.6.40
 
@@ -41,25 +41,25 @@ CREATE TABLE `genero` (
 --
 
 CREATE TABLE `jogos` (
-  `nome` varchar(30) NOT NULL,
-  `id` float NOT NULL,
-  `desenvolvedor` varchar(30) NOT NULL,
-  `data` date NOT NULL,
-  `genero` varchar(25) NOT NULL,
-  `genero 2` varchar(25) NOT NULL
+  `id` mediumint(5) NOT NULL,
+  `nome` varchar(25) CHARACTER SET utf8mb4 NOT NULL,
+  `genero` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `foto` varchar(50) CHARACTER SET utf8mb4 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `login`
+-- Estrutura da tabela `usuarios`
 --
 
-CREATE TABLE `login` (
+CREATE TABLE `usuarios` (
   `id` int(8) NOT NULL,
   `username` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `senha` varchar(20) NOT NULL
+  `senha` varchar(20) NOT NULL,
+  `fotouser` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
+  `adm` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -76,12 +76,13 @@ ALTER TABLE `genero`
 -- Indexes for table `jogos`
 --
 ALTER TABLE `jogos`
-  ADD PRIMARY KEY (`id`,`nome`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nome` (`nome`);
 
 --
--- Indexes for table `login`
+-- Indexes for table `usuarios`
 --
-ALTER TABLE `login`
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `username` (`username`);
@@ -100,12 +101,12 @@ ALTER TABLE `genero`
 -- AUTO_INCREMENT for table `jogos`
 --
 ALTER TABLE `jogos`
-  MODIFY `id` float NOT NULL AUTO_INCREMENT;
+  MODIFY `id` mediumint(5) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT for table `usuarios`
 --
-ALTER TABLE `login`
+ALTER TABLE `usuarios`
   MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
