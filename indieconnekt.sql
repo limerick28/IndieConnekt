@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 04-Set-2024 às 16:52
+-- Generation Time: 10-Set-2024 às 13:46
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 5.6.40
 
@@ -25,6 +25,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `genero`
+--
+
+CREATE TABLE `genero` (
+  `idGenero` int(10) NOT NULL,
+  `nomeGenero` varchar(50) NOT NULL,
+  `descricao` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `jogos`
 --
 
@@ -40,20 +52,25 @@ CREATE TABLE `jogos` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura da tabela `login`
 --
 
-CREATE TABLE `usuario` (
-  `nome` varchar(30) NOT NULL,
-  `id` float NOT NULL,
-  `jogos` varchar(30) NOT NULL,
-  `data` date NOT NULL,
-  `foto` varchar(45) NOT NULL
+CREATE TABLE `login` (
+  `id` int(8) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `senha` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `genero`
+--
+ALTER TABLE `genero`
+  ADD PRIMARY KEY (`idGenero`);
 
 --
 -- Indexes for table `jogos`
@@ -62,14 +79,22 @@ ALTER TABLE `jogos`
   ADD PRIMARY KEY (`id`,`nome`);
 
 --
--- Indexes for table `usuario`
+-- Indexes for table `login`
 --
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`,`nome`);
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `genero`
+--
+ALTER TABLE `genero`
+  MODIFY `idGenero` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `jogos`
@@ -78,10 +103,10 @@ ALTER TABLE `jogos`
   MODIFY `id` float NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT for table `login`
 --
-ALTER TABLE `usuario`
-  MODIFY `id` float NOT NULL AUTO_INCREMENT;
+ALTER TABLE `login`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
