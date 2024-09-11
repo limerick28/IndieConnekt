@@ -8,8 +8,7 @@ $conexao = mysqli_connect('localhost', 'root', '', 'indieconnekt');
 if (!$conexao) {
     die("Falha na conexão: " . mysqli_connect_error());
 }
-$senha_hash = password_hash($senha, PASSWORD_DEFAULT);
-$sql = "INSERT INTO usuarios (username, email, senha) VALUES ('$username', '$email', '$senha_hash')";
+$sql = "INSERT INTO usuarios (username, email, senha) VALUES ('$username', '$email', '$senha')";
 
 $exe = mysqli_query($conexao, $sql);
 
