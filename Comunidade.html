@@ -7,123 +7,129 @@
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #141726;
+            background-color: #12141d;
+            color: #f4f4f9;
             margin: 0;
             padding: 0;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #1a1d2b;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 6px 30px rgba(0,0,0,0.5);
         }
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         header h1 {
             margin: 0;
-            color: #333;
+            font-size: 3em;
+            color: #d6a1eb;
         }
 
         main {
-            margin-bottom: 30px;
-        }
-
-        .user-info {
-            margin-bottom: 20px;
-            padding: 10px;
+            padding: 20px;
+            background-color: #232637;
             border-radius: 8px;
-            background-color: #eaeaea;
         }
 
-        .user-info h2 {
-            margin: 0 0 10px 0;
-            color: #555;
+        .user-info, .game-info {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #2a2e3f;
+            border-radius: 8px;
         }
 
-        .game-info {
-            margin-bottom: 30px;
+        .user-info h2, .game-info h3 {
+            margin: 0 0 15px 0;
+            color: #d6a1eb;
+            font-weight: bold;
         }
 
-        .game-info h3 {
-            margin: 0 0 10px 0;
-            color: #333;
-        }
-
-        .game-info p {
+        .user-info p, .game-info p {
             margin: 0;
-            color: #666;
+            color: #ffffff;
+            font-size: 1.1em;
         }
 
         .gallery {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 20px;
             margin-bottom: 30px;
         }
 
         .gallery img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            width: calc(33.333% - 20px);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
         }
 
         .download-link {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
         .download-link a {
             display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 12px 25px;
+            font-size: 18px;
             font-weight: bold;
             color: #fff;
-            background-color: #3a2064;
+            background-color: #c66ee9;
             border-radius: 8px;
             text-decoration: none;
             transition: background-color 0.3s ease;
         }
 
         .download-link a:hover {
-            background-color: #2a1a4e;
+            background-color: #ca80e7;
         }
-         #quadrado {
-    
-        transform: rotate(-27deg);
-        translate: -70px; 
-        border-bottom: 100px solid #91ff10;
        
-        border-left: 50px solid transparent;
-         border-right: 200px solid transparent;
-         height: 0;
-        margin-top: -110px;
-         width: 250px;
+        .texto {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 40px;
+            color: #d6a1eb;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
         }
-        #linha{
-            transform: rotate(-27deg);
-        translate: -70px; 
-        border-bottom: 100px solid #2a1a4e;
-        border-left: 50px solid transparent;
-         border-right: 200px solid transparent;
-         height: 0;
-        margin-top: -9px;
-         width: 250px;
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .gallery img {
+                width: calc(50% - 10px);
+            }
         }
-        .texto{
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 50px;
-        color:#2a1a4e;
-        height: 100px;
-        line-height: 100px;
-        text-align: center;
+
+        @media (max-width: 480px) {
+            .gallery img {
+                width: 100%;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .download-link a {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -132,7 +138,7 @@
         <header>
             <p id="linha"></p>
             <p id="quadrado" class="texto">NOVIDADES</p>
-            <h1>CONSCRIPT</h1>
+            <h1>Detalhes do Jogo</h1>
         </header>
 
         <main>
@@ -149,8 +155,9 @@
             </section>
 
             <section class="gallery">
-                <img src="images/conscripted.jpg" alt="Imagem do Jogo 1">
-                <img src="images/conscript.png" alt="Imagem do Jogo 2">
+                <img src="hollowknighted.jpg" alt="Imagem do Jogo 1">
+                <img src="stardewvalleyed.jpg" alt="Imagem do Jogo 2">
+                <img src="conscripted.jpg" alt="Imagem do Jogo 3">
             </section>
 
             <section class="download-link">
