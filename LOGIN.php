@@ -11,31 +11,28 @@
 </html>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#">
+		<form action="cadastro.php" method="post">
 			<h1>Criar conta</h1>
 			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>Ou use seu email para </span>
-			<input type="text" placeholder="Nome" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Senha" />
+			<input type="text" placeholder="username" name="username" />
+			<input type="email" placeholder="email" name="email" />
+			<input type="password" placeholder="senha" name="senha" />
 			<button class="botao">Criar</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="#">
-			<h1>Entrar</h1>
+		<form action="verificar.php" method="post">
+		<?php
+	session_start();
+	?>	
+	<h1>Entrar</h1>
 			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
-			<span>Ou use seu email para</span>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Senha" />
+			<span>use seu email para</span>
+			<input type="text" placeholder="email" name="email"/>
+			<input type="password" placeholder="Senha" name="senha" />
 			<a href="#">Esqueceu sua senha?</a>
 			<button class="botao2">Entrar</button>
 		</form>
