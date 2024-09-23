@@ -1,9 +1,9 @@
 <?php
-include('sessao.php')
 session_start();
 $username = $_POST['username'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
+
 $conexao = mysqli_connect('localhost', 'root', '', 'indieconnekt');
 
 if (!$conexao) {
