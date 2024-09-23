@@ -1,10 +1,9 @@
 <?php
 session_start();
-if(isset($_SESSION['nome'])){
-	$nome = $_SESSION['nome'];
-	$adm = $_SESSION['adm'];
-	if($nome == null){
-		die("Usuário não autenticado!<a href='LOGIN.html'>Logar</a>");
-	}
-}
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
+if($email == NULL){
+	die("Usuário não autenticado!
+	<a href='LOGIN.php'>Logar</a>");
+};
 ?>
