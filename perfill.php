@@ -396,15 +396,13 @@ session_start();
                 <div class="profile-info">
                 <h1>
                 <span>
-                <?php
-    
-
-    if (isset($_SESSION['username'])) {
-    echo  htmlspecialchars($_SESSION['username']) . "";
-    } else {
-        echo "Nenhum usuário logado!";
-    }
-    ?>
+                @<?php
+            if (isset($_SESSION['username'])) {
+            echo  htmlspecialchars($_SESSION['username']) . "";
+                 } else {
+                     echo "Nenhum usuário logado!";
+                }
+                ?>
                 </span>
                 </h1>
             
