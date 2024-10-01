@@ -1,7 +1,7 @@
-<!DOCTYPE html>
 <?php
-session_start();
+session_start()
 ?>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <link rel="stylesheet" href="perfil.css">
@@ -24,6 +24,9 @@ session_start();
                 <a class="cadastro" href="logout.php">
                 SAIR
                 </a>
+                <a class="cadastro" href="cadastrando.php">
+                criar post
+                </a>
             </form>
             </div>
             </div>
@@ -39,13 +42,13 @@ session_start();
                 <h1>
                 <span>
                 <?php
-    
 
     if (isset($_SESSION['username'])) {
     echo  htmlspecialchars($_SESSION['username']);
     } else {
         echo "Nenhum usuário logado!";
     }
+    
     ?>
                 </span>
                 </h1>
@@ -177,8 +180,8 @@ session_start();
     </div>
     <div class="game">
      <div class="header">
-      <div class="title">
-       POST2
+      <div class="title" href="cadProd.php">
+       CRIAR
       </div>
       </div>
      <div class="posts">
