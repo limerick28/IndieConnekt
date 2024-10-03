@@ -52,15 +52,17 @@ session_start()
     ?>
                 </span>
                 </h1>
-            
+                <form action="upduser.php">
                 <div class="status">
                 </div>
                 </div>
                 <div class="profile-edit">
+                    <a href="upduser.php">
                 <button>
                 Edit profile
                 </button>
                 </div>
+            </a>
             </div>
             <div class="profile-stats">
                 <div>
@@ -161,34 +163,20 @@ session_start()
      </div>
     </div>
    </div>
-   <div class="content">
-    <div class="game">
-     <div class="header">
-      <div class="title">
-      POST 1
-      </div>
-     </div>
-     <div class="posts">
-      <div>
-       <img src="images/stardewvalleyed.jpg" alt="" class="postsimagem">
-      </div>
-     </div>
-     <div class="download">
-      <div class="size">
-      </div>
-     </div>
-    </div>
-    <div class="game">
-     <div class="header">
-      <div class="title" href="cadProd.php">
-       CRIAR
-      </div>
-      </div>
-     <div class="posts">
-      <div>
-        <img src="images/stardewvalleyed.jpg" alt="">   
-      </div>
-     </div>
+   <?php
+$con = mysqli_connect('localhost','root', '', 'indieconnekt');
+$sql = "select * from posts order by nomePost asc";
+$exe = mysqli_query($con, $sql);
+    echo "<table><tr><th>id</th>
+    <th>postagem</th><th>descricao</th>
+    <th>foto</th></tr>";
+while($res = mysqli_fetch_array($exe)){
+	$idPost = $res['idPost'];
+    echo "<tr><td>".$res['idPost']."</td><td>".$res['nomePost']."</td><td>".$res['comentario']."</td><td>".$res['foto']."</td><tr>";
+}
+$fecha = mysqli_close($con);
+
+?>
      <div class="download">
       <div class="size">
       </div>
