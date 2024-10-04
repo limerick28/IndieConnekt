@@ -163,19 +163,37 @@ session_start()
      </div>
     </div>
    </div>
-   <?php
-$con = mysqli_connect('localhost','root', '', 'indieconnekt');
-$sql = "select * from posts order by nomePost asc";
-$exe = mysqli_query($con, $sql);
-    echo "<table><tr><th>id</th>
-    <th>postagem</th><th>descricao</th>
-    <th>foto</th></tr>";
-while($res = mysqli_fetch_array($exe)){
-	$idPost = $res['idPost'];
-    echo "<tr><td>".$res['idPost']."</td><td>".$res['nomePost']."</td><td>".$res['comentario']."</td><td>".$res['foto']."</td><tr>";
-}
-$fecha = mysqli_close($con);
+    
+    <?php
+$con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
 
+$sql = "SELECT * FROM posts ORDER BY nomePost ASC";
+$exe = mysqli_query($con, $sql);
+
+echo "<table style='background-color: #2e2e4e; padding: 20px; border-radius: 10px; margin-bottom: 20px; width: 800px;'>";
+
+while ($res = mysqli_fetch_array($exe)) {
+    $idusuarios = $res['id_idusuarios'];
+    $idPost = $res['idPost'];
+    $nomePost = htmlspecialchars($res['nomePost']);
+    $comentario = htmlspecialchars($res['comentario']);
+    $foto = htmlspecialchars($res['foto']);
+
+    echo "<tr>
+        <th style='display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #111; border-radius: 5px;'>$nomePost</th>
+    </tr>";
+
+    echo "<tr>
+        <td style='padding: 10px;'><img src='images/$foto' alt='Foto' style='width: 400px; height: 250px; object-fit: cover; border-radius: 7px;'></td>
+        <td style='padding: 10px; font-size: 20px; font-weight: bold; max-width: 400px; border-radius: 7px; word-wrap: break-word;'>
+            $comentario
+        </td>
+    </tr>";
+}
+
+echo "</table>";
+
+mysqli_close($con);
 ?>
      <div class="download">
       <div class="size">
