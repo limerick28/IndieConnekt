@@ -165,6 +165,7 @@ session_start()
    </div>
     
     <?php
+//eu mexi apenas nessa parte do código
 $con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
 
 $sql = "SELECT * FROM posts ORDER BY nomePost ASC";
