@@ -28,7 +28,7 @@ session_start();
                 <h1>
                     <span>
                         <?php
-                        echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : "Nenhum usuário logado!";
+                            echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : "Nenhum usuário logado!";
                         ?>
                     </span>
                 </h1>
@@ -117,16 +117,15 @@ if (mysqli_num_rows($exe2) > 0) {
         $texto = htmlspecialchars($res2['texto']);
         $fotocomentario = htmlspecialchars($res2['fotocomentario']);
 
-        echo "<tr>
-                <td style='background-color: #2e2e4e; padding: 20px; border-radius: 10px; margin-top: 20px;'>Comentário: $texto</td>
-                <td style='padding: 10px;'>Data: $fotocomentario</td>
+        echo "<tr style='background-color: #3b3b6e;'>
+                <td style='background-color: #3d3d6d; padding: 15px; border-radius: 10px; margin-top: 10px;'>$texto <img src='images/$fotocomentario'> </td>
+               
             </tr>";
     }
     echo "</table>";
 } else {
-    echo "Nenhum comentário encontrado.";
+    echo "";
 }
-// Verifica a conexão
 if (!$con) {
     die("Conexão falhou: " . mysqli_connect_error());
 }
@@ -169,9 +168,5 @@ mysqli_close($con);
             </div>
         </div>
     </div>
-
-    <footer>
-        <p>&copy; PRO</p>
-    </footer>
 </body>
 </html>
