@@ -530,13 +530,83 @@
                </div>
                <div class="content2">
                 <div class="game-card">
-                 <img alt="Aurascope game cover image" height="200" src="images/hollowknighted.jpg" class="imagem" width="300"/>
                  <div class="game-info">
                   <img alt="Aurascope game icon" height="40" src="images/darklegendsed.jpg" width="40"/>
                   <div>
-                   <span>
-                    Jogo1
-                   </span>
+                  <?php
+$sql = "SELECT * FROM jogos ORDER BY nomejogo ASC";
+$exe = mysqli_query($con, $sql1);
+
+if (mysqli_num_rows($exe) > 0) {
+    echo "<table style=' display: flex;
+    justify-content: center;
+    padding: 20px;
+    flex-wrap: wrap;;'>";
+
+    while ($res1 = mysqli_fetch_array($exe)) {
+        $idjogo = htmlspecialchars($res['idjogo']);
+        $nomejogo = htmlspecialchars($res['nomejogo']);
+        $fotojogo = htmlspecialchars($res['fotojogo']);
+
+        echo "<tr>
+                <th style='.game-card {
+                    background-color: #2e2e4e;
+                    border-radius: 10px;
+                    margin: 10px; 
+                    margin-bottom: 40px; 
+                    overflow: hidden;
+                    width: 300px;
+                    height: auto; 
+                    display: flex;
+                    flex-direction: column;
+                    cursor: pointer;
+                    transition: transform 0.3s, box-shadow 0.3s;
+                }
+                .game-card:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                    cursor: pointer;
+                }
+               ;
+                }
+                .game-info {
+                    display: flex;
+                    align-items: center;
+                    padding: 10px;
+                }
+                .game-info img {
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 10px;
+                }
+                .game-info div {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .game-info div span {
+                    font-size: 14px;
+                }
+                .game-info div span:first-child {
+                    font-weight: bold;
+                }'>$nomejogo</th>
+            </tr>
+            <tr>
+                <td style=' .game-card img {
+                    width: 100%;
+                    height: auto;
+                }
+                .game-card:hover img {
+                    transform: scale(1.05)'><img src='images/$fotojogo' style='width: 400px; height: 250px; object-fit: cover; border-radius: 7px;'></td>
+                <td style='padding: 10px; font-size: 20px; font-weight: bold; max-width: 400px; border-radius: 7px; word-wrap: break-word;'></td>
+            </tr>";
+    }
+    echo "</table>";
+} else {
+    echo "Nenhum post encontrado.";
+}
+mysqli_close($con);
+?>
                    <span>
                     usuario1
                    </span>
