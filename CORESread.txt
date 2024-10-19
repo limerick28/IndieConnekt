@@ -1,0 +1,5 @@
+CORES=
+cinzaazulzinho: #2e2e4e
+verdezinho: #91ff10
+fundo das caixas: #2a2a3e
+roxo:#3a2064

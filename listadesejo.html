@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Desejos</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #141726;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            color: #333;
+            margin: 0;
+        }
+
+        .wish-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .wish-item img {
+            max-width: 100px;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+
+        .wish-item-details {
+            flex: 1;
+        }
+
+        .wish-item-title {
+            font-size: 18px;
+            color: #333;
+            margin: 0;
+        }
+
+        .wish-item-description {
+            font-size: 14px;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .wish-item-actions {
+            text-align: right;
+        }
+
+        .wish-item-actions button {
+            background-color: #3a2064;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .wish-item-actions button:hover {
+            background-color: #2a1a4e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Lista de Desejos</h1>
+        </header>
+
+        <div class="wish-item">
+            <img src="imagem-jogo1.jpg" alt="Jogo 1">
+            <div class="wish-item-details">
+                <p class="wish-item-title">Jogo Exemplo 1</p>
+                <p class="wish-item-description">Um emocionante jogo de aventura com gráficos impressionantes e uma história envolvente.</p>
+            </div>
+            <div class="wish-item-actions">
+                <button>Remover</button>
+            </div>
+        </div>
+
+        <div class="wish-item">
+            <img src="imagem-jogo2.jpg" alt="Jogo 2">
+            <div class="wish-item-details">
+                <p class="wish-item-title">Jogo Exemplo 2</p>
+                <p class="wish-item-description">Um RPG envolvente com uma grande variedade de missões e um mundo aberto para explorar.</p>
+            </div>
+            <div class="wish-item-actions">
+                <button>Remover</button>
+            </div>
+        </div>
+
+        <div class="wish-item">
+            <img src="imagem-jogo3.jpg" alt="Jogo 3">
+            <div class="wish-item-details">
+                <p class="wish-item-title">Jogo Exemplo 3</p>
+                <p class="wish-item-description">Um jogo de estratégia com mecânicas profundas e um enredo intrigante.</p>
+            </div>
+            <div class="wish-item-actions">
+                <button>Remover</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
