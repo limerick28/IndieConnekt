@@ -17,7 +17,7 @@ if (move_uploaded_file($_FILES['fotouser']['tmp_name'], $uploadfile)) {
   
 }
 else{
-    echo "Erro";
+    echo "Errooo";
       echo "$sql";
 }
 $fechar = mysqli_close($conexao);
