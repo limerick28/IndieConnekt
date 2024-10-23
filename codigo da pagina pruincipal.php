@@ -583,6 +583,7 @@ if (mysqli_num_rows($exe) > 0) {
                     <div class='card-container'>";
 
     while ($res = mysqli_fetch_array($exe)) {
+        $id = htmlspecialchars($res['idjogos']);
         $nomejogo = htmlspecialchars($res['nomeJogo']);
         $fotojogo = htmlspecialchars($res['fotoJogo']);
 
@@ -591,6 +592,7 @@ if (mysqli_num_rows($exe) > 0) {
                     <img src='images/$fotojogo' alt='$nomejogo'>
                     <div>
                         <span>$nomejogo</span>
+                        <a href='addcarrinho.php?idjogos=$id'>adicionar</a>
                     </div>
                 </div>
               </div>";
