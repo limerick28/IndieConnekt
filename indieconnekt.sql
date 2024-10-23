@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 07-Out-2024 às 17:26
+-- Generation Time: 23-Out-2024 às 13:06
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 5.6.40
 
@@ -21,6 +21,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `indieconnekt`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_idusuarios` int(8) NOT NULL,
+  `id_idPosts` int(8) NOT NULL,
+  `texto` varchar(360) CHARACTER SET utf8mb4 NOT NULL,
+  `fotocomentario` varchar(50) DEFAULT NULL,
+  `idcomentario` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_idusuarios`, `id_idPosts`, `texto`, `fotocomentario`, `idcomentario`) VALUES
+(12345697, 0, 'oiiiiii tudo bem como vocÃµ ', 'Sem tÃ­tulo.png', 1),
+(12345697, 0, 'aniversario do erick', 'Garota.jpg', 6),
+(12345697, 0, 'mas e ai, e o meu caixÃ£o?', 'daleste.png', 7),
+(12345697, 0, 'o augusto ama a julia', 'Flores.jpg', 8);
 
 -- --------------------------------------------------------
 
@@ -43,7 +67,8 @@ CREATE TABLE `jogos` (
 INSERT INTO `jogos` (`idjogos`, `nomeJogo`, `descricaojogo`, `fotoJogo`, `id_idusuarios`) VALUES
 (1, 'the dark legends of the c', '? um jogo muito b?o pode baixa', 'darklegendsed.jpg', 0),
 (2, 'jogo 2', 'é um jogo muito do bão baixe ai que você vai fica feliz', '_b0768e15-e1e7-4d88-b4d6-42164f188a54.jpeg', 12345697),
-(3, 'jogo 3', 'jogo amendrontador brasil', 'Captura de tela_2024-06-10_08-10-44.png', 12345697);
+(3, 'jogo 3', 'jogo amendrontador brasil', 'Captura de tela_2024-06-10_08-10-44.png', 12345697),
+(4, 'jogo 4', 'asjkndajdfukasbnfcjkabsjkdfalsjfdawhkfja,mcnlasjdawijfuioaenfljaskldailwfjawiljklasmd,zxmcklasjilÃ§fjawlfjasklfjaweifjlaifjklasdjfawklfj', 'seguranÃ§a-removebg-preview.png', 12345678);
 
 -- --------------------------------------------------------
 
@@ -53,8 +78,8 @@ INSERT INTO `jogos` (`idjogos`, `nomeJogo`, `descricaojogo`, `fotoJogo`, `id_idu
 
 CREATE TABLE `listaDesejo` (
   `idlista` int(6) NOT NULL,
-  `idusuarios` int(6) NOT NULL,
-  `idjogos` int(6) NOT NULL
+  `id_idusuarios` int(6) NOT NULL,
+  `id_idjogos` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -82,7 +107,8 @@ INSERT INTO `posts` (`nomePost`, `comentario`, `foto`, `id_idusuarios`, `idPost`
 ('jogo 4', 'jogo perfeito', 'darklegendsed.jpg', 0, 11),
 ('jogo 5', 'jogo merda', 'f1fa58f80ab1e08981a6a1e436de39a10e4bcc245785b303af', 0, 14),
 ('post 6', 'aqui temos um post muito masssa demais', 'galega.jpg', 12345678, 15),
-('post 7', 'post novo novissimo pra testa os coisa\r\n', 'images.png', 12345697, 16);
+('post 7', 'post novo novissimo pra testa os coisa\r\n', 'images.png', 12345697, 16),
+('Rafael se assume hetero dwepois de sofreer nas mao do pdydy', 'Rafael Eugenio Faga conhecido como o maior gay de gorpa foi encontrado num casebre descendo o jordÃ£o totalmente pelado com apenas uma cueca do pdydy nas moes', '148841.png', 12345697, 17);
 
 -- --------------------------------------------------------
 
@@ -118,6 +144,12 @@ INSERT INTO `usuarios` (`idusuarios`, `username`, `email`, `senha`, `fotouser`, 
 --
 
 --
+-- Indexes for table `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`idcomentario`);
+
+--
 -- Indexes for table `jogos`
 --
 ALTER TABLE `jogos`
@@ -149,10 +181,16 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT for table `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `idcomentario` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `jogos`
 --
 ALTER TABLE `jogos`
-  MODIFY `idjogos` mediumint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idjogos` mediumint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `listaDesejo`
@@ -164,7 +202,7 @@ ALTER TABLE `listaDesejo`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `idPost` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idPost` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
