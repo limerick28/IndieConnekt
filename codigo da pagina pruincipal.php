@@ -1,207 +1,651 @@
-<?php
-include("sessao.php");
-?>
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Post - Blog de Jogos Indies</title>
+    <title>Indie Connekt</title>
     <style>
         * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-        padding-bottom: 3rem;
-        background-color: #1b0d24;
-        color: #333;
-    }
-
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #1e1e2e;
-        color: #ffffff;
-    }
-    .header {
-        display: flex;
-        align-items: center;
-        padding: 10px 20px;
-        background-color: #1a1a2e;
-    }
-
-    .header .title {
-        margin-left: 10px;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    .header .nav {
-        display: flex;
-        align-items: center;
-    }
-    .nav .login {
-        color: #ffffff;
-        text-decoration: none;
-        margin: 0 10px;
-        font-size: 14px;
-        border-radius: 5px;
-        margin-right: 20px
-    }
-    .nav .cadastro {
-        color: #ffffff;
-        text-decoration: none;
-        margin: 0 10px;
-        font-size: 14px;
-        border-radius: 5px;
-    }
-    .header .nav .get-app {
-        border: 1px solid #ffffff;
-        padding: 5px 10px;
-        border-radius: 5px;
-    }
-    .search-bar {
-        display: flex;
-        justify-content: center;
-        padding: 10px 20px;
-        transform: translateX(-25%);
-        width: 500px;
-    }
-    .search-bar input {
-        width: 100%;
-        max-width: 600px;
-        padding: 10px;
-        border-color: gra;
-        border-radius: 5px;
-        background-color: #2a2a3e;
-        color: #ffffff;
-    }
-    
-    .navbar {
-        background-color: #3a2064;
-        backdrop-filter: blur(50px);
-        display: flex;
-        justify-content: space-between;
-        align-items: center; 
-        padding: 15px;
-        height: 60px; 
-    }
-
-        .navbar .indielogo {
-        max-height: 100px; 
-        height: 150px;
-        width: 150px;
-        object-fit: contain;
-       
-    }
-
-    .navbar nav ul {
-        list-style: none;
-        display: flex;
-        margin: 0;
-        padding: 0;
-    }
-
-    .navbar nav ul li {
-        margin-left: 2em;
-    }
-
-    .navbar nav ul li a {
-        text-decoration: none;
-        color: white;
-    }
-    .hero {
-        text-align: center;
-        padding: 5em 2em;
-        background-color: #141726;
-        color: #282c34;
-    }
-        h1 {
-            color: #00ff00; /* Verde limão */
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        main {
-            background-color: #3f2a56; /* Um pouco mais claro que o roxo escuro */
+
+        body {
+            margin: 0;
+            background-color: #1e1e2e;
+            color: #ffffff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #1a1a2e;
+        }
+    
+        .header .title {
+            margin-left: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .header .nav {
+            display: flex;
+            align-items: center;
+        }
+        .profile-pic {
+            width: 50px;   
+            height: 50px;  
+            border-radius: 50%;  
+            overflow: hidden;    
+            border: 2px solid #91ff10; 
+            cursor: pointer;
+        }
+
+        .profile-pic img {
+            width: 100%;  
+            height: 100%; 
+            object-fit: cover;  
+            cursor: pointer;
+        }
+        
+        .header .nav .get-app {
+            border: 1px solid #ffffff;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        /*css mudado daqui ate button hover*/
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            padding: 10px 20px;
+            transform: translateX(-330px);
+            width: 500px;
+        }
+        .search-bar input {
+            position: fixed ;
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+            border-color: gra;
+            border-radius: 5px;
+            background-color: #2a2a3e;
+            color: #ffffff;
+            transform: translateY(-20px);
+        }
+        
+        .navbar{
+            backdrop-filter: blur(50px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            padding: 15px;
+            height: 60px;
+        }
+
+            .navbar .indielogo {
+            max-height: 100px; 
+            height: 150px;
+            width: 150px;
+            object-fit: contain;
+           
+        }
+
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar nav ul li {
+            margin-left: 2em;
+        }
+
+        .navbar nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+        .hero {
+            text-align: center;
+            padding: 5em 2em;
+            background-color: #141726;
+            color: #282c34;
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0 0 0.5em;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin: 0 0 1em;
+        }
+
+        .cta-button {
+            background-color: white;
+            color: #3a2064;
+            padding: 0.75em 1.5em;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .jogos-list {
+            padding: 2em;
+            background-color: #141726;
+            text-align: center;
+        }
+
+        .jogos-list h2 {
+            margin-bottom: 1em;
+            color: white;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #222;
+            color: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-        }
-        input[type="text"], textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #00ff00; /* Verde limão */
-            border-radius: 5px;
-            background-color: #4f3b6b; /* Um tom mais claro de roxo */
-            color: #ffffff;
-        }
-        input[type="submit"] {
-            background-color: #00ff00; /* Verde limão */
-            color: #000000;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        input[type="submit"]:hover {
-            background-color: #00cc00; /* Verde limão mais escuro ao passar o mouse */
-        }
-        #imagePreview {
-            margin-top: 10px;
-            max-width: 100%;
-            border-radius: 5px;
-        }
-    </style>
-</head>
-<body>
 
-<div class="navbar">
-            <img class="indielogo" height="30" src="images/indieconnektlogo.png"width="50"/>
+        .placeholder {
+            background-color: #555;
+            margin-bottom: 10px;
+            height: 150px;
+            border-radius: 4px;
+        }
+
+        .nomejogo {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .descriçao {
+            text-align: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .sair{
+            border-color: #f0f0f0; 
+            border: 5px;
+            color: #333; 
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transform:translateX(212px) translateY(-5px);
+        }
+        button:hover{
+            color: #000;
+            border: 1px solid #91ff00;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #91ff00;
+        }
+        footer {
+            background-color: #3a2064;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #3a2064;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            width: 400px;
+            height: 20px;
+            position: relative;
+        }
+
+        .main-heading {
+            padding: 2rem 0 2rem 0;
+        }
+
+        .content {
+            position: relative;
+        }
+
+        .carousel-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 50;
+        }
+
+        .carousel-heading {
+            font-size: 3rem;
+            color: #308d46;
+            margin-bottom: 1rem;
+        }
+
+        .slideshow {
+            height: 550px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slideshow-wrapper {
+            display: flex;
+            width: 400%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide-img {
+            width: 90%;
+            height: 100%;
+            object-fit: fill;
+        }
+
+        @keyframes slideshow {
+            0%, 100% {
+                transform: translateX(0%);
+            }
+            25% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(-200%);
+            }
+            75% {
+                transform: translateX(-300%);
+            }
+        }
+        .slide-btn {
+            border: none;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            outline: none;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-15%);
+            z-index: 70;
+            font-size: 1.5rem;
+            color: #3a2064;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .slide-btn-left {
+            left: 1%;
+        }
+
+        .slide-btn-right {
+            right: 1%;
+        }
+
+        .slide-btn:hover {
+            color: #91ff00;
+            transform: scale(1.0);
+        }
+
+        .slide-btn-left::before {
+            content: '◀';
+            transform: translateY(-13%) scale(1.2);
+            margin-right: 10px;
+            width:15px;
+        }
+
+        .slide-btn-right::before {
+            content: '▶';
+            transform: translateY(-13%) scale(1.2);
+            margin-left: 3px;
+            width: 15px;
+        }
+        
+         li:hover{
+            background-color: #3a2064 ;
+            border-bottom: 10px thin white;
+            border-bottom-style: solid;
+         }
+
+        .header2 {
+            display: flex;
+            padding: 10px 20px;
+            background-color: #2e2e4e;
+            border-bottom: 1px solid #444;
+            border-top: 4px solid #91ff10;
+        }
+        .header2 div {
+            margin-right: 20px;
+            cursor: pointer;            
+        }
+        .header2 div:hover{
+            color:#91ff10
+        }
+        
+        .filters {
+            display: flex;
+            padding: 10px 20px;
+            background-color: #2e2e4e;
+            border-bottom: 1px solid #444;
+            border-top: 1px solid #91ff10;
+            padding: 5px 10px;
+            border-radius: 5px;
+            
+        }
+        .filters div {
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        .filters div:hover{
+            color:#91ff10
+            
+        }
+        .content2 {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            flex-wrap: wrap;
+            
+        }
+        .game-card {
+            background-color: #2e2e4e;
+            border-radius: 10px;
+            margin: 10px; 
+            margin-bottom: 40px; 
+            overflow: hidden;
+            width: 300px;
+            height: auto; 
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .game-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        .game-card img {
+            width: 100%;
+            height: auto;
+        }
+        .game-card:hover img {
+            transform: scale(1.05);
+        }
+        .game-info {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+        .game-info img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .game-info div {
+            display: flex;
+            flex-direction: column;
+        }
+        .game-info div span {
+            font-size: 14px;
+        }
+        .game-info div span:first-child {
+            font-weight: bold;
+        }
+        
+    </style>
+        </head>
+            <body>
+        </head>
+<body>
+    <div class="navbar">
+            <img class="indielogo" height="30" src="images/indieconnektlogo.png"width="50" href="dashboardlog.html">
         <div class="indielogo">
     </div>
         <div class="search-bar">
             <input placeholder="Procurar" type="text"/>
             </div>
+            <div>
+            <button class="sair" href="logout.php">Sair</button>
+            </div>
+            <a href="perfilL.php">
             <div class="nav">
-                <form action="logout.php">
-                <a class="cadastro" href="logout.php">
-                SAIR
+                <div class="profile-pic">
+                    <img src="images/darklegendsed.jpg" alt="Foto do Usuário">
                 </a>
-            </form>
             </div>
             </div>
                 </div>
                     </div>
-    
+                         </nav>
+        </div>
+    </header>
     <main>
-        <form action="cadProd.php" method="post" enctype="multipart/form-data">
-            <label for="title">Título do Post:</label>
-            <input type="text" id="title" name="nomePost" required>
+        <section class="hero">
+            <div class="content">
+                <div class="slideshow">
+                    <button class="slide-btn slide-btn-left"></button>
+                    <button class="slide-btn slide-btn-right"></button>
 
-            <label for="content">Conteúdo do Post:</label>
-            <textarea id="content" name="comentario" rows="10" required></textarea>
+                    <div class="slideshow-wrapper">
+                        <div class="slide">
+                            <img class="slide-img"
+                                src="images/hollowknighted.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="slide-img"
+                                src="images/stardewvalleyed.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="slide-img"
+                                src="images/conscripted.jpg">
+                        </div>
+                        <div class="slide">
+                            <img class="slide-img"
+                                src="images/darklegendsed.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <label for="image">Escolha uma imagem:</label>
-            <input type="file" id="image" name="foto" accept="image/*" onchange="previewImage(event)" required>
-            <img id="imagePreview" src="#" alt="Prévia da Imagem" style="display: none;">
+        <section class="jogos-list">
+            <h2>Jogos em Destaque</h2>
+            <div class="header2">
+                <div class="active">
+                 Sucessos
+                </div>
+                <div>
+                 Melhores avaliações
+                </div>
+                <div>
+                 Novos
+                </div>
+               </div>
+               <div class="filters">
+                <div>
+                    Categoria1
+                 
+                </div>
+                <div>
+                    Categoria2
+                 
+                </div>
+                <div>
+                    Categoria3
+                
+                </div>
+                <div>
+                    Categoria4
+                
+                </div>
+                <div>
+                    Categoria5
+                
+                </div>
+                <div>
+                 Categoria6
+               
+                </div>
+               </div>
+              
+                  <?php
+                  $con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
+                  if (!$con) {
+                    die("Conexão falhou: " . mysqli_connect_error());
+                }
+$sql = "SELECT * FROM jogos ORDER BY nomejogo ASC";
+$exe = mysqli_query($con, $sql);
 
-            <input type="submit" value="Publicar Post">
-        </form>
-    </main>
+if (mysqli_num_rows($exe) > 0) {
+    echo "<table style='display: flex; justify-content: center; padding: 20px; flex-wrap: wrap;'>";
+
+    echo "<style>
+        .card-container {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr); /* Change to 4 columns */
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #222;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .game-info img {
+            border-radius: 5%;
+            width: 100%;
+            height: auto;
+        }
+      </style>";
+
+    echo "<table>
+            <tr>
+                <th style='
+
+                    background-color: #2e2e4e;
+                    color: white;
+                    padding: 10px;
+                    border-radius: 10px;
+    
+                    '>Jogos Disponíveis</th>
+            </tr>
+            <tr>
+                <td colspan='4' style='padding: 20px;'>
+                    <div class='card-container'>";
+
+    while ($res = mysqli_fetch_array($exe)) {
+        $nomejogo = htmlspecialchars($res['nomeJogo']);
+        $fotojogo = htmlspecialchars($res['fotoJogo']);
+
+        echo "<div class='card'>
+                <div class='game-info'>
+                    <img src='images/$fotojogo' alt='$nomejogo'>
+                    <div>
+                        <span>$nomejogo</span>
+                    </div>
+                </div>
+              </div>";
+    }
+
+    echo "          </div>
+                </td>
+            </tr>
+          </table>";
+}
+mysqli_close($con);
+?>
+                   
+        </main>
+        <section>
+        </section>
+    <footer>
+        <p>&copy; PRO</p>
+    </footer>
 
     <script>
-        function previewImage(event) {
-            const imagePreview = document.getElementById('imagePreview');
-            imagePreview.src = URL.createObjectURL(event.target.files[0]);
-            imagePreview.style.display = 'block';
+        const slides = document.querySelector('.slideshow-wrapper');
+        const leftButton = document.querySelector('.slide-btn-left');
+        const rightButton = document.querySelector('.slide-btn-right');
+    
+        let index = 0;
+        const totalSlides = 4;
+    
+        function updateSlide() {
+            const slideWidth = slides.clientWidth / totalSlides;
+            slides.style.transform = `translateX(-${index * slideWidth}px)`;
         }
-    </script>
+    
+        function nextSlide() {
+            index = (index < totalSlides - 1) ? index + 1 : 0; 
+            updateSlide();
+        }
+    
+       
+        let autoSlide = setInterval(nextSlide, 2000); 
 
+
+        leftButton.addEventListener('click', () => {
+            clearInterval(autoSlide); 
+            index = (index > 0) ? index - 1 : totalSlides - 1;
+            updateSlide();
+            autoSlide = setInterval(nextSlide, 2000); 
+        });
+    
+        rightButton.addEventListener('click', () => {
+            clearInterval(autoSlide); 
+            nextSlide();
+            autoSlide = setInterval(nextSlide, 2000); 
+        });
+    </script>
+    
 </body>
 </html>
