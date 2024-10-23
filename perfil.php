@@ -63,11 +63,12 @@ if (!isset($_SESSION['id'])) {
     echo "Você precisa estar logado para ver os posts.";
     exit;
 }
-
+$email = $_SESSION['email'];
+echo $email;
 $idUsuarioLogado = $_SESSION['id'];
 $con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
 
-$sql2 = "SELECT * FROM comentarios ORDER BY idcomentario DESC";
+$sql2 = "SELECT * FROM comentarios WHERE '$email' = perfil_email ORDER BY id_idusuarios DESC";
 $exe2 = mysqli_query($con, $sql2);
 
 if (mysqli_num_rows($exe2) > 0) {
@@ -114,6 +115,7 @@ if (mysqli_num_rows($exe2) > 0) {
     margin-bottom: 10px;'>";
 
     while ($res2 = mysqli_fetch_array($exe2)) {
+        $id = htmlspecialchars($res2['idcomentario']);
         $texto = htmlspecialchars($res2['texto']);
         $fotocomentario = htmlspecialchars($res2['fotocomentario']);
 
@@ -124,7 +126,7 @@ if (mysqli_num_rows($exe2) > 0) {
     }
     echo "</table>";
 } else {
-    echo "";
+    echo "não tem nada aqui";
 }
 if (!$con) {
     die("Conexão falhou: " . mysqli_connect_error());
