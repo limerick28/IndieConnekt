@@ -1,5 +1,6 @@
 <?php
 session_start();
+$username = $_SESSION['username'];
 $email = $_SESSION['email'];
 $id = $_SESSION['id'];
 if($email == NULL){
