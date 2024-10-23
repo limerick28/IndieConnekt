@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 23-Out-2024 às 13:06
+-- Generation Time: 23-Out-2024 às 13:13
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 5.6.40
 
@@ -121,7 +121,7 @@ CREATE TABLE `usuarios` (
   `username` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `senha` varchar(20) NOT NULL,
-  `fotouser` longblob,
+  `fotouser` varchar(50) DEFAULT 'usericon.jpg',
   `comentarios` int(6) DEFAULT NULL,
   `avaliacao` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
