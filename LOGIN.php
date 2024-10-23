@@ -33,6 +33,7 @@
 			<span>use seu email para</span>
 			<input type="text" placeholder="email" name="email"/>
 			<input type="password" placeholder="Senha" name="senha" />
+			
 			<a href="#">Esqueceu sua senha?</a>
 			<button class="botao2">Entrar</button>
 		</form>
