@@ -1,5 +1,5 @@
 <?php
-session_start();
+include("sessao.php")
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -58,7 +58,9 @@ session_start();
             color: #ffffff;
             transform: translateY(-20px);
         }
-
+        .nameuser{
+            transform: translateX(95px);
+        }
 
         .header {
             display: flex;
@@ -81,7 +83,12 @@ session_start();
             position: relative;
              display: inline-block;
         }
-
+        .home{
+            width: 40px;
+            height: auto;
+            transform: translateX(180px);
+            color: white;
+        }
         .profile-pic {
             width: 50px;
             height: 50px;
@@ -155,6 +162,7 @@ session_start();
                     width: 100%;
                     max-width: 800px;
                     margin-bottom: 20px;
+                    
                 }
                 .profile-header img {
                     border-radius: 50%;
@@ -169,6 +177,7 @@ session_start();
             width: 100%;
             max-width: 800px;
             margin-bottom: 20px;
+
         }
 
         .profile-header img {
@@ -176,6 +185,7 @@ session_start();
             width: 80px;
             height: 80px;
             margin-right: 20px;
+            border: 2px solid #91ff10;
         }
 
         .profile-header .profile-info {
@@ -375,19 +385,7 @@ session_start();
             margin-bottom: 10px;
         }
 
-        .sidebar .share button {
-            width: 100%;
-            padding: 5px;
-            border: none;
-            border-radius: 5px;
-            background-color: #333;
-            color: #fff;
-        }
-
-        .sidebar .share .social {
-            display: flex;
-            justify-content: space-between;
-        }
+        ;
 
         .sidebar .comments {
             margin-bottom: 20px;
@@ -402,7 +400,7 @@ session_start();
         }
 
         .sidebar .comments .comment {
-            background-color: #333;
+            background-color: #1e1e2e;
             padding: 10px;
             border-radius: 5px;
             margin-bottom: 10px;
@@ -465,9 +463,26 @@ session_start();
             <div class="search-bar">
                 <input placeholder="Procurar" type="text" />
             </div>
+            <div>
+            <a href="dashboardlog.php">
+            <img class="home" src="images/home.png" alt="">
+            </a>
+            </div>
+            <div class="nameuser">
+            <?php
+            if (isset($_SESSION['username'])) {
+            echo  htmlspecialchars($_SESSION['username']) . "";
+                 } else {
+                     echo "Nenhum usuário logado!";
+                }
+                ?></div>
             <div class="profile-pic">
         <a href="perfill.php">
-            <img src="images/darklegendsed.jpg" alt="Foto do Usuário" class="profile-img">
+        <?php 
+            $fotouser =  $_SESSION['fotouser'];
+            echo"<img src='images/$fotouser' alt='Foto de perfil'>"
+            ?>
+            <img src="images/home.png" alt="">
         </a>
         <div class="dropdown-menu">
             <a href="perfill.php">Perfil</a>
@@ -488,7 +503,10 @@ session_start();
         </nav>
         <div class="container2">
             <div class="profile-header">
-            <img src="images/<?php $_SESSION['fotouser']; ?>
+            <?php 
+            $fotouser =  $_SESSION['fotouser'];
+            echo"<img src='images/$fotouser' alt='Foto de perfil'>"
+            ?>
                 <div class="profile-info">
                 <h1>
                 <span>
@@ -542,14 +560,7 @@ session_start();
      </div>
     </div>
     <div class="share">
-     <div class="social">
-      <button>
-      redesocial1
-      </button>
-      <button>
-       redesocial2
-      </button>
-     </div>
+     
     </div>
     <div class="comments">
      <div>

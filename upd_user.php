@@ -1,11 +1,33 @@
 <?php
 session_start();
 $idusuarios = $_SESSION['idusuarios'];
-$conexao = mysqli_connect('localhost','root','','indieconnekt');
-$sql = "SELECT * FROM usuarios WHERE idusuarios=$idusuarios";
-$executar = mysqli_query($conexao, $sql);
-$res = mysqli_fetch_array($executar);
-$fechar = mysqli_close($conexao);
+
+// Verifique se a sessão está definida
+if (!isset($idusuarios)) {
+    die("Erro: Sessão não iniciada.");
+}
+
+$conexao = mysqli_connect('localhost', 'root', '', 'indieconnekt');
+
+// Verifique a conexão
+if (!$conexao) {
+    die("Erro na conexão: " . mysqli_connect_error());
+}
+
+// Use prepared statement para evitar injeção de SQL
+$sql = "SELECT * FROM usuarios WHERE idusuarios = ?";
+$stmt = mysqli_prepare($conexao, $sql);
+mysqli_stmt_bind_param($stmt, 'i', $idusuarios);
+mysqli_stmt_execute($stmt);
+$executar = mysqli_stmt_get_result($stmt);
+
+if ($executar && mysqli_num_rows($executar) > 0) {
+    $res = mysqli_fetch_array($executar);
+} else {
+    die("Erro: Usuário não encontrado.");
+}
+
+mysqli_close($conexao);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -62,6 +84,9 @@ $fechar = mysqli_close($conexao);
         color: #ffffff;
         transform: translateY(-20px);
     }
+    .nameuser{
+            transform: translateX(140px);
+        }
     
     .profile-pic {
         width: 50px;
@@ -120,9 +145,7 @@ $fechar = mysqli_close($conexao);
         display: block;
         margin: 10px 0 5px;
     }
-    .caixa{
-        
-    }
+    
     input[type="text"], input[type="file"] {
         width: 100%;
         padding: 10px;
@@ -151,13 +174,26 @@ $fechar = mysqli_close($conexao);
 <body>
 
 <div class="navbar">
-    <img class="indielogo" src="images/indieconnektlogo.png" alt="Logo Indieconnekt">
-    <div class="search-bar">
-        <input placeholder="Procurar" type="text">
-    </div>
-    <div class="profile-pic">
+            <img class="indielogo" height="30" src="images/indieconnektlogo.png" width="50" href="dashboardlog.html">
+            <div class="indielogo">
+            </div>
+            <div class="search-bar">
+                <input placeholder="Procurar" type="text" />
+            </div>
+            <div class="nameuser">
+            <?php
+            if (isset($_SESSION['username'])) {
+            echo  htmlspecialchars($_SESSION['username']) . "";
+                 } else {
+                     echo "Nenhum usuário logado!";
+                }
+                ?></div>
+            <div class="profile-pic">
         <a href="perfill.php">
-            <img src="images/darklegendsed.jpg" alt="Foto do Usuário">
+        <?php 
+            $fotouser =  $_SESSION['fotouser'];
+            echo"<img src='images/$fotouser' alt='Foto de perfil'>"
+            ?>
         </a>
         <div class="dropdown-menu">
             <a href="perfill.php">Perfil</a>
@@ -166,7 +202,16 @@ $fechar = mysqli_close($conexao);
             <a href="cadastrojogo.php">Adicionar Jogo</a>
         </div>
     </div>
-</div>
+        </div>  
+        </div>
+        </div>
+        </div>
+        </nav>
+        </div>
+        </header>
+
+
+        </nav>
 
 <main>
     <h2>Editar Perfil</h2>
@@ -174,10 +219,10 @@ $fechar = mysqli_close($conexao);
         <label class="caixa" for="idusuarios">Id do Usuário</label>
         <input type="text" id="idusuarios" name="idusuarios" value="<?php echo $res['idusuarios'];?>" readonly>
 
-        <label class="caixa for="username">Nome do Usuário</label>
+        <label class="caixa" for="username">Nome do Usuário</label>
         <input type="text" id="username" name="username" value="<?php echo $res['username'];?>">
 
-        <label  for="fotouser">Foto do Usuário</label>
+        <label for="fotouser">Foto do Usuário</label>
         <input type="file" id="fotouser" name="fotouser">
 
         <input type="submit" value="Atualizar">

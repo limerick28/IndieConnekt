@@ -1,4 +1,6 @@
-
+<?php
+include("sessao.php")
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,6 +26,15 @@
             align-items: center;
             padding: 10px 20px;
             background-color: #1a1a2e;
+        }
+        .home{
+            width: 40px;
+            height: auto;
+            transform: translateX(180px);
+            color: white;
+        }
+        .nameuser{
+            transform: translateX(95px);
         }
     
         .header .title {
@@ -286,7 +297,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            z-index: 50;
+            z-index: 10;
         }
 
         .carousel-heading {
@@ -493,9 +504,26 @@
             <div class="search-bar">
                 <input placeholder="Procurar" type="text" />
             </div>
+            <div>
+            <a href="dashboardlog.php">
+            <img class="home" src="images/home.png" alt="">
+            </a>
+            </div>
+            <div class="nameuser">
+            <?php
+            if (isset($_SESSION['username'])) {
+            echo  htmlspecialchars($_SESSION['username']) . "";
+                 } else {
+                     echo "Nenhum usuário logado!";
+                }
+                ?></div>
             <div class="profile-pic">
         <a href="perfill.php">
-            <img src="images/darklegendsed.jpg" alt="Foto do Usuário" class="profile-img">
+        <?php 
+            $fotouser =  $_SESSION['fotouser'];
+            echo"<img src='images/$fotouser' alt='Foto de perfil'>"
+            ?>
+            <img src="images/home.png" alt="">
         </a>
         <div class="dropdown-menu">
             <a href="perfill.php">Perfil</a>
@@ -508,7 +536,12 @@
         </div>
         </div>
         </div>
-                         </nav>
+        </nav>
+        </div>
+        </header>
+
+
+        </nav>
         </div>
     </header>
     <main>
@@ -516,7 +549,6 @@
         <section class="hero">
             <div class="content">
             <div class='logo-container'>
-    <img class='indielogo2' src='images/indieconnektlogo.png' alt='Logo IndieConnekt' />
 </div>
                 <div class="slideshow">
                     <button class="slide-btn slide-btn-left"></button>

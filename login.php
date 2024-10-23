@@ -15,7 +15,9 @@ $exe = mysqli_query($conexao, $sql);
 if ($exe && mysqli_num_rows($exe) > 0) {
     $res = mysqli_fetch_assoc($exe);
     $_SESSION['username'] = $res['username'];
-    $_SESSION['idusuarios'] = $res['idusuarios'];    
+    $_SESSION['idusuarios'] = $res['idusuarios'];   
+    $_SESSION['fotouser'] = $res['fotouser'];
+    $_SESSION['email'] = $res['email'];
     header('location:perfill.php');
 } else {
     echo "Email e/ou senha incorretos";
