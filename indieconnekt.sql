@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 23-Out-2024 às 13:13
+-- Generation Time: 25-Out-2024 às 12:48
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 5.6.40
 
@@ -33,18 +33,24 @@ CREATE TABLE `comentarios` (
   `id_idPosts` int(8) NOT NULL,
   `texto` varchar(360) CHARACTER SET utf8mb4 NOT NULL,
   `fotocomentario` varchar(50) DEFAULT NULL,
-  `idcomentario` int(8) NOT NULL
+  `idcomentario` int(8) NOT NULL,
+  `perfil_email` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `comentarios`
 --
 
-INSERT INTO `comentarios` (`id_idusuarios`, `id_idPosts`, `texto`, `fotocomentario`, `idcomentario`) VALUES
-(12345697, 0, 'oiiiiii tudo bem como vocÃµ ', 'Sem tÃ­tulo.png', 1),
-(12345697, 0, 'aniversario do erick', 'Garota.jpg', 6),
-(12345697, 0, 'mas e ai, e o meu caixÃ£o?', 'daleste.png', 7),
-(12345697, 0, 'o augusto ama a julia', 'Flores.jpg', 8);
+INSERT INTO `comentarios` (`id_idusuarios`, `id_idPosts`, `texto`, `fotocomentario`, `idcomentario`, `perfil_email`) VALUES
+(12345697, 0, 'oiiiiii tudo bem como vocÃµ ', 'Sem tÃ­tulo.png', 1, ''),
+(12345697, 0, 'aniversario do erick', 'Garota.jpg', 6, ''),
+(12345697, 0, 'mas e ai, e o meu caixÃ£o?', 'daleste.png', 7, ''),
+(12345697, 0, 'o augusto ama a julia', 'Flores.jpg', 8, ''),
+(12345678, 0, 'cmoasndojasd', 'img_202122515039.png', 9, 'rafael@gmail.com'),
+(12345697, 0, 'asdasd', 'me.jpg', 10, 'pedro@gmail.com'),
+(12345678, 0, 'erick viado gay', 'pixil-frame-0(4).png', 11, 'rafael@gmail.com'),
+(12345678, 0, 'Rafaelly bicha burra', 'Flores.jpg', 12, 'rafael@gmail.com'),
+(12345678, 0, 'oiiii, migo...', 'unnamed.jpg', 13, 'rafael@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -81,6 +87,19 @@ CREATE TABLE `listaDesejo` (
   `id_idusuarios` int(6) NOT NULL,
   `id_idjogos` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `listaDesejo`
+--
+
+INSERT INTO `listaDesejo` (`idlista`, `id_idusuarios`, `id_idjogos`) VALUES
+(1, 3, 12345678),
+(3, 12345678, 3),
+(4, 12345678, 2),
+(5, 12345678, 4),
+(6, 12345678, 4),
+(7, 12345697, 3),
+(8, 12345697, 3);
 
 -- --------------------------------------------------------
 
@@ -184,7 +203,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `idcomentario` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idcomentario` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `jogos`
@@ -196,7 +215,7 @@ ALTER TABLE `jogos`
 -- AUTO_INCREMENT for table `listaDesejo`
 --
 ALTER TABLE `listaDesejo`
-  MODIFY `idlista` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `idlista` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `posts`
