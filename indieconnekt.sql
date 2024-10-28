@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 25-Out-2024 às 12:48
+-- Generation Time: 28-Out-2024 às 12:23
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 5.6.40
 
@@ -95,11 +95,9 @@ CREATE TABLE `listaDesejo` (
 INSERT INTO `listaDesejo` (`idlista`, `id_idusuarios`, `id_idjogos`) VALUES
 (1, 3, 12345678),
 (3, 12345678, 3),
-(4, 12345678, 2),
-(5, 12345678, 4),
-(6, 12345678, 4),
 (7, 12345697, 3),
-(8, 12345697, 3);
+(8, 12345697, 3),
+(9, 12345678, 2);
 
 -- --------------------------------------------------------
 
@@ -215,7 +213,7 @@ ALTER TABLE `jogos`
 -- AUTO_INCREMENT for table `listaDesejo`
 --
 ALTER TABLE `listaDesejo`
-  MODIFY `idlista` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idlista` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `posts`
