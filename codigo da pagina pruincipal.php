@@ -593,6 +593,8 @@ if (mysqli_num_rows($exe) > 0) {
                     <div>
                         <span>$nomejogo</span>
                         <a href='addcarrinho.php?idjogos=$id'>adicionar</a>
+                        <a href='apagajogo.php?idjogos=$id'>apagar</a>
+                        <a href='atualizandojogos.php?idjogos=$id'>atualizar</a>
                     </div>
                 </div>
               </div>";
