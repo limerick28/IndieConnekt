@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 28-Out-2024 às 12:23
+-- Generation Time: 01-Nov-2024 às 12:19
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 5.6.40
 
@@ -94,10 +94,20 @@ CREATE TABLE `listaDesejo` (
 
 INSERT INTO `listaDesejo` (`idlista`, `id_idusuarios`, `id_idjogos`) VALUES
 (1, 3, 12345678),
-(3, 12345678, 3),
 (7, 12345697, 3),
-(8, 12345697, 3),
-(9, 12345678, 2);
+(8, 12345697, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `perfil`
+--
+
+CREATE TABLE `perfil` (
+  `id_idusuarios` int(8) NOT NULL,
+  `foto_fotouser` varchar(50) DEFAULT NULL,
+  `nome_username` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -125,7 +135,8 @@ INSERT INTO `posts` (`nomePost`, `comentario`, `foto`, `id_idusuarios`, `idPost`
 ('jogo 5', 'jogo merda', 'f1fa58f80ab1e08981a6a1e436de39a10e4bcc245785b303af', 0, 14),
 ('post 6', 'aqui temos um post muito masssa demais', 'galega.jpg', 12345678, 15),
 ('post 7', 'post novo novissimo pra testa os coisa\r\n', 'images.png', 12345697, 16),
-('Rafael se assume hetero dwepois de sofreer nas mao do pdydy', 'Rafael Eugenio Faga conhecido como o maior gay de gorpa foi encontrado num casebre descendo o jordÃ£o totalmente pelado com apenas uma cueca do pdydy nas moes', '148841.png', 12345697, 17);
+('Rafael se assume hetero dwepois de sofreer nas mao do pdydy', 'Rafael Eugenio Faga conhecido como o maior gay de gorpa foi encontrado num casebre descendo o jordÃ£o totalmente pelado com apenas uma cueca do pdydy nas moes', '148841.png', 12345697, 17),
+('post completamente novo', 'muito incrivel mesmo', 'pngegg.png', 2, 18);
 
 -- --------------------------------------------------------
 
@@ -213,13 +224,13 @@ ALTER TABLE `jogos`
 -- AUTO_INCREMENT for table `listaDesejo`
 --
 ALTER TABLE `listaDesejo`
-  MODIFY `idlista` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idlista` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `idPost` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idPost` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
