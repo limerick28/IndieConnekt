@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indie Connekt</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        background-color: #1e1e2e;
+        color: #ffffff;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+          sans-serif;
+      }
+
+      .navbar {
+        backdrop-filter: blur(50px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        height: 60px;
+        background-color: #3a2064;
+      }
+
+      .navbar .indielogo {
+        max-height: 100px;
+        height: 150px;
+        width: 150px;
+        object-fit: contain;
+      }
+
+      .search-bar {
+        display: flex;
+        justify-content: center;
+        padding: 10px 20px;
+        transform: translateX(-330px);
+        width: 500px;
+      }
+
+      .search-bar input {
+        position: fixed;
+        width: 100%;
+        max-width: 600px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #2a2a3e;
+        color: #ffffff;
+        transform: translateY(-20px);
+      }
+
+      .searchbutton {
+        transform: translateX(23px);
+      }
+
+      .nameuser {
+        transform: translateX(95px);
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #1a1a2e;
+      }
+
+      .header .title {
+        margin-left: 10px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .header .nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav {
+        position: relative;
+        display: inline-block;
+      }
+
+      .home {
+        width: 40px;
+        height: auto;
+        transform: translateX(180px);
+        color: white;
+      }
+
+      .profile-pic {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #91ff10;
+        cursor: pointer;
+      }
+
+      .profile-pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        cursor: pointer;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: #2e2e4e;
+        min-width: 120px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        top: 40px; /* Alinha a caixinha no topo da imagem */
+        right: 30px;
+      }
+
+      .dropdown-menu a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-menu a:hover {
+        background-color: #91ff10;
+        color: black;
+      }
+
+      /* Exibe a caixa quando o mouse passa sobre a imagem */
+      .profile-pic:hover .dropdown-menu {
+        display: block;
+      }
+
+      /* Estilos da tabela */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: #2a2a3e;
+      }
+
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+        border: 1px solid #3a3a3e;
+      }
+
+      th {
+        background-color: #3a2064;
+      }
+
+      tr:hover {
+        background-color: #4a4a6e;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <img
+        class="indielogo"
+        src="images/indieconnektlogo.png"
+        alt="Indie Connekt Logo"
+      />
+      <form method="POST" action="pesquisa.php">
+        <div class="search-bar">
+          <input type="text" name="username" placeholder="Nome de usuário" />
+          <input type="text" name="pesquisar" placeholder="Procurar" />
+          <input
+            class="searchbutton"
+            type="image"
+            src="images/lupa.png"
+            alt="Buscar"
+            style="width: 36px; height: auto"
+          />
+          <button type="submit" style="display: none">Enviar</button>
+        </div>
+      </form>
+      <div>
+        <a href="dashboardlog.php">
+          <img class="home" src="images/home.png" alt="Home" />
+        </a>
+      </div>
+      <div class="nameuser">
+        <?php
+            if (isset($_SESSION['username'])) {
+                echo htmlspecialchars($_SESSION['username']);
+            } else {
+                echo "Nenhum usuário logado!";
+            }
+            ?>
+      </div>
+      <div class="profile-pic">
+        <a href="perfill.php">
+          <?php 
+                $fotouser =  $_SESSION['fotouser'];
+                echo "<img src='images/$fotouser' alt='Foto de perfil'>"; ?>
+        </a>
+        <div class="dropdown-menu">
+          <a href="perfill.php">Perfil</a>
+          <a href="logout.php">Sair</a>
+          <a href="cadastrando.php">Adicionar Post</a>
+          <a href="cadastrojogo.php">Adicionar Jogo</a>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <h1>Bem-vindo ao Indie Connekt!</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome do Jogo</th>
+            <th>Desenvolvedor</th>
+            <th>Data de Lançamento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Jogo Exemplo 1</td>
+            <td>Desenvolvedor 1</td>
+            <td>01/01/2024</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jogo Exemplo 2</td>
+            <td>Desenvolvedor 2</td>
+            <td>02/02/2024</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Jogo Exemplo 3</td>
+            <td>Desenvolvedor 3</td>
+            <td>03/03/2024</td>
+          </tr>
+          <!-- Adicione mais linhas conforme necessário -->
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

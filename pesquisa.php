@@ -317,21 +317,50 @@ session_start();
                          </nav>
         </div>
     <main>
-        <h2>
+                
+
+    <?php
+
+$username = $_POST['username'];
+$pesquisar = $_POST['pesquisar'];
+
+// Conexão com o banco de dados
+$conexao = mysqli_connect('localhost', 'root', '', 'indieconnekt');
+
+// Sanitização da entrada
+$pesquisar = mysqli_real_escape_string($conexao, $pesquisar);
+
+// Consulta para filtrar usuários
+$result_pesquisa = "SELECT * FROM perfil WHERE nome_username LIKE '%$pesquisar%' LIMIT 5";
+$resultado_pesquisa = mysqli_query($conexao, $result_pesquisa);
+
+// Verificando se há resultados e exibindo
+if (mysqli_num_rows($resultado_pesquisa) > 0) {
+    echo "<h2>Nome dos usuários:</h2><br>";
+    while ($rows_pesquisa = mysqli_fetch_array($resultado_pesquisa)) {
+        $username = $rows_pesquisa['username'];
+        $fotouser = $rows_pesquisa['fotouser'];
+        
+        // Caminho para a imagem do usuário
+        $foto_url = "images/" . $fotouser;
+
+        // Link para o perfil do usuário (exemplo: perfil.php?user=username)
+        $perfil_url = "perfil.php?user=" . urlencode($username);
+
+        // Exibindo a imagem, nome e link do perfil
+        echo "<div>";
+        echo "<img src='$foto_url' alt='Foto de $username' width='50' height='50' style='border-radius: 50%;'>";
+        echo "<a href='$perfil_url'>$username</a><br>";
+        echo "</div>";
+    }
+} else {
+    echo "Nenhum usuário encontrado.";
+}
+?>
+
 
     
-        <form action="cadProd.php" method="post" enctype="multipart/form-data">
-            <label for="title">Título do Post:</label>
-            <input type="text" id="title" name="nomePost" required>
-
-            <label for="content">Descrição:</label>
-            <textarea id="content" name="comentario" rows="10" required></textarea>
-        </h2>
-            <label for="image" class="imagebutton">Escolha uma imagem</label>
-            <input class="file-input" type="file" id="image" name="foto" accept="image/" onchange="previewImage(event)" required style="display:none;">
-            <img id="imagePreview" src="#" alt="Prévia da Imagem" style="display: none;">
-            <input type="submit" value="Publicar Post">
-        </form>
+        
     </main>
 
     <script>
@@ -343,3 +372,4 @@ session_start();
     </script>
 </body>
 </html>
+

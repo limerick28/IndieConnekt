@@ -1,21 +1,20 @@
 <?php
 include("sessao.php");
-$nome = $_POST['nomePost'];
-$comentario = $_POST['comentario'];
+$texto = $_POST['texto'];
 $uploaddir = 'images/';
-$nomeArq = basename($_FILES['foto']['name']);
+$nomeArq = basename($_FILES['fotocomentario']['name']);
 $uploadfile = $uploaddir.$nomeArq;
 $conexao = mysqli_connect
 ('localhost','root','','indieconnekt');
-$sql = "INSERT into posts (nomePost, comentario, foto, id_idusuarios)
-values ('$nome', '$comentario', '$nomeArq', $id)";
+$sql = "INSERT into comentarios (texto, fotocomentario, id_idusuarios, perfil_email)
+values ('$texto', '$nomeArq', $id, '$email')";
 echo $sql;
 $executar = mysqli_query($conexao, $sql);
 
-if (move_uploaded_file($_FILES['foto']['tmp_name'], $uploadfile)) {
+if (move_uploaded_file($_FILES['fotocomentario']['tmp_name'], $uploadfile)) {
 	if($executar){
 		echo "cadastrado";
-		 header("location:perfill.php");
+		header('location:perfil.php');
 	}
 	else{
 		echo "erro ao cadastrar";
@@ -24,5 +23,4 @@ if (move_uploaded_file($_FILES['foto']['tmp_name'], $uploadfile)) {
     echo "Erro ao enviar arquivo!";
 }
 $fechar = mysqli_close($conexao);
-
 ?>

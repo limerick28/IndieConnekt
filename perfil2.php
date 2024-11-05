@@ -534,16 +534,12 @@ include("sessao.php")
                 </div>
                 </div>
                 <div class="profile-edit">
-                <button type="button" onclick="window.location.href='upd_user.php';">
-                Edit profile
                 </button>
                 </div>
             </div>
             <div class="profile-stats">
             <div class="profile-post">
-                <button type="button" onclick="window.location.href='cadastrando.php';" >
-                Realizar Postagem
-                </button>
+                
                 </div>
                 
             </div>
