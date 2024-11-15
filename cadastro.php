@@ -3,7 +3,6 @@ session_start();
 $username = $_POST['username'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
-
 $conexao = mysqli_connect('localhost', 'root', '', 'indieconnekt');
 
 if (!$conexao) {
@@ -14,9 +13,9 @@ $sql = "INSERT INTO usuarios (username, email, senha) VALUES ('$username', '$ema
 $exe = mysqli_query($conexao, $sql);
 
 if ($exe) {
-    echo "Cadastro realizado com sucesso!";
+    header('location:perfill.php');
 } else {
-    echo "Erro ao cadastrar: " . mysqli_error($conexao);
+    echo  "<script>alert('deu erro aí');</script>";  mysqli_error($conexao);
 }
 
 mysqli_close($conexao);
