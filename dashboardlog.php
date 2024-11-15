@@ -112,7 +112,7 @@ include("sessao.php")
             display: flex;
             justify-content: center;
             padding: 10px 20px;
-            transform: translateX(-330px);
+            transform: translateX(-300px);
             width: 500px;
         }
         .search-bar input {
@@ -492,6 +492,23 @@ include("sessao.php")
         width: auto; 
         transform: translatey(-100px);
     }
+    .entrarr {
+            margin-left: auto;
+        }
+
+        .entrar button {
+            background-color: transparent;
+            border: 1px solid #91ff10;
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .entrar button:hover {
+            background-color: #91ff10;
+            color: #000000;
+        }
     </style>
         </head>
             <body>
@@ -510,13 +527,16 @@ include("sessao.php")
             </a>
             </div>
             <div class="nameuser">
-            <?php
-            if (isset($_SESSION['username'])) {
-            echo  htmlspecialchars($_SESSION['username']) . "";
-                 } else {
-                     echo "Nenhum usuário logado!";
-                }
-                ?></div>
+    <?php if (isset($_SESSION['username'])): ?>
+        <?php echo htmlspecialchars($_SESSION['username']); ?>
+    <?php else: ?>
+        <div class="entrarr">
+            <button type="button" onclick="window.location.href='LOGIN1.php';">
+                Entrar
+            </button>
+        </div>
+    <?php endif; ?>
+</div>
             <div class="profile-pic">
         <a href="perfill.php">
         <?php 

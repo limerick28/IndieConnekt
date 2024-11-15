@@ -9,13 +9,14 @@
 	
 
 </html>
+
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form  action="cadastro.php" method="post">
+		<form  action="login.php" method="post">
+		<img class="imagem" src="indie_logo.png" alt="">
 			<h1>Criar conta</h1>
 			<div class="social-container">
 			</div>
-			<span>Ou use seu email para </span>
 			<input type="text" placeholder="Nome" name="username" required />
 			<input type="email" placeholder="Email" name="email" required />
 			<input type="password" placeholder="Senha" name="senha" required />
@@ -23,14 +24,10 @@
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form  action="login.php" method="post">
+		<form  action="cadastro.php" method="post">
 			<h1>Entrar</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			<div class="social-container"> 	
 			</div>
-			<span>Ou use seu email para</span>
 			<input type="email" placeholder="Email" name="email" required />
     		<input type="password" placeholder="Senha" name="senha" required />
    			<button type="submit" class="botao2">Entrar</button>

@@ -463,6 +463,214 @@ include("sessao.php")
         .content .game .details {
             margin-bottom: 10px;
         }
+    </style>
+</head>
+
+<body>
+    </head>
+
+    <body>
+        <div class="navbar">
+            <img class="indielogo" height="30" src="images/indieconnektlogo.png" width="50" href="dashboardlog.html">
+            <div class="indielogo">
+            </div>
+            <form method="POST" action="pesquisa.php">
+            <div class="search-bar">
+            <input type="text" name="username" placeholder="Nome de usuário"  />
+            <input type="text" name="pesquisar" placeholder="Procurar"  />
+                <input class="searchbutton" type="image" src="images/lupa.png" alt="Buscar" style="  transform: translateY(-19px) translateX(230px); width: 36px; height: auto;" />
+                <button type="submit" style="display: none;">Enviar</button> 
+            </form>
+               
+            
+            </div>
+            <div>
+            <a href="dashboardlog.php">
+            <img class="home" src="images/home.png" alt="">
+            </a>
+            </div>
+            <div class="nameuser">
+            <?php
+            if (isset($_SESSION['username'])) {
+            echo  htmlspecialchars($_SESSION['username']) . "";
+                 } else {
+                     echo "Nenhum usuário logado!";
+                }
+                ?></div>
+            <div class="profile-pic">
+        <a href="perfill.php">
+        <?php 
+            $fotouser =  $_SESSION['fotouser'];
+            echo"<img src='images/$fotouser' alt='Foto de perfil'>"
+            ?>
+            <img src="images/home.png" alt="">
+        </a>
+        <div class="dropdown-menu">
+            <a href="perfill.php">Perfil</a>
+            <a href="logout.php">Sair</a>
+            <a href="cadastrando.php">Adicionar Post</a>
+            <a href="cadastrojogo.php">Adicionar Jogo</a>
+        </div>
+    </div>
+        </div>  
+        </div>
+        </div>
+        </div>
+        </nav>
+        </div>
+        </header>
+   
+
+        </nav>
+        <div class="container2">
+            <div class="profile-header">
+            <?php
+                $username = isset($_GET['username']) ? $_GET['username'] : (isset($_SESSION['username']) ? $_SESSION['username'] : null);
+
+                if ($username) {
+                    $conexao = mysqli_connect('localhost', 'root', '', 'indieconnekt');
+                    $username = mysqli_real_escape_string($conexao, $username);
+
+                    $query = "SELECT fotouser FROM usuarios WHERE username = '$username'";
+                    $result = mysqli_query($conexao, $query);
+
+                    if ($result && mysqli_num_rows($result) > 0) {
+                        $fotouser = mysqli_fetch_assoc($result)['fotouser'];
+                        echo "<img src='images/$fotouser' alt='Foto de perfil de $username'>";
+                    } else {
+                        echo "<img src='images/default.jpg' alt='Foto de perfil padrão'>";
+                    }
+                } else {
+                    echo "<img src='images/default.jpg' alt='Foto de perfil padrão'>";
+                }
+?>
+
+                <div class="profile-info">
+                <h1>
+                <span>
+                @<?php
+            if (isset($_GET['username'])) {
+            echo  htmlspecialchars($_GET['username']) . "";
+                 } else {
+                     echo "Nenhum usuário logado!";
+                }
+                ?>
+                </span>
+                </h1>
+            
+                <div class="status">
+                </div>
+                </div>
+                <div class="profile-edit">
+               
+                </div>
+            </div>
+            <div class="profile-stats">
+            <div class="profile-post">
+                
+                </div>
+                
+            </div>
+            <div class="tabs">
+            <button class="active" onclick="window.location.href='perfill2.php';">
+            <h1 class="active" >
+                Posts
+            </h1>
+    </button>
+    <button onclick="window.location.href='perfilljogo2.php';">
+            <h1 class="posts">
+                Jogos
+            </h1>
+    </button>
+    
+    </div>
+
+<div class="main">
+    <div class="sidebar">
+        <div class="comments" style="background-color: #2e2e4e; padding: 20px; border-radius: 10px; margin-top: 20px;">
+            <h2 style="color: #ffffff;">Comentários</h2>
+<?php
+if (!isset($_SESSION['idusuarios'])) {
+echo "<p class='warning'>Você precisa estar logado para ver os posts.</p>";
+}
+if (isset($_GET['email'])) {
+    echo  htmlspecialchars($_GET['email']) . "";}
+
+
+$idUsuarioLogado = $_SESSION['idusuarios'];
+$con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
+
+$sql2 = "SELECT * FROM comentarios WHERE '$email' = perfil_email ORDER BY id_idusuarios DESC";
+$exe2 = mysqli_query($con, $sql2);
+
+if (mysqli_num_rows($exe2) > 0) {
+echo "<table style=' 
+width: 250px;
+background-color: #1e1e2e;
+padding: 20px;
+border-radius: 10px;
+
+
+display: flex;
+justify-content: space-between;
+margin-bottom: 20px;
+
+text-align: center;
+
+margin-bottom: 20px;
+
+width: 100%;
+padding: 5px;
+border: none;
+border-radius: 5px;
+margin-bottom: 10px;
+
+width: 100%;
+padding: 5px;
+border: none;
+border-radius: 5px;
+background-color: white;
+color: #1e1e2e;
+display: flex;
+justify-content: space-between;
+
+margin-bottom: 20px;
+
+width: 100%;
+padding: 5px;
+border: none;
+border-radius: 5px;
+margin-bottom: 10px;
+
+background-color: #333;
+padding: 10px;
+border-radius: 5px;
+margin-bottom: 10px;'
+;>";
+
+while ($res2 = mysqli_fetch_array($exe2)) {
+$id = htmlspecialchars($res2['idcomentario']);
+$texto = htmlspecialchars($res2['texto']);
+$fotocomentario = htmlspecialchars($res2['fotocomentario']);
+
+echo "<tr style='background-color: #3b3b6e;'>
+        <td style='background-color: #3d3d6d; padding: 15px; border-radius: 10px; margin-top: 10px;'>$texto  <img src='images/$fotocomentario'> </td>
+       
+    </tr>";
+}
+echo "</table>";
+} else {
+echo "não tem nada aqui";
+}
+if (!$con) {
+die("Conexão falhou: " . mysqli_connect_error());
+}
+?>
+
+    <style>
+       
+        
+
         /* Estilos do link que abre o pop-up */
         .add-comment-link {
             color: #91ff10;
@@ -533,6 +741,7 @@ include("sessao.php")
             margin-bottom: 15px;
         }
 
+        /* Esconder o botão real de arquivo */
         input[type="file"] {
             display: none;
         }
@@ -542,205 +751,7 @@ include("sessao.php")
             text-align: center;
         }
     </style>
-</head>
 
-<body>
-    </head>
-
-    <body>
-        <div class="navbar">
-            <img class="indielogo" height="30" src="images/indieconnektlogo.png" width="50" href="dashboardlog.html">
-            <div class="indielogo">
-            </div>
-            <form method="POST" action="pesquisa.php">
-            <div class="search-bar">
-            <input type="text" name="username" placeholder="Nome de usuário"  />
-            <input type="text" name="pesquisar" placeholder="Procurar"  />
-                <input class="searchbutton" type="image" src="images/lupa.png" alt="Buscar" style="  transform: translateY(-19px) translateX(230px); width: 36px; height: auto;" />
-                <button type="submit" style="display: none;">Enviar</button> 
-            </form>
-               
-            
-            </div>
-            <div>
-            <a href="dashboardlog.php">
-            <img class="home" src="images/home.png" alt="">
-            </a>
-            </div>
-            <div class="nameuser">
-            <?php
-            if (isset($_SESSION['username'])) {
-            echo  htmlspecialchars($_SESSION['username']) . "";
-                 } else {
-                     echo "Nenhum usuário logado!";
-                }
-                ?></div>
-            <div class="profile-pic">
-        <a href="perfill.php">
-        <?php 
-            $fotouser =  $_SESSION['fotouser'];
-            echo"<img src='images/$fotouser' alt='Foto de perfil'>"
-            ?>
-            <img src="images/home.png" alt="">
-        </a>
-        <div class="dropdown-menu">
-            <a href="perfill.php">Perfil</a>
-            <a href="logout.php">Sair</a>
-            <a href="cadastrando.php">Adicionar Post</a>
-            <a href="cadastrojogo.php">Adicionar Jogo</a>
-        </div>
-    </div>
-        </div>  
-        </div>
-        </div>
-        </div>
-        </nav>
-        </div>
-        </header>
-   
-
-        </nav>
-        <div class="container2">
-            <div class="profile-header">
-            <?php 
-            $fotouser =  $_SESSION['fotouser'];
-            echo"<img src='images/$fotouser' alt='Foto de perfil'>"
-            ?>
-                <div class="profile-info">
-                <h1>
-                <span>
-                @<?php
-            if (isset($_SESSION['username'])) {
-            echo  htmlspecialchars($_SESSION['username']) . "";
-                 } else {
-                     echo "Nenhum usuário logado!";
-                }
-                ?>
-                </span>
-                </h1>
-            
-                <div class="status">
-                </div>
-                </div>
-                <div class="profile-edit">
-                <button type="button" onclick="window.location.href='upd_user.php';">
-                Edit profile
-                </button>
-                </div>
-            </div>
-            <div class="profile-stats">
-            <div class="profile-post">
-                <button type="button" onclick="window.location.href='cadastrando.php';" >
-                Realizar Postagem
-                </button>
-                <button type="button" onclick="window.location.href='cadastrojogo.php';" >
-                Cadastrar Jogo
-                </button>
-                </div>
-                
-            </div>
-            <div class="tabs">
-            <button class="active" onclick="window.location.href='perfill.php';">
-            <h1 class="active" >
-                Posts
-            </h1>
-    </button>
-    <button onclick="window.location.href='perfilljogo.phpusername=" . urlencode($user_name);';">
-            <h1 class="posts">
-                Jogos
-            </h1>
-    </button>
-    
-    </div>
-
-<div class="main">
-    
-    <div class="sidebar">
-        <div class="comments" style="background-color: #2e2e4e; padding: 20px; border-radius: 10px; margin-top: 20px;">
-            <h2 style="color: #ffffff;">Comentários</h2>
-            
-<?php
-if (!isset($_SESSION['idusuarios'])) {
-echo "<p class='warning'>Você precisa estar logado para ver os posts.</p>";
-}
-$email = $_SESSION['email'];
-echo "<p class='user-email'>$email</p>";
-
-
-$idUsuarioLogado = $_SESSION['idusuarios'];
-$con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
-
-$sql2 = "SELECT * FROM comentarios WHERE '$email' = perfil_email ORDER BY id_idusuarios DESC";
-$exe2 = mysqli_query($con, $sql2);
-
-if (mysqli_num_rows($exe2) > 0) {
-echo "<table style=' 
-width: 250px;
-background-color: #1e1e2e;
-padding: 20px;
-border-radius: 10px;
-
-
-display: flex;
-justify-content: space-between;
-margin-bottom: 20px;
-
-
-text-align: center;
-
-margin-bottom: 20px;
-
-width: 100%;
-padding: 5px;
-border: none;
-border-radius: 5px;
-margin-bottom: 10px;
-
-width: 100%;
-padding: 5px;
-border: none;
-border-radius: 5px;
-background-color: #1e1e2e;
-color: white;
-display: flex;
-justify-content: space-between;
-
-margin-bottom: 20px;
-
-width: 100%;
-padding: 5px;
-border: none;
-border-radius: 5px;
-margin-bottom: 10px;
-
-background-color: #2e2e4e;
-padding: 10px;
-border-radius: 5px;
-margin-bottom: 10px;'
-;>";
-
-while ($res2 = mysqli_fetch_array($exe2)) {
-$id = htmlspecialchars($res2['idcomentario']);
-$texto = htmlspecialchars($res2['texto']);
-$fotocomentario = htmlspecialchars($res2['fotocomentario']);
-
-echo "<tr style='background-color: #white;'>
-        <td style='background-color: #2e2e4e; padding: 4px; border-radius: 10px; margin-top: 6px;'>$texto  <img src='images/$fotocomentario'> </td>
-       
-    </tr>";
-}
-echo "</table>";
-} else {
-echo "não tem nada aqui";
-}
-
-if (!$con) {
-die("Conexão falhou: " . mysqli_connect_error());
-}
-
-?>
-
-   
     <!-- Link para abrir o pop-up -->
     <a class="add-comment-link" onclick="openPopup()">Clique aqui para adicionar um comentário</a>
 
@@ -788,7 +799,7 @@ $sql1 = "SELECT * FROM posts WHERE id_idusuarios = '$idUsuarioLogado' ORDER BY n
 $exe1 = mysqli_query($con, $sql1);
 
 if (mysqli_num_rows($exe1) > 0) {
-echo "<table style='background-color: #2e2e4e; padding: 20px; border-radius: 10px; width: 800px;'>"; 
+echo "<table style='background-color: #2e2e4e; padding: 20px; border-radius: 10px; width: 800px;'>";
 
 while ($res1 = mysqli_fetch_array($exe1)) {
 $idPost = htmlspecialchars($res1['idPost']);
@@ -797,49 +808,18 @@ $comentario = htmlspecialchars($res1['comentario']);
 $foto = htmlspecialchars($res1['foto']);
 
 echo "<tr>
-        <th style='display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #1e1e2e; border-radius: 5px;'><h2>$nomePost</h2></th>
+        <th style='display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #1e1e2e; border-radius: 5px;'><h2>$nomePost</h2>  </th>
     </tr>
     <tr>
-        <td style='padding: 10px; position: relative;'>
-            <img src='images/$foto' style='transform: translateX(-10px); width: 400px; height: 250px; object-fit: cover; border-radius: 7px;'>
-            <a href='del_post.php?idPosts=$idPost'>
-            <img src='images/lixo.png' class='lixo-img' style='
-                width: 30px; 
-                height: 30px;
-                cursor: pointer;
-                transition: transform 0.3s ease-in-out;
-                position: absolute;
-                bottom: 10px; /* Move a imagem para baixo */
-                right: 10px;  /* Move a imagem para a direita */
-            ' alt='Imagem de lixo'>
-            </a>
-        </td>
-        <td style='vertical-align: top; padding: 10px; font-size: 15px; font-weight: bold; max-width: 400px; border-radius: 7px; word-wrap: break-word; word-break: break-word; text-align: justify;'>
-            $comentario
-        </td>
+        <td style='padding: 10px;'><img src='images/$foto' style='  transform: translateX(-10px); width: 400px; height: 250px; object-fit: cover; border-radius: 7px;'></td>
+<td style='vertical-align: top; padding: 10px; font-size: 15px; font-weight: bold; max-width: 400px; border-radius: 7px; word-wrap: break-word; word-break: break-word; text-align: justify;'>
+    $comentario
+</td>
     </tr>";
-
-echo "<style>
-    .lixo-img {
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-        transition: transform 0.3s ease-in-out;
-        position: absolute;
-        transform: translateX(300px) translateY(30px);
-
-    }
-
-    .lixo-img:hover {
-        content: url('images/lixo1.png');
-    }
-</style>";
-
-    
 }
 echo "</table>";
 } else {
-echo  "<table style='background-color:#2e2e4e; padding: 20px; border-radius: 10px; width: 800px;' ";
+echo "Nenhum post encontrado.";
 }
 mysqli_close($con);
 ?>
