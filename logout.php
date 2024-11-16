@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['nome'] = null;
-session_destroy();  
-include('LOGIN1.php');
+$_SESSION['email'] = null;
+session_destroy();
+header("Location: LOGIN1.php");
 ?>

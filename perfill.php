@@ -802,7 +802,7 @@ echo "<tr>
     <tr>
         <td style='padding: 10px; position: relative;'>
             <img src='images/$foto' style='transform: translateX(-10px); width: 400px; height: 250px; object-fit: cover; border-radius: 7px;'>
-            <a href='del_post.php?idPosts=$idPost'>
+            <a href='del_post.php?idPosts=$idPosts'>
             <img src='images/lixo.png' class='lixo-img' style='
                 width: 30px; 
                 height: 30px;
@@ -821,7 +821,7 @@ echo "<tr>
 
 echo "<style>
     .lixo-img {
-        width: 30px;
+        width: 30px;s
         height: 30px;
         cursor: pointer;
         transition: transform 0.3s ease-in-out;

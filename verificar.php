@@ -11,7 +11,7 @@ if($res['email'] != NULL){
    
    $_SESSION['email'] = $res['email'];
    $_SESSION['id'] = $res['idusuarios'];
-   header("Location: pagina.php");
+   header("Location: perfill.php");
 }
 else{
    echo "Login e/ou senha incorretos";

@@ -12,7 +12,7 @@
 
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form  action="login.php" method="post">
+		<form  action="cadastro.php" method="post">
 		<img class="imagem" src="indie_logo.png" alt="">
 			<h1>Criar conta</h1>
 			<div class="social-container">
@@ -24,7 +24,7 @@
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form  action="cadastro.php" method="post">
+		<form  action="verificar.php" method="post">
 			<h1>Entrar</h1>
 			<div class="social-container"> 	
 			</div>

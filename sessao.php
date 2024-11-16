@@ -8,11 +8,11 @@ if(isset($_SESSION['idusuarios'])){
 
     
     if($id == null){
-        die("Usuário não autenticado! <a href='LOGIN.php'>Logar</a>");
+        die("Usuário não autenticado! <a href='LOGIN1.php'>Logar</a>");
     }
 } else {
   
-    header("Location: LOGIN.php");
+    header("Location: LOGIN1.php");
     exit();
 }
 ?>
