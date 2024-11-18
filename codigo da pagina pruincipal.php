@@ -1,3 +1,6 @@
+<?php
+include("sessao.php")
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,6 +27,36 @@
             padding: 10px 20px;
             background-color: #1a1a2e;
         }
+      
+        .controle {
+        width: 50px; 
+        height: 50px;
+        object-fit: contain;
+        display: block; 
+        }
+
+        .home {
+        width: 50px; 
+        height: 50px;
+        }
+
+        .profile-pic img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%; 
+        }
+
+        .controle:hover {
+        opacity: 0.8; 
+        }
+
+        .home:hover {
+        opacity: 0.8;
+        }
+
+        .nameuser{
+            transform: translateX(95px);
+        }
     
         .header .title {
             margin-left: 10px;
@@ -49,6 +82,46 @@
             object-fit: cover;  
             cursor: pointer;
         }
+
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #2e2e4e;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 10px; /* Alinha a caixinha no topo da imagem */
+            right: 30px;
+}
+
+.dropdown-menu {
+            display: none;
+    position: absolute;
+    background-color: #2e2e4e;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 10px; /* Alinha a caixinha no topo da imagem */
+    right: 30px;
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #91ff10;
+    color: black;
+}
+
+/* Exibe a caixa quando o mouse passa sobre a imagem */
+.profile-pic:hover .dropdown-menu {
+    display: block;
+}
         
         .header .nav .get-app {
             border: 1px solid #ffffff;
@@ -113,7 +186,7 @@
             background-color: #141726;
             color: #282c34;
         }
-
+ 
         .hero h2 {
             font-size: 2.5em;
             margin: 0 0 0.5em;
@@ -245,7 +318,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            z-index: 50;
+            z-index: 10;
         }
 
         .carousel-heading {
@@ -432,37 +505,67 @@
         .game-info div span:first-child {
             font-weight: bold;
         }
-        
+        .logo-container {
+        margin-bottom: 20px;
+    }
+    img.indielogo2 {
+        height: 200px;
+        width: auto; 
+        transform: translatey(-100px);
+    }
     </style>
         </head>
             <body>
         </head>
 <body>
-    <div class="navbar">
-            <img class="indielogo" height="30" src="images/indieconnektlogo.png"width="50" href="dashboardlog.html">
-        <div class="indielogo">
+<div class="navbar">
+    <img class="indielogo" height="30" src="images/indieconnektlogo.png" width="50" href="dashboardlog.html">
+    <div class="indielogo">
     </div>
-        <div class="search-bar">
-            <input placeholder="Procurar" type="text"/>
-            </div>
-            <div>
-            <button class="sair" href="logout.php">Sair</button>
-            </div>
-            <a href="perfilL.php">
-            <div class="nav">
-                <div class="profile-pic">
-                    <img src="images/darklegendsed.jpg" alt="Foto do Usuário">
-                </a>
-            </div>
-            </div>
-                </div>
-                    </div>
-                         </nav>
+    <div class="search-bar">
+        <input placeholder="Procurar" type="text" />
+    </div>
+    <div>
+        <a href="mostrarjogos.php">
+            <img class="controle" src="images/controle.png" alt="Controle">
+        </a>
+    </div>
+    <div>
+        <a href="dashboardlog.php">
+            <img class="home" src="images/home.png" alt="Home">
+        </a>
+    </div>
+    <div class="nameuser">
+        <?php
+        if (isset($_SESSION['username'])) {
+            echo htmlspecialchars($_SESSION['username']);
+        } else {
+            echo "Nenhum usuário logado!";
+        }
+        ?>
+    </div>
+    <div class="profile-pic">
+        <a href="perfill.php">
+            <?php 
+                $fotouser = $_SESSION['fotouser'];
+                echo "<img src='images/$fotouser' alt='Foto de perfil'>";
+            ?>
+        </a>
+        <div class="dropdown-menu">
+            <a href="perfill.php">Perfil</a>
+            <a href="logout.php">Sair</a>
+            <a href="cadastrando.php">Adicionar Post</a>
+            <a href="cadastrojogo.php">Adicionar Jogo</a>
         </div>
-    </header>
+    </div>
+</div>
+
     <main>
+    
         <section class="hero">
             <div class="content">
+            <div class='logo-container'>
+</div>
                 <div class="slideshow">
                     <button class="slide-btn slide-btn-left"></button>
                     <button class="slide-btn slide-btn-right"></button>
@@ -488,48 +591,8 @@
                 </div>
             </div>
         </section>
-
-        <section class="jogos-list">
-            <h2>Jogos em Destaque</h2>
-            <div class="header2">
-                <div class="active">
-                 Sucessos
-                </div>
-                <div>
-                 Melhores avaliações
-                </div>
-                <div>
-                 Novos
-                </div>
-               </div>
-               <div class="filters">
-                <div>
-                    Categoria1
-                 
-                </div>
-                <div>
-                    Categoria2
-                 
-                </div>
-                <div>
-                    Categoria3
-                
-                </div>
-                <div>
-                    Categoria4
-                
-                </div>
-                <div>
-                    Categoria5
-                
-                </div>
-                <div>
-                 Categoria6
-               
-                </div>
-               </div>
-              
-                  <?php
+           
+               <?php
                   $con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
                   if (!$con) {
                     die("Conexão falhou: " . mysqli_connect_error());
@@ -583,21 +646,57 @@ if (mysqli_num_rows($exe) > 0) {
                     <div class='card-container'>";
 
     while ($res = mysqli_fetch_array($exe)) {
-        $id = htmlspecialchars($res['idjogos']);
+        $idjogos = htmlspecialchars($res['idjogos']);
         $nomejogo = htmlspecialchars($res['nomeJogo']);
         $fotojogo = htmlspecialchars($res['fotoJogo']);
 
-        echo "<div class='card'>
-                <div class='game-info'>
-                    <img src='images/$fotojogo' alt='$nomejogo'>
-                    <div>
-                        <span>$nomejogo</span>
-                        <a href='addcarrinho.php?idjogos=$id'>adicionar</a>
-                        <a href='apagajogo.php?idjogos=$id'>apagar</a>
-                        <a href='atualizandojogos.php?idjogos=$id'>atualizar</a>
-                    </div>
-                </div>
-              </div>";
+        echo "
+        <style>.card {
+    width: 200px;  /* ou ajuste conforme o seu layout */
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;  /* Ensina os itens a se organizarem verticalmente */
+    align-items: center;     /* Centraliza os itens horizontalmente */
+}
+
+.game-info img {
+    width: 100%;  /* ou ajuste o tamanho conforme necessário */
+    max-width: 150px;  /* Limita o tamanho da imagem */
+    height: auto;
+    margin-bottom: 10px;  /* Espaço entre a imagem e o texto */
+}
+
+.game-details {
+    text-align: center;  /* Centraliza o texto dentro do bloco */
+}
+
+.game-details a {
+    display: inline-block;
+    margin-top: 5px;  /* Distância entre o nome do jogo e o link */
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.game-details a:hover {
+    text-decoration: underline;
+}
+</style>
+        <div class='card'>
+    <div class='game-info'>
+        <img src='images/$fotojogo'?>
+        <div class='game-details'>
+            <h3>Produto: $nomejogo</h3>
+            <a class='botao-comprar' <a href='addcarrinho.php?idjogos=$idjogos'>Adicionar à lista de desejos</a>
+        </div>
+    </div>
+</div>
+";
     }
 
     echo "          </div>
@@ -607,7 +706,6 @@ if (mysqli_num_rows($exe) > 0) {
 }
 mysqli_close($con);
 ?>
-                   
         </main>
         <section>
         </section>
