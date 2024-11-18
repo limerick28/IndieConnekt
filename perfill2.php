@@ -1,6 +1,31 @@
 <?php
-include("sessao.php")
+// Conectar ao banco de dados
+$con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
+
+// Verificar se a conexão foi bem-sucedida
+if (!$con) {
+    die("Conexão falhou: " . mysqli_connect_error());
+}
+
+// Recuperar o username da URL
+$username = $_GET['username'];
+
+// Consultar o ID do usuário com base no username
+$sqlUser = "SELECT idusuarios, fotouser FROM usuarios WHERE username = '$username'";
+$resultUser = mysqli_query($con, $sqlUser);
+
+if (mysqli_num_rows($resultUser) > 0) {
+    $user = mysqli_fetch_assoc($resultUser);
+    $idUsuarioVisualizado = $user['idusuarios'];
+    $fotouser = $user['fotouser'];
+} else {
+    echo "Usuário não encontrado!";
+    exit;
+}
+
+session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -30,7 +55,6 @@ include("sessao.php")
             padding: 15px;
             height: 60px;
             background-color: #3a2064;
-            ;
         }
 
         .navbar .indielogo {
@@ -44,7 +68,7 @@ include("sessao.php")
             display: flex;
             justify-content: center;
             padding: 10px 20px;
-            transform: translateX(-30px);
+            transform: translateX(-330px);
             width: 500px;
         }
 
@@ -58,10 +82,12 @@ include("sessao.php")
             color: #ffffff;
             transform: translateY(-20px);
         }
-        .searchbutton{
+
+        .searchbutton {
             transform: translateX(23px);
         }
-        .nameuser{
+
+        .nameuser {
             transform: translateX(95px);
         }
 
@@ -82,16 +108,14 @@ include("sessao.php")
             display: flex;
             align-items: center;
         }
-        .nav {
-            position: relative;
-             display: inline-block;
-        }
-        .home{
+
+        .home {
             width: 40px;
             height: auto;
             transform: translateX(180px);
             color: white;
         }
+
         .profile-pic {
             width: 50px;
             height: 50px;
@@ -107,34 +131,34 @@ include("sessao.php")
             object-fit: cover;
             cursor: pointer;
         }
+
         .dropdown-menu {
             display: none;
-    position: absolute;
-    background-color: #2e2e4e;
-    min-width: 120px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    top: 40px; /* Alinha a caixinha no topo da imagem */
-    right: 30px;
-}
-
-.dropdown-menu a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-menu a:hover {
-    background-color: #91ff10;
-    color: black;
-}
-
-/* Exibe a caixa quando o mouse passa sobre a imagem */
-.profile-pic:hover .dropdown-menu {
-    display: block;
-
+            position: absolute;
+            background-color: #2e2e4e;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 40px;
+            right: 30px;
         }
+
+        .dropdown-menu a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #91ff10;
+            color: black;
+        }
+
+        .profile-pic:hover .dropdown-menu {
+            display: block;
+        }
+
         .hero {
             text-align: center;
             padding: 5em 2em;
@@ -152,27 +176,12 @@ include("sessao.php")
             margin: 0 0 1em;
         }
 
-
         .container2 {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
         }
-        .profile-header {
-                    display: flex;
-                    align-items: center;
-                    width: 100%;
-                    max-width: 800px;
-                    margin-bottom: 20px;
-                    
-                }
-                .profile-header img {
-                    border-radius: 50%;
-                    width: 80px;
-                    height: 80px;
-                    margin-right: 20px;
-                }
 
         .profile-header {
             display: flex;
@@ -180,7 +189,6 @@ include("sessao.php")
             width: 100%;
             max-width: 800px;
             margin-bottom: 20px;
-
         }
 
         .profile-header img {
@@ -232,7 +240,6 @@ include("sessao.php")
             background-color: #91ff10;
             color: #000000;
         }
-         
 
         .profile-post {
             margin-right: auto;
@@ -251,6 +258,7 @@ include("sessao.php")
             background-color: #91ff10;
             color: #000000;
         }
+
         .profile-stats {
             display: flex;
             justify-content: space-around;
@@ -285,27 +293,16 @@ include("sessao.php")
         .tabs button {
             background-color: transparent;
             border: none;
-            color:#91ff10;
-            padding: 20px 30px;
+            color: #ffffff;
+            padding: 10px 20px;
             cursor: pointer;
-            font-size: 10px;
-        }
-        .tabs button:hover {
-            background-color: transparent;
-            border: none;
-            color: #91ff10;
-            padding: 20px 30px;
-            cursor: pointer;
-            font-size: 10px;
-            display: fixed;
+            font-size: 16px;
         }
 
         .tabs button.active {
-            border-bottom: 2px solid #91ff10;
+            border-bottom: 2px solid #d4d700;
         }
-        .posts{
-            color: white;
-        }
+
         .content {
             width: 100%;
             max-width: 800px;
@@ -321,156 +318,23 @@ include("sessao.php")
             color: #aaaaaa;
         }
 
-        .sidebar {
-
-            left: 60px;
-            top: 20px;
-            width: 200px;
-        }
-
-        .sidebar img {
-            width: 100%;
+        /* Novo CSS para separar os tópicos com fundo */
+        .section {
+            background-color: #2e2e4e;
+            padding: 20px;
             margin-bottom: 20px;
-        }
-
-        .invite-link {
-            background-color: #2e2e4e;
-            padding: 10px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .invite-link p {
-            margin: 5px 0;
-        }
-
-        .invite-link button {
-            background-color: #91ff10;
-            border: none;
-            color: #000000;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 10px;
-            background-color: #111;
-            object-fit: cover;
-            border-radius: 5px;
-            width: 500px;
-            height: 50px;
-        }
-
-        .main {
-            display: flex;
-            padding: 20px;
-        }
-
-        .sidebar {
-            width: 250px;
-            background-color: #2e2e4e;
-            padding: 20px;
             border-radius: 10px;
         }
 
-        .sidebar .stats {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .sidebar .stats div {
-            text-align: center;
-        }
-
-        .sidebar .share {
-            margin-bottom: 20px;
-        }
-
-        .sidebar .share input {
-            width: 100%;
-            padding: 5px;
-            border: none;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        ;
-
-        .sidebar .comments {
-            margin-bottom: 20px;
-        }
-
-        .sidebar .comments input {
-            width: 100%;
-            padding: 5px;
-            border: none;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .sidebar .comments .comment {
-            background-color: #1e1e2e;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .content {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .content .game {
-            background-color: #2e2e4e;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            width: 800px;
-            height: 400px;
-
-
-        }
-
-        .content .game .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .content .game .header .title {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .content .game .posts {
-            width: 200px;
-
-        }
-
-        .content .game .posts .postsimagem {
-            width: 400px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 7px;
-        }
-
-        .content .game .details {
-            margin-bottom: 10px;
+        .section h2 {
+            margin-bottom: 15px;
+            color: #ffffff;
         }
     </style>
 </head>
 
 <body>
-    </head>
-
-    <body>
-        <div class="navbar">
+<div class="navbar">
             <img class="indielogo" height="30" src="images/indieconnektlogo.png" width="50" href="dashboardlog.html">
             <div class="indielogo">
             </div>
@@ -478,7 +342,7 @@ include("sessao.php")
             <div class="search-bar">
             <input type="text" name="username" placeholder="Nome de usuário"  />
             <input type="text" name="pesquisar" placeholder="Procurar"  />
-                <input class="searchbutton" type="image" src="images/lupa.png" alt="Buscar" style="  transform: translateY(-19px) translateX(230px); width: 36px; height: auto;" />
+                <input class="searchbutton" type="image" src="images/lupa3.png" alt="Buscar" style="  transform: translateY(-19px) translateX(230px); width: 36px; height: auto;" />
                 <button type="submit" style="display: none;">Enviar</button> 
             </form>
                
@@ -500,8 +364,8 @@ include("sessao.php")
             <div class="profile-pic">
         <a href="perfill.php">
         <?php 
-            $fotouser =  $_SESSION['fotouser'];
-            echo"<img src='images/$fotouser' alt='Foto de perfil'>"
+            $fotouser1 =  $_SESSION['fotouser'];
+            echo"<img src='images/$fotouser1' alt='Foto de perfil'>"
             ?>
             <img src="images/home.png" alt="">
         </a>
@@ -522,310 +386,83 @@ include("sessao.php")
    
 
         </nav>
-        <div class="container2">
-            <div class="profile-header">
+
+    <div class="container2">
+        <div class="profile-header">
+            <img src="images/<?php echo htmlspecialchars($fotouser); ?>" alt="Foto de perfil">
+            <div class="profile-info">
+                <h1>@<?php echo htmlspecialchars($username); ?></h1>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Posts de <?php echo htmlspecialchars($username); ?></h2>
             <?php
-                $username = isset($_GET['username']) ? $_GET['username'] : (isset($_SESSION['username']) ? $_SESSION['username'] : null);
+            // Consultar os posts do usuário visualizado
+            $sqlPosts = "SELECT * FROM posts WHERE id_idusuarios = '$idUsuarioVisualizado' ORDER BY nomePost ASC";
+            $exePosts = mysqli_query($con, $sqlPosts);
 
-                if ($username) {
-                    $conexao = mysqli_connect('localhost', 'root', '', 'indieconnekt');
-                    $username = mysqli_real_escape_string($conexao, $username);
-
-                    $query = "SELECT fotouser FROM usuarios WHERE username = '$username'";
-                    $result = mysqli_query($conexao, $query);
-
-                    if ($result && mysqli_num_rows($result) > 0) {
-                        $fotouser = mysqli_fetch_assoc($result)['fotouser'];
-                        echo "<img src='images/$fotouser' alt='Foto de perfil de $username'>";
-                    } else {
-                        echo "<img src='images/default.jpg' alt='Foto de perfil padrão'>";
-                    }
-                } else {
-                    echo "<img src='images/default.jpg' alt='Foto de perfil padrão'>";
+            if (mysqli_num_rows($exePosts) > 0) {
+                while ($post = mysqli_fetch_assoc($exePosts)) {
+                    echo "<div class='post'>";
+                    echo "<h3>" . htmlspecialchars($post['nomePost']) . "</h3>";
+                    echo "<p>" . nl2br(htmlspecialchars($post['comentario'])) . "</p>";
+                    echo "<img src='images/" . htmlspecialchars($post['foto']) . "' alt='Imagem do post' style='width: 100%; max-width: 500px; height: auto;'>";
+                    echo "</div>";
                 }
-?>
+            } else {
+                echo "Este usuário não possui posts.";
+            }
+            ?>
+        </div>
 
-                <div class="profile-info">
-                <h1>
-                <span>
-                @<?php
-            if (isset($_GET['username'])) {
-            echo  htmlspecialchars($_GET['username']) . "";
-                 } else {
-                     echo "Nenhum usuário logado!";
+        <div class="section">
+            <h2>Comentários de <?php echo htmlspecialchars($username); ?></h2>
+            <?php
+            // Consultar os comentários do usuário visualizado
+            $sqlComentarios = "SELECT * FROM comentarios WHERE perfil_email = '$username' ORDER BY id_idusuarios DESC";
+            $exeComentarios = mysqli_query($con, $sqlComentarios);
+
+            if (mysqli_num_rows($exeComentarios) > 0) {
+                while ($comentario = mysqli_fetch_assoc($exeComentarios)) {
+                    echo "<div class='comentario'>";
+                    echo "<p>" . htmlspecialchars($comentario['texto']) . "</p>";
+                    echo "<img src='images/" . htmlspecialchars($comentario['fotocomentario']) . "' alt='Foto de perfil do comentário'>";
+                    echo "</div>";
                 }
-                ?>
-                </span>
-                </h1>
-            
-                <div class="status">
-                </div>
-                </div>
-                <div class="profile-edit">
-               
-                </div>
-            </div>
-            <div class="profile-stats">
-            <div class="profile-post">
-                
-                </div>
-                
-            </div>
-            <div class="tabs">
-            <button class="active" onclick="window.location.href='perfill2.php';">
-            <h1 class="active" >
-                Posts
-            </h1>
-    </button>
-    <button onclick="window.location.href='perfilljogo2.php';">
-            <h1 class="posts">
-                Jogos
-            </h1>
-    </button>
-    
-    </div>
+            } else {
+                echo "Este usuário não possui comentários.";
+            }
+            ?>
+        </div>
 
-<div class="main">
-    <div class="sidebar">
-        <div class="comments" style="background-color: #2e2e4e; padding: 20px; border-radius: 10px; margin-top: 20px;">
-            <h2 style="color: #ffffff;">Comentários</h2>
-<?php
-if (!isset($_GET['idusuarios'])) {
-echo "<p class='warning'>Você precisa estar logado para ver os posts.</p>";
-}
-if (isset($_GET['email'])) {
-    echo  htmlspecialchars($_GET['email']) . "";}
+        <div class="section">
+            <h2>Jogos Criados por <?php echo htmlspecialchars($username); ?></h2>
+            <?php
+            // Consultar os jogos do usuário visualizado
+            $sqlJogos = "SELECT * FROM jogos WHERE id_idusuarios = '$idUsuarioVisualizado' ORDER BY nomeJogo ASC";
+            $exeJogos = mysqli_query($con, $sqlJogos);
 
-
-$idUsuarioLogado = $_GET['idusuarios']; 
-$con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
-
-$sql2 = "SELECT * FROM comentarios WHERE '$email' = perfil_email ORDER BY id_idusuarios DESC";
-$exe2 = mysqli_query($con, $sql2);
-
-if (mysqli_num_rows($exe2) > 0) {
-echo "<table style=' 
-width: 250px;
-background-color: #1e1e2e;
-padding: 20px;
-border-radius: 10px;
-
-
-display: flex;
-justify-content: space-between;
-margin-bottom: 20px;
-
-text-align: center;
-
-margin-bottom: 20px;
-
-width: 100%;
-padding: 5px;
-border: none;
-border-radius: 5px;
-margin-bottom: 10px;
-
-width: 100%;
-padding: 5px;
-border: none;
-border-radius: 5px;
-background-color: white;
-color: #1e1e2e;
-display: flex;
-justify-content: space-between;
-
-margin-bottom: 20px;
-
-width: 100%;
-padding: 5px;
-border: none;
-border-radius: 5px;
-margin-bottom: 10px;
-
-background-color: #333;
-padding: 10px;
-border-radius: 5px;
-margin-bottom: 10px;'
-;>";
-
-while ($res2 = mysqli_fetch_array($exe2)) {
-$id = htmlspecialchars($res2['idcomentario']);
-$texto = htmlspecialchars($res2['texto']);
-$fotocomentario = htmlspecialchars($res2['fotocomentario']);
-
-echo "<tr style='background-color: #3b3b6e;'>
-        <td style='background-color: #3d3d6d; padding: 15px; border-radius: 10px; margin-top: 10px;'>$texto  <img src='images/$fotocomentario'> </td>
-       
-    </tr>";
-}
-echo "</table>";
-} else {
-echo "não tem nada aqui";
-}
-if (!$con) {
-die("Conexão falhou: " . mysqli_connect_error());
-}
-?>
-
-    <style>
-       
-        
-
-        /* Estilos do link que abre o pop-up */
-        .add-comment-link {
-            color: #91ff10;
-            text-decoration: underline;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* Estilos do overlay (fundo escuro) */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        /* Estilos do pop-up */
-        .popup-container {
-            background-color: #2e2e4e;
-            border-radius: 10px;
-            padding: 20px;
-            width: 400px;
-            color: white;
-            position: relative;
-            z-index: 1001;
-        }
-
-        /* Botão de fechar */
-        .close-popup-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: transparent;
-            border: none;
-            color: #fff;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        .botaoo, .custom-file-upload {
-            width: 100%;
-            margin-bottom: 10px;
-            background-color: transparent;
-            border: 1px solid #91ff10;
-            color: #ffffff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .botaoo:hover, .custom-file-upload:hover {
-            background-color: #91ff10;
-            color: #000000;
-        }
-
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #2a2a3e;
-            color: #ffffff;
-            margin-bottom: 15px;
-        }
-
-        /* Esconder o botão real de arquivo */
-        input[type="file"] {
-            display: none;
-        }
-
-        .custom-file-upload {
-            width: 380px; 
-            text-align: center;
-        }
-    </style>
-
-    <!-- Link para abrir o pop-up -->
-    <a class="add-comment-link" onclick="openPopup()">Clique aqui para adicionar um comentário</a>
-
-    <!-- Estrutura do pop-up -->
-    <div class="overlay" id="popupOverlay">
-        <div class="popup-container">
-            <button class="botaoo" class="close-popup-btn" onclick="closePopup()">✖</button>
-            <h1>Comentários</h1>
-            <form action="comentar.php" method="post" enctype="multipart/form-data">
-                <textarea name="texto" placeholder="Escreva seu comentário..." required></textarea><br>
-                <label class="custom-file-upload">
-                    <input type="file" name="fotocomentario" accept="image/*" onchange="previewImage(event)" required>
-                    Escolher arquivo
-                </label><br>
-                <img id="imagePreview" src="#" alt="Prévia" style="display: none; margin-top: 10px; max-width: 100%;"><br>
-                <button class="botaoo" type="submit">Enviar</button>
-            </form>
+            if (mysqli_num_rows($exeJogos) > 0) {
+                while ($jogo = mysqli_fetch_assoc($exeJogos)) {
+                    echo "<div class='jogo'>";
+                    echo "<h3>" . htmlspecialchars($jogo['nomeJogo']) . "</h3>";
+                    echo "<p>" . nl2br(htmlspecialchars($jogo['descricaojogo'])) . "</p>";
+                    echo "<img src='images/" . htmlspecialchars($jogo['fotoJogo']) . "' alt='Imagem do jogo' style='width: 100%; max-width: 500px; height: auto;'>";
+                    echo "</div>";
+                }
+            } else {
+                echo "Este usuário não criou jogos.";
+            }
+            ?>
         </div>
     </div>
 
-    <script>
-        function openPopup() {
-            document.getElementById('popupOverlay').style.display = 'flex';
-        }
+</body>
 
-        function closePopup() {
-            document.getElementById('popupOverlay').style.display = 'none';
-        }
+</html>
 
-        function previewImage(event) {
-            const imagePreview = document.getElementById('imagePreview');
-            imagePreview.src = URL.createObjectURL(event.target.files[0]);
-            imagePreview.style.display = 'block';
-        }
-    </script>
-
-    </a>
-        </div>
-    </div>
-
-    <div class="content">
-    
 <?php
-$sql1 = "SELECT * FROM posts WHERE id_idusuarios = '$idUsuarioLogado' ORDER BY nomePost ASC";
-$exe1 = mysqli_query($con, $sql1);
-
-if (mysqli_num_rows($exe1) > 0) {
-echo "<table style='background-color: #2e2e4e; padding: 20px; border-radius: 10px; width: 800px;'>";
-
-while ($res1 = mysqli_fetch_array($exe1)) {
-$idPost = htmlspecialchars($res1['idPost']);
-$nomePost = htmlspecialchars($res1['nomePost']);
-$comentario = htmlspecialchars($res1['comentario']);
-$foto = htmlspecialchars($res1['foto']);
-
-echo "<tr>
-        <th style='display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #1e1e2e; border-radius: 5px;'><h2>$nomePost</h2>  </th>
-    </tr>
-    <tr>
-        <td style='padding: 10px;'><img src='images/$foto' style='  transform: translateX(-10px); width: 400px; height: 250px; object-fit: cover; border-radius: 7px;'></td>
-<td style='vertical-align: top; padding: 10px; font-size: 15px; font-weight: bold; max-width: 400px; border-radius: 7px; word-wrap: break-word; word-break: break-word; text-align: justify;'>
-    $comentario
-</td>
-    </tr>";
-}
-echo "</table>";
-} else {
-echo "Nenhum post encontrado.";
-}
+// Fechar a conexão com o banco de dados
 mysqli_close($con);
 ?>
-
-    </div>
-</div>
-</div>
-</body>
-</html>

@@ -663,80 +663,82 @@ include("sessao.php")
             
 <?php
 if (!isset($_SESSION['idusuarios'])) {
-echo "<p class='warning'>Você precisa estar logado para ver os posts.</p>";
-}
-$email = $_SESSION['email'];
-
-
-$idUsuarioLogado = $_SESSION['idusuarios'];
-$con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
-
-$sql2 = "SELECT * FROM comentarios WHERE '$email' = perfil_email ORDER BY id_idusuarios DESC";
-$exe2 = mysqli_query($con, $sql2);
-
-if (mysqli_num_rows($exe2) > 0) {
-echo "<table style=' 
-width: 250px;
-background-color: #1e1e2e;
-padding: 20px;
-border-radius: 10px;
-
-
-display: flex;
-justify-content: space-between;
-margin-bottom: 20px;
-
-text-align: center;
-
-margin-bottom: 20px;
-
-width: 100%;
-padding: 5px;
-border: none;
-border-radius: 5px;
-margin-bottom: 10px;
-
-width: 100%;
-padding: 5px;
-border: none;
-border-radius: 5px;
-background-color: #333;
-color: #1e1e2e;
-display: flex;
-justify-content: space-between;
-
-margin-bottom: 20px;
-
-width: 100%;
-padding: 5px;
-border: none;
-border-radius: 5px;
-margin-bottom: 10px;
-
-background-color: #333;
-padding: 10px;
-border-radius: 5px;
-margin-bottom: 10px;'
-;>";
-
-while ($res2 = mysqli_fetch_array($exe2)) {
-$id = htmlspecialchars($res2['idcomentario']);
-$texto = htmlspecialchars($res2['texto']);
-$fotocomentario = htmlspecialchars($res2['fotocomentario']);
-
-echo "<tr style='background-color: #3b3b6e;'>
-        <td style='background-color: #3d3d6d; padding: 15px; border-radius: 10px; margin-top: 10px;'>$texto  <img src='images/$fotocomentario'> </td>
-       
-    </tr>";
-}
-echo "</table>";
-} else {
-echo "não tem nada aqui";
-}
-
-if (!$con) {
-die("Conexão falhou: " . mysqli_connect_error());
-}
+    echo "<p class='warning'>Você precisa estar logado para ver os posts.</p>";
+    }
+    $email = $_SESSION['email'];
+    
+    
+    $idUsuarioLogado = $_SESSION['idusuarios'];
+    $con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
+    
+    $sql2 = "SELECT * FROM comentarios WHERE '$email' = perfil_email ORDER BY id_idusuarios DESC";
+    $exe2 = mysqli_query($con, $sql2);
+    
+    if (mysqli_num_rows($exe2) > 0) {
+    echo "<table style=' 
+    width: 250px;
+    background-color: #1e1e2e;
+    padding: 20px;
+    border-radius: 10px;
+    
+    
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    
+    
+    text-align: center;
+    
+    margin-bottom: 20px;
+    
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1e1e2e;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    
+    margin-bottom: 20px;
+    
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    
+    background-color: #2e2e4e;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;'
+    ;>";
+    
+    while ($res2 = mysqli_fetch_array($exe2)) {
+    $id = htmlspecialchars($res2['idcomentario']);
+    $texto = htmlspecialchars($res2['texto']);
+    $fotocomentario = htmlspecialchars($res2['fotocomentario']);
+    
+    echo "<tr style='background-color: #white;'>
+            <td style='background-color: #2e2e4e; padding: 4px; border-radius: 10px; margin-top: 6px;'>$texto  <img src='images/$fotocomentario'> </td>
+           
+        </tr>";
+    }
+    echo "</table>";
+    } else {
+    echo "não tem nada aqui";
+    }
+    
+    if (!$con) {
+    die("Conexão falhou: " . mysqli_connect_error());
+    }
+    
 
 ?>
 
@@ -797,16 +799,44 @@ $desc = htmlspecialchars($res1['descricaojogo']);
 $foto = htmlspecialchars($res1['fotoJogo']);
 
 echo "<tr>
-        <th style='display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #1e1e2e; border-radius: 5px;'><h2>$nomeJogo</h2>  </th>
+        <th style='display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #1e1e2e; border-radius: 5px;'><h2>$nomeJogo</h2></th>
     </tr>
     <tr>
-        <td style='padding: 10px;'><img src='images/$foto' style='  transform: translateX(-10px); width: 400px; height: 250px; object-fit: cover; border-radius: 7px;'></td>
-<td style='vertical-align: top; padding: 10px; font-size: 15px; font-weight: bold; max-width: 400px; border-radius: 7px; word-wrap: break-word; word-break: break-word; text-align: justify;'>
-    $desc
-</td>
+        <td style='padding: 10px; position: relative;'>
+            <img src='images/$foto' style='transform: translateX(-10px); width: 400px; height: 250px; object-fit: cover; border-radius: 7px;'>
+            <a href='del_jogo.php?idjogos=$idJogo'>
+            <img src='images/lixo.png' class='lixo-img' style='
+                width: 30px; 
+                height: 30px;
+                cursor: pointer;
+                transform: translateX(60px);
+                position: absolute;
+                bottom: 10px; /* Move a imagem para baixo */
+                right: 10px;  /* Move a imagem para a direita */
+            ' alt='Imagem de lixo'>
+            </a>
+        </td>
+        <td style='vertical-align: top; padding: 10px; font-size: 15px; font-weight: bold; max-width: 400px; border-radius: 7px; word-wrap: break-word; word-break: break-word; text-align: justify;'>
+            $desc
+        </td>
     </tr>";
+
+echo "<style>
+    .lixo-img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+        position: absolute;
+        transform: translateX(300px) translateY(30px);
+    }
+
+    .lixo-img:hover {
+        content: url('images/lixo1.png');
+    }
+</style>";
+
 }
-echo "</table>";
 } else {
 echo "Nenhum jogo encontrado.";
 }
