@@ -659,21 +659,21 @@ if (mysqli_num_rows($exe) > 0) {
     echo "<div class='content2'>";
 
     while ($res = mysqli_fetch_array($exe)) {
-        $id = htmlspecialchars($res['idjogos']);
+        $idjogos = htmlspecialchars($res['idjogos']);
         $nomejogo = htmlspecialchars($res['nomeJogo']);
         $fotojogo = htmlspecialchars($res['fotoJogo']);
 
         echo "
         <div class='game-card'>
             <div class='logo-container'>
-                <img src='images/$fotojogo' alt='$nomejogo'>
+                <img src='images/$fotojogo'?>
             </div>
             <div class='game-info'>
                 <div>
-                    <span>$nomejogo</span>
+                    <span>Produto: $nomejogo</span>
                 </div>
             </div>
-            <a href='addcarrinho.php?idjogos=$id' style='padding: 10px; text-align: center; color: #007bff; text-decoration: none;'>Adicionar à lista de desejo!</a>
+    <a href='addcarrinho.php?idjogos=$idjogos' style='padding: 10px; text-align: center; color: #007bff; text-decoration: none;'>Adicionar à lista de desejo!</a>
         </div>";
     }
 
