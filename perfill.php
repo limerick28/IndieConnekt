@@ -588,6 +588,7 @@ include("sessao.php")
             <a href="logout.php">Sair</a>
             <a href="cadastrando.php">Adicionar Post</a>
             <a href="cadastrojogo.php">Adicionar Jogo</a>
+            <a href="carrinho.php">sua lista de desejo</a>
         </div>
     </div>
         </div>  
