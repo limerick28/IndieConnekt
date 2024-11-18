@@ -1,6 +1,6 @@
 <?php
 include('sessao.php');
-$idusuarios = $_SESSION['id'];
+$idusuarios = $_SESSION['idusuarios'];
 $con = mysqli_connect('localhost','root', '', 'indieconnekt');
 
 $sql = "SELECT * from listadesejo, jogos where listaDesejo.id_idusuarios = $idusuarios and listaDesejo.id_idjogos=jogos.idjogos";
