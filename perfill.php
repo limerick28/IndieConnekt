@@ -664,7 +664,6 @@ if (!isset($_SESSION['idusuarios'])) {
 echo "<p class='warning'>Você precisa estar logado para ver os posts.</p>";
 }
 $email = $_SESSION['email'];
-echo "<p class='user-email'>$email</p>";
 
 
 $idUsuarioLogado = $_SESSION['idusuarios'];
@@ -807,7 +806,7 @@ echo "<tr>
                 width: 30px; 
                 height: 30px;
                 cursor: pointer;
-                transition: transform 0.3s ease-in-out;
+                transform: translateX(100px);
                 position: absolute;
                 bottom: 10px; /* Move a imagem para baixo */
                 right: 10px;  /* Move a imagem para a direita */
