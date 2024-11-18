@@ -576,58 +576,87 @@ include("sessao.php")
             </div>
         </section>
            
-               <?php
-                  $con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
-                  if (!$con) {
-                    die("Conexão falhou: " . mysqli_connect_error());
-                }
+               
+        <section class="jogos-list">
+        <h2>Jogos em Destaque</h2>
+        <?php
+$con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
+if (!$con) {
+    die("Conexão falhou: " . mysqli_connect_error());
+}
+
 $sql = "SELECT * FROM jogos ORDER BY nomejogo ASC";
 $exe = mysqli_query($con, $sql);
 
 if (mysqli_num_rows($exe) > 0) {
-    echo "<table style='display: flex; justify-content: center; padding: 20px; flex-wrap: wrap;'>";
-
     echo "<style>
-        .card-container {
-            display: grid;
-
-            grid-template-columns: repeat(4, 1fr); /* Change to 4 columns */
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+        .content2 {
+            display: flex;
             justify-content: center;
+            padding: 20px;
+            flex-wrap: wrap;
         }
 
-        .card {
-            background-color: #222;
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            text-align: center;
+        .game-card {
+            background-color: #2e2e4e;
+            border-radius: 10px;
+            margin: 10px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            width: 300px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .game-info img {
-            border-radius: 5%;
+        .game-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-card img {
             width: 100%;
             height: auto;
         }
-      </style>";
 
-    echo "<table>
-            <tr>
-                <th style='
+        .game-card:hover img {
+            transform: scale(1.05);
+        }
 
-                    background-color: #2e2e4e;
-                    color: white;
-                    padding: 10px;
-                    border-radius: 10px;
-    
-                    '>Jogos Disponíveis</th>
-            </tr>
-            <tr>
-                <td colspan='4' style='padding: 20px;'>
-                    <div class='card-container'>";
+        .game-info {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .game-info img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .game-info div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-info div span {
+            font-size: 14px;
+        }
+
+        .game-info div span:first-child {
+            font-weight: bold;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+    </style>";
+
+    echo "<div class='content2'>";
 
     while ($res = mysqli_fetch_array($exe)) {
         $id = htmlspecialchars($res['idjogos']);
@@ -635,68 +664,31 @@ if (mysqli_num_rows($exe) > 0) {
         $fotojogo = htmlspecialchars($res['fotoJogo']);
 
         echo "
-        <style>.card {
-    width: 200px;  /* ou ajuste conforme o seu layout */
-    margin: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-
-.game-info {
-    display: flex;
-    flex-direction: column;  /* Ensina os itens a se organizarem verticalmente */
-    align-items: center;     /* Centraliza os itens horizontalmente */
-}
-
-.game-info img {
-    width: 100%;  /* ou ajuste o tamanho conforme necessário */
-    max-width: 150px;  /* Limita o tamanho da imagem */
-    height: auto;
-    margin-bottom: 10px;  /* Espaço entre a imagem e o texto */
-}
-
-.game-details {
-    text-align: center;  /* Centraliza o texto dentro do bloco */
-}
-
-.game-details a {
-    display: inline-block;
-    margin-top: 5px;  /* Distância entre o nome do jogo e o link */
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.game-details a:hover {
-    text-decoration: underline;
-}
-</style>
-        <div class='card'>
-    <div class='game-info'>
-        <img src='images/$fotojogo' $nomejogo ?>
-        <div class='game-details'>
-            <span>$nomejogo</span>
-            <a href='addcarrinho.php?idjogos=<?= $id ?>'>Adicionar ao carrinho!</a>
-        </div>
-    </div>
-</div>
-";
+        <div class='game-card'>
+            <div class='logo-container'>
+                <img src='images/$fotojogo' alt='$nomejogo'>
+            </div>
+            <div class='game-info'>
+                <div>
+                    <span>$nomejogo</span>
+                </div>
+            </div>
+            <a href='addcarrinho.php?idjogos=$id' style='padding: 10px; text-align: center; color: #007bff; text-decoration: none;'>Adicionar à lista de desejo!</a>
+        </div>";
     }
 
-    echo "          </div>
-                </td>
-            </tr>
-          </table>";
+    echo "</div>";
 }
 mysqli_close($con);
 ?>
-        </main>
+
+</main>
         <section>
         </section>
     <footer>
         <p>&copy; PRO</p>
     </footer>
-
+mai
     <script>
         const slides = document.querySelector('.slideshow-wrapper');
         const leftButton = document.querySelector('.slide-btn-left');
