@@ -42,7 +42,7 @@ session_start();
         display: flex;
         justify-content: center;
         padding: 10px 20px;
-        transform: translateX(-330px);
+        transform: translateX(-300px);
         width: 500px;
     }
     
@@ -293,7 +293,7 @@ session_start();
                 }
                 ?></div>
             <div class="profile-pic">
-        <a href="perfill.php">
+        <a href="perfill2.php">
         <?php 
             $fotouser =  $_SESSION['fotouser'];
             echo"<img src='images/$fotouser' alt='Foto de perfil'>"
@@ -301,7 +301,7 @@ session_start();
             <img src="images/home.png" alt="">
         </a>
         <div class="dropdown-menu">
-            <a href="perfill.php">Perfil</a>
+            <a href="perfill2.php">Perfil</a>
             <a href="logout.php">Sair</a>
             <a href="cadastrando.php">Adicionar Post</a>
             <a href="cadastrojogo.php">Adicionar Jogo</a>
@@ -317,21 +317,49 @@ session_start();
                          </nav>
         </div>
     <main>
-        <h2>
+                
+    <?php
+
+$pesquisar = $_POST['pesquisar'];
+
+// Conexão com o banco de dados
+$conexao = mysqli_connect('localhost', 'root', '', 'indieconnekt');
+
+// Sanitização da entrada
+$pesquisar = mysqli_real_escape_string($conexao, $pesquisar);
+
+// Consulta para filtrar usuários
+$result_pesquisa = "SELECT * FROM usuarios WHERE username LIKE '%$pesquisar%' LIMIT 5";
+$resultado_pesquisa = mysqli_query($conexao, $result_pesquisa);
+
+// Verificando se há resultados e exibindo
+if (mysqli_num_rows($resultado_pesquisa) > 0) {
+    echo "<h2>Nome dos usuários:</h2><br>";
+    while ($rows_pesquisa = mysqli_fetch_array($resultado_pesquisa)) {
+        // Pegando o username e fotouser de cada usuário
+        $user_name = $rows_pesquisa['username'];
+        $foto_user = $rows_pesquisa['fotouser'];
+        
+        // Caminho para a imagem do usuário
+        $foto_url = "images/" . $foto_user;
+
+        // Link para o perfil do usuário (correto: usando $user_name)
+        $perfil_url = "perfill2.php?username=" . urlencode($user_name);
+
+        // Exibindo a imagem, nome e link do perfil
+        echo "<div>";
+        echo "<img src='$foto_url' alt='Foto de $user_name' width='50' height='50' style='border-radius: 50%;'>";
+        echo "<a href='$perfil_url'>$user_name</a><br>";
+        echo "</div>";
+    }
+} else {
+    echo "Nenhum usuário encontrado.";
+}
+?>
+
 
     
-        <form action="cadjogo.php" method="post" enctype="multipart/form-data">
-            <label for="title">Título do jogo:</label>
-            <input type="text" id="title" name="nomeJogo" required>
-
-            <label for="content">Descrição:</label>
-            <textarea id="content" name="descricao" rows="10" required></textarea>
-        </h2>
-            <label for="image" class="imagebutton">Escolha uma imagem</label>
-            <input class="file-input" type="file" id="image" name="fotoJogo" accept="image/" onchange="previewImage(event)" required style="display:none;">
-            <img id="imagePreview" src="#" alt="Prévia da Imagem" style="display: none;">
-            <input type="submit" value="Publicar Jogo">
-        </form>
+        
     </main>
 
     <script>
@@ -343,3 +371,4 @@ session_start();
     </script>
 </body>
 </html>
+

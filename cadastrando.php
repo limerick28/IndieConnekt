@@ -56,7 +56,10 @@ session_start();
         color: #ffffff;
         transform: translateY(-20px);
     }
-    
+    .nameuser{
+            transform: translateX(95px);
+        }
+        
     .sair {
         border-color: #f0f0f0;
         border: 5px;
@@ -84,6 +87,12 @@ session_start();
         display: flex;
         align-items: center;
     }
+    .home{
+            width: 40px;
+            height: auto;
+            transform: translateX(180px);
+            color: white;
+        }
     
     .profile-pic {
         width: 50px;
@@ -262,17 +271,34 @@ session_start();
         </head>
             <body>
         </head>
-<body>
-<div class="navbar">
+        <body>
+        <div class="navbar">
             <img class="indielogo" height="30" src="images/indieconnektlogo.png" width="50" href="dashboardlog.html">
             <div class="indielogo">
             </div>
             <div class="search-bar">
                 <input placeholder="Procurar" type="text" />
             </div>
+            <div>
+            <a href="dashboardlog.php">
+            <img class="home" src="images/home.png" alt="">
+            </a>
+            </div>
+            <div class="nameuser">
+            <?php
+            if (isset($_SESSION['username'])) {
+            echo  htmlspecialchars($_SESSION['username']) . "";
+                 } else {
+                     echo "Nenhum usuário logado!";
+                }
+                ?></div>
             <div class="profile-pic">
         <a href="perfill.php">
-            <img src="images/darklegendsed.jpg" alt="Foto do Usuário" class="profile-img">
+        <?php 
+            $fotouser =  $_SESSION['fotouser'];
+            echo"<img src='images/$fotouser' alt='Foto de perfil'>"
+            ?>
+            <img src="images/home.png" alt="">
         </a>
         <div class="dropdown-menu">
             <a href="perfill.php">Perfil</a>
@@ -281,9 +307,13 @@ session_start();
             <a href="cadastrojogo.php">Adicionar Jogo</a>
         </div>
     </div>
-            </div>
-                </div>
-                    </div>
+        </div>  
+        </div>
+        </div>
+        </div>
+        </nav>
+        </div>
+        </header>
                          </nav>
         </div>
     <main>
@@ -311,6 +341,5 @@ session_start();
             imagePreview.style.display = 'block';
         }
     </script>
-
 </body>
 </html>

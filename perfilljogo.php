@@ -299,11 +299,17 @@ include("sessao.php")
             font-size: 10px;
             display: fixed;
         }
+        
 
         .tabs button.active {
             border-bottom: 2px solid #91ff10;
         }
+        
         .posts{
+            color: white;
+        }
+        
+        .jogo{
             color: white;
         }
         .content {
@@ -610,11 +616,7 @@ include("sessao.php")
                 <h1>
                 <span>
                 @<?php
-            if (isset($_SESSION['username'])) {
-            echo  htmlspecialchars($_SESSION['username']) . "";
-                 } else {
-                     echo "Nenhum usuário logado!";
-                }
+            echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : "Nenhum usuário logado!";
                 ?>
                 </span>
                 </h1>
@@ -640,13 +642,13 @@ include("sessao.php")
                 
             </div>
             <div class="tabs">
-            <button class="active" onclick="window.location.href='perfill.php';">
-            <h1 class="active" >
+            <button class="active2" onclick="window.location.href='perfill.php';">
+            <h1 class="posts" >
                 Posts
             </h1>
     </button>
-    <button  onclick="window.location.href='perfilljogo.php';">
-            <h1 class="posts">
+    <button class="active"  onclick="window.location.href='perfilljogo.php';">
+            <h1>
                 Jogos
             </h1>
     </button>
@@ -664,7 +666,6 @@ if (!isset($_SESSION['idusuarios'])) {
 echo "<p class='warning'>Você precisa estar logado para ver os posts.</p>";
 }
 $email = $_SESSION['email'];
-echo "<p class='user-email'>$email</p>";
 
 
 $idUsuarioLogado = $_SESSION['idusuarios'];
@@ -685,7 +686,6 @@ display: flex;
 justify-content: space-between;
 margin-bottom: 20px;
 
-
 text-align: center;
 
 margin-bottom: 20px;
@@ -700,8 +700,8 @@ width: 100%;
 padding: 5px;
 border: none;
 border-radius: 5px;
-background-color: #1e1e2e;
-color: white;
+background-color: #333;
+color: #1e1e2e;
 display: flex;
 justify-content: space-between;
 
@@ -713,7 +713,7 @@ border: none;
 border-radius: 5px;
 margin-bottom: 10px;
 
-background-color: #2e2e4e;
+background-color: #333;
 padding: 10px;
 border-radius: 5px;
 margin-bottom: 10px;'
@@ -724,8 +724,8 @@ $id = htmlspecialchars($res2['idcomentario']);
 $texto = htmlspecialchars($res2['texto']);
 $fotocomentario = htmlspecialchars($res2['fotocomentario']);
 
-echo "<tr style='background-color: #white;'>
-        <td style='background-color: #2e2e4e; padding: 4px; border-radius: 10px; margin-top: 6px;'>$texto  <img src='images/$fotocomentario'> </td>
+echo "<tr style='background-color: #3b3b6e;'>
+        <td style='background-color: #3d3d6d; padding: 15px; border-radius: 10px; margin-top: 10px;'>$texto  <img src='images/$fotocomentario'> </td>
        
     </tr>";
 }
@@ -784,62 +784,31 @@ die("Conexão falhou: " . mysqli_connect_error());
     <div class="content">
     
 <?php
-$sql1 = "SELECT * FROM posts WHERE id_idusuarios = '$idUsuarioLogado' ORDER BY nomePost ASC";
+$sql1 = "SELECT * FROM jogos WHERE id_idusuarios = '$idUsuarioLogado' ORDER BY nomeJogo ASC";
 $exe1 = mysqli_query($con, $sql1);
 
 if (mysqli_num_rows($exe1) > 0) {
-echo "<table style='background-color: #2e2e4e; padding: 20px; border-radius: 10px; width: 800px;'>"; 
+echo "<table style='background-color: #2e2e4e; padding: 20px; border-radius: 10px; width: 800px;'>";
 
 while ($res1 = mysqli_fetch_array($exe1)) {
-$idPost = htmlspecialchars($res1['idPost']);
-$nomePost = htmlspecialchars($res1['nomePost']);
-$comentario = htmlspecialchars($res1['comentario']);
-$foto = htmlspecialchars($res1['foto']);
+$idJogo = htmlspecialchars($res1['idjogos']);
+$nomeJogo = htmlspecialchars($res1['nomeJogo']);
+$desc = htmlspecialchars($res1['descricaojogo']);
+$foto = htmlspecialchars($res1['fotoJogo']);
 
 echo "<tr>
-        <th style='display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #1e1e2e; border-radius: 5px;'><h2>$nomePost</h2></th>
+        <th style='display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #1e1e2e; border-radius: 5px;'><h2>$nomeJogo</h2>  </th>
     </tr>
     <tr>
-        <td style='padding: 10px; position: relative;'>
-            <img src='images/$foto' style='transform: translateX(-10px); width: 400px; height: 250px; object-fit: cover; border-radius: 7px;'>
-            <a href='del_post.php?idPost=$idPost'>
-            <img src='images/lixo.png' class='lixo-img' style='
-                width: 30px; 
-                height: 30px;
-                cursor: pointer;
-                transition: transform 0.3s ease-in-out;
-                position: absolute;
-                bottom: 10px; /* Move a imagem para baixo */
-                right: 10px;  /* Move a imagem para a direita */
-            ' alt='Imagem de lixo'>
-            </a>
-        </td>
-        <td style='vertical-align: top; padding: 10px; font-size: 15px; font-weight: bold; max-width: 400px; border-radius: 7px; word-wrap: break-word; word-break: break-word; text-align: justify;'>
-            $comentario
-        </td>
+        <td style='padding: 10px;'><img src='images/$foto' style='  transform: translateX(-10px); width: 400px; height: 250px; object-fit: cover; border-radius: 7px;'></td>
+<td style='vertical-align: top; padding: 10px; font-size: 15px; font-weight: bold; max-width: 400px; border-radius: 7px; word-wrap: break-word; word-break: break-word; text-align: justify;'>
+    $desc
+</td>
     </tr>";
-
-echo "<style>
-    .lixo-img {
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-        transition: transform 0.3s ease-in-out;
-        position: absolute;
-        transform: translateX(300px) translateY(30px);
-
-    }
-
-    .lixo-img:hover {
-        content: url('images/lixo1.png');
-    }
-</style>";
-
-    
 }
 echo "</table>";
 } else {
-echo  "<table style='background-color:#2e2e4e; padding: 20px; border-radius: 10px; width: 800px;' ";
+echo "Nenhum jogo encontrado.";
 }
 mysqli_close($con);
 ?>

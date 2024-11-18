@@ -8,7 +8,7 @@ and senha like '$senha'";
 $executar = mysqli_query($conexao, $sql);
 $res = mysqli_fetch_array($executar);
 if($res['email'] != NULL){
-   
+   $_SESSION['username'] = $res['username'];
    $_SESSION['email'] = $res['email'];
    $_SESSION['id'] = $res['idusuarios'];
    header("Location: pagina.php");

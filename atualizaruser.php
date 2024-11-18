@@ -1,20 +1,44 @@
 <?php
 session_start();
-include('login.php');
-include('pagina.php');
-$id = $_POST['id'];
+
+$idusuarios = $_POST['idusuarios'];
 $username = $_POST['username'];
-$fotouser = $_POST['fotouser'];
-$conexao = mysqli_connect
-('localhost','root','','indieconnekt');
-$sql = "update usuarios set username='$username', fotouser=$fotouser,
-where id=$id";
-$executar = mysqli_query($conexao, $sql);
-if($executar){
-    echo "Atualizado com sucesso!";
+
+$uploaddir = 'c:/xampp/htdocs/indieconnekt/images/';
+$nomeArq = basename($_FILES['fotouser']['name']);
+$uploadfile = $uploaddir . $nomeArq;
+
+$conexao = mysqli_connect('localhost', 'root', '', 'indieconnekt');
+
+if (!$conexao) {
+    die("Falha na conexão com o banco de dados: " . mysqli_connect_error());
 }
-else{
-    echo "Erro";
+
+if (move_uploaded_file($_FILES['fotouser']['tmp_name'], $uploadfile)) {
+    
+    $sql = "UPDATE usuarios SET username=?, fotouser=? WHERE idusuarios=?";
+
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+   
+    mysqli_stmt_bind_param($stmt, 'ssi', $username, $nomeArq, $idusuarios);
+
+    
+    if (mysqli_stmt_execute($stmt)) {
+        echo "Atualizado com sucesso";
+        $_SESSION['fotouser'] = $nomeArq;
+        header('Location: perfill.php');
+    } else {
+        echo "Erro ao atualizar o usuário: " . mysqli_error($conexao);
+    }
+
+    
+    mysqli_stmt_close($stmt);
+} else {
+    echo "Erro ao fazer o upload da imagem.";
 }
-$fechar = mysqli_close($conexao);
-include('final.html');
+
+
+mysqli_close($conexao);
+?>

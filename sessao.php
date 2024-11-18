@@ -1,11 +1,18 @@
 <?php
 session_start();
-$fotouser = $_SESSION['fotouser'];
-$username = $_SESSION['username'];
-$email = $_SESSION['email'];
-$id = $_SESSION['id'];
-if($email == NULL){
-	die("Usuário não autenticado!
-	<a href='LOGIN.php'>Logar</a>");
-};
+if(isset($_SESSION['idusuarios'])){
+    $id = $_SESSION['idusuarios'];  
+    $email = $_SESSION['email'];
+    $username = $_SESSION['username'];
+    $fotouser =  $_SESSION['fotouser']; 
+
+    
+    if($id == null){
+        die("Usuário não autenticado! <a href='LOGIN.php'>Logar</a>");
+    }
+} else {
+  
+    header("Location: LOGIN.php");
+    exit();
+}
 ?>

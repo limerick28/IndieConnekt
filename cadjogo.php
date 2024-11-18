@@ -15,6 +15,7 @@ $executar = mysqli_query($conexao, $sql);
 if (move_uploaded_file($_FILES['fotoJogo']['tmp_name'], $uploadfile)) {
 	if($executar){
 		echo "cadastrado";
+		header('location:perfill.php');
 	}
 	else{
 		echo "erro ao cadastrar";

@@ -6,7 +6,7 @@ if (!$conexao) {
     die("Conexão falhou: " . mysqli_connect_error());
 }
 
-$sql = "SELECT * FROM usuarios";
+$sql = "SELECT * FROM comentarios";
 $executar = mysqli_query($conexao, $sql);
 
 echo "<style>
@@ -72,30 +72,25 @@ echo "<div class='logo-container'>
 <div class='table-container'>
     <table>
         <tr>
-            <th>ID</th>
-            <th>Imagem</th>
-            <th>Username</th>
             <th>Email</th>
-            <th>Senha</th>
-            <th>Apagar</th>
-            <th>Atualizar</th>
+            <th>Imagem</th>
+            <th>idcomentario</th>
+            <th>Texto</th>
+            <th>Apagar</th> 
         </tr>";
 
 while ($resultado = mysqli_fetch_array($executar)) {
-    $idusuarios = $resultado['idusuarios'];
-    $username = $resultado['username'];
-    $email = $resultado['email'];
-    $senha = $resultado['senha'];
-    $fotouser = $resultado['fotouser'];
+    $perfil_email = $resultado['perfil_email'];
+    $idcomentario = $resultado['idcomentario'];
+    $texto = $resultado['texto'];
+    $fotocomentario = $resultado['fotocomentario'];
 
     echo "<tr>
-        <td>$idusuarios</td>
-        <td><img src='images/$fotouser' alt='Foto de $username'></td>
-        <td>$username</td>
-        <td>$email</td>
-        <td>$senha</td>
-        <td><a href='del_user.php?idusuarios=$idusuarios'>Remover</a></td>
-        <td><a href='upd_user.php?idusuarios=$idusuarios'>Atualizar</a></td
+        <td>$perfil_email</td>
+        <td><img src='images/$fotocomentario' alt='Foto de $idcomentario'></td>
+        <td>$idcomentario</td>
+        <td>$texto</td>
+        <td><a href='del_user.php?perfil_email=$perfil_email'>Remover</a></td>
 
     </tr>";
 }

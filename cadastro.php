@@ -13,7 +13,7 @@ $sql = "INSERT INTO usuarios (username, email, senha) VALUES ('$username', '$ema
 $exe = mysqli_query($conexao, $sql);
 
 if ($exe) {
-    header('location:perfill.php');
+    header('location:login.php');
 } else {
     echo  "<script>alert('deu erro aí');</script>";  mysqli_error($conexao);
 }

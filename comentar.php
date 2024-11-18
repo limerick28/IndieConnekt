@@ -14,7 +14,7 @@ $executar = mysqli_query($conexao, $sql);
 if (move_uploaded_file($_FILES['fotocomentario']['tmp_name'], $uploadfile)) {
 	if($executar){
 		echo "cadastrado";
-		header('location:perfil.php');
+		header('location:perfill.php');
 	}
 	else{
 		echo "erro ao cadastrar";
@@ -23,5 +23,4 @@ if (move_uploaded_file($_FILES['fotocomentario']['tmp_name'], $uploadfile)) {
     echo "Erro ao enviar arquivo!";
 }
 $fechar = mysqli_close($conexao);
-
 ?>

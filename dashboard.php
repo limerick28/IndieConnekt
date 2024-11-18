@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indie Connekt</title>
-    <link rel="stylesheet" href="pagina.css">
+    <link rel="stylesheet" href="dashboard.css">
         </head>
             <body>
         </head>
@@ -17,7 +17,7 @@
             <input placeholder="Procurar" type="text"/>
             </div>
             <div class="nav">
-                <a class="cadastro" href="LOGIN.php">
+                <a class="cadastro" href="LOGIN1.php">
                 Cadastrar-se
                 </a>
                 <a class="cadastro" href="listadesejo.php">

@@ -3,15 +3,15 @@ session_start();
 $idusuarios = $_GET['idusuarios'];
 $conexao = mysqli_connect
 ('localhost','root','','indieconnekt');
-$sql = "select foto from usuarios where idusuarios=$idusuarios";
+$sql = "SELECT fotouser from usuarios where idusuarios=$idusuarios";
 $exe = mysqli_query($conexao,$sql);
 $res = mysqli_fetch_array($exe);
-$foto = $res['foto'];
+$fotouser = $res['fotouser'];
 $sql = "DELETE FROM usuarios WHERE idusuarios=$idusuarios";
 $executar = mysqli_query($conexao,$sql);
 if($executar == 1){
 	echo $foto;
-	unlink("images/$foto");
+	unlink("images/$fotouser");
     header('location:tabelauser.php');
 }
 else{

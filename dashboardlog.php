@@ -1,3 +1,6 @@
+<?php
+include("sessao.php")
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,6 +27,15 @@
             padding: 10px 20px;
             background-color: #1a1a2e;
         }
+        .home{
+            width: 40px;
+            height: auto;
+            transform: translateX(180px);
+            color: white;
+        }
+        .nameuser{
+            transform: translateX(95px);
+        }
     
         .header .title {
             margin-left: 10px;
@@ -49,6 +61,46 @@
             object-fit: cover;  
             cursor: pointer;
         }
+
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #2e2e4e;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 10px; /* Alinha a caixinha no topo da imagem */
+            right: 30px;
+}
+
+.dropdown-menu {
+            display: none;
+    position: absolute;
+    background-color: #2e2e4e;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 10px; /* Alinha a caixinha no topo da imagem */
+    right: 30px;
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #91ff10;
+    color: black;
+}
+
+/* Exibe a caixa quando o mouse passa sobre a imagem */
+.profile-pic:hover .dropdown-menu {
+    display: block;
+}
         
         .header .nav .get-app {
             border: 1px solid #ffffff;
@@ -113,7 +165,7 @@
             background-color: #141726;
             color: #282c34;
         }
-
+ 
         .hero h2 {
             font-size: 2.5em;
             margin: 0 0 0.5em;
@@ -245,7 +297,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            z-index: 50;
+            z-index: 10;
         }
 
         .carousel-heading {
@@ -432,37 +484,72 @@
         .game-info div span:first-child {
             font-weight: bold;
         }
-        
+        .logo-container {
+        margin-bottom: 20px;
+    }
+    img.indielogo2 {
+        height: 200px;
+        width: auto; 
+        transform: translatey(-100px);
+    }
     </style>
         </head>
             <body>
         </head>
 <body>
-    <div class="navbar">
-            <img class="indielogo" height="30" src="images/indieconnektlogo.png"width="50" href="dashboardlog.html">
-        <div class="indielogo">
-    </div>
-        <div class="search-bar">
-            <input placeholder="Procurar" type="text"/>
+<div class="navbar">
+            <img class="indielogo" height="30" src="images/indieconnektlogo.png" width="50" href="dashboardlog.html">
+            <div class="indielogo">
+            </div>
+            <div class="search-bar">
+                <input placeholder="Procurar" type="text" />
             </div>
             <div>
-            <button class="sair" href="logout.php">Sair</button>
+            <a href="dashboardlog.php">
+            <img class="home" src="images/home.png" alt="">
+            </a>
             </div>
-            <a href="perfilL.php">
-            <div class="nav">
-                <div class="profile-pic">
-                    <img src="images/darklegendsed.jpg" alt="Foto do Usuário">
-                </a>
-            </div>
-            </div>
-                </div>
-                    </div>
-                         </nav>
+            <div class="nameuser">
+            <?php
+            if (isset($_SESSION['username'])) {
+            echo  htmlspecialchars($_SESSION['username']) . "";
+                 } else {
+                     echo "Nenhum usuário logado!";
+                }
+                ?></div>
+            <div class="profile-pic">
+        <a href="perfill.php">
+        <?php 
+            $fotouser =  $_SESSION['fotouser'];
+            echo"<img src='images/$fotouser' alt='Foto de perfil'>"
+            ?>
+            <img src="images/home.png" alt="">
+        </a>
+        <div class="dropdown-menu">
+            <a href="perfill.php">Perfil</a>
+            <a href="logout.php">Sair</a>
+            <a href="cadastrando.php">Adicionar Post</a>
+            <a href="cadastrojogo.php">Adicionar Jogo</a>
+        </div>
+    </div>
+        </div>  
+        </div>
+        </div>
+        </div>
+        </nav>
+        </div>
+        </header>
+
+
+        </nav>
         </div>
     </header>
     <main>
+    
         <section class="hero">
             <div class="content">
+            <div class='logo-container'>
+</div>
                 <div class="slideshow">
                     <button class="slide-btn slide-btn-left"></button>
                     <button class="slide-btn slide-btn-right"></button>
@@ -488,229 +575,121 @@
                 </div>
             </div>
         </section>
-
-        <section class="jogos-list">
-            <h2>Jogos em Destaque</h2>
-            <div class="header2">
-                <div class="active">
-                 Sucessos
-                </div>
-                <div>
-                 Melhores avaliações
-                </div>
-                <div>
-                 Novos
-                </div>
-               </div>
-               <div class="filters">
-                <div>
-                    Categoria1
-                 
-                </div>
-                <div>
-                    Categoria2
-                 
-                </div>
-                <div>
-                    Categoria3
-                
-                </div>
-                <div>
-                    Categoria4
-                
-                </div>
-                <div>
-                    Categoria5
-                
-                </div>
-                <div>
-                 Categoria6
-               
-                </div>
-               </div>
-               <div class="content2">
-                <div class="game-card">
-                 <div class="game-info">
-                  <img alt="Aurascope game icon" height="40" src="images/darklegendsed.jpg" width="40"/>
-                  <div>
-                  <?php
+           
+               <?php
+                  $con = mysqli_connect('localhost', 'root', '', 'indieconnekt');
+                  if (!$con) {
+                    die("Conexão falhou: " . mysqli_connect_error());
+                }
 $sql = "SELECT * FROM jogos ORDER BY nomejogo ASC";
-$exe = mysqli_query($con, $sql1);
+$exe = mysqli_query($con, $sql);
 
 if (mysqli_num_rows($exe) > 0) {
-    echo "<table style=' display: flex;
-    justify-content: center;
-    padding: 20px;
-    flex-wrap: wrap;;'>";
+    echo "<table style='display: flex; justify-content: center; padding: 20px; flex-wrap: wrap;'>";
 
-    while ($res1 = mysqli_fetch_array($exe)) {
-        $idjogo = htmlspecialchars($res['idjogo']);
-        $nomejogo = htmlspecialchars($res['nomejogo']);
-        $fotojogo = htmlspecialchars($res['fotojogo']);
+    echo "<style>
+        .card-container {
+            display: grid;
 
-        echo "<tr>
-                <th style='.game-card {
+            grid-template-columns: repeat(4, 1fr); /* Change to 4 columns */
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #222;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .game-info img {
+            border-radius: 5%;
+            width: 100%;
+            height: auto;
+        }
+      </style>";
+
+    echo "<table>
+            <tr>
+                <th style='
+
                     background-color: #2e2e4e;
-                    border-radius: 10px;
-                    margin: 10px; 
-                    margin-bottom: 40px; 
-                    overflow: hidden;
-                    width: 300px;
-                    height: auto; 
-                    display: flex;
-                    flex-direction: column;
-                    cursor: pointer;
-                    transition: transform 0.3s, box-shadow 0.3s;
-                }
-                .game-card:hover {
-                    transform: scale(1.05);
-                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-                    cursor: pointer;
-                }
-               ;
-                }
-                .game-info {
-                    display: flex;
-                    align-items: center;
+                    color: white;
                     padding: 10px;
-                }
-                .game-info img {
-                    border-radius: 50%;
-                    width: 40px;
-                    height: 40px;
-                    margin-right: 10px;
-                }
-                .game-info div {
-                    display: flex;
-                    flex-direction: column;
-                }
-                .game-info div span {
-                    font-size: 14px;
-                }
-                .game-info div span:first-child {
-                    font-weight: bold;
-                }'>$nomejogo</th>
+                    border-radius: 10px;
+    
+                    '>Jogos Disponíveis</th>
             </tr>
             <tr>
-                <td style=' .game-card img {
-                    width: 100%;
-                    height: auto;
-                }
-                .game-card:hover img {
-                    transform: scale(1.05)'><img src='images/$fotojogo' style='width: 400px; height: 250px; object-fit: cover; border-radius: 7px;'></td>
-                <td style='padding: 10px; font-size: 20px; font-weight: bold; max-width: 400px; border-radius: 7px; word-wrap: break-word;'></td>
-            </tr>";
+                <td colspan='4' style='padding: 20px;'>
+                    <div class='card-container'>";
+
+    while ($res = mysqli_fetch_array($exe)) {
+        $id = htmlspecialchars($res['idjogos']);
+        $nomejogo = htmlspecialchars($res['nomeJogo']);
+        $fotojogo = htmlspecialchars($res['fotoJogo']);
+
+        echo "
+        <style>.card {
+    width: 200px;  /* ou ajuste conforme o seu layout */
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;  /* Ensina os itens a se organizarem verticalmente */
+    align-items: center;     /* Centraliza os itens horizontalmente */
+}
+
+.game-info img {
+    width: 100%;  /* ou ajuste o tamanho conforme necessário */
+    max-width: 150px;  /* Limita o tamanho da imagem */
+    height: auto;
+    margin-bottom: 10px;  /* Espaço entre a imagem e o texto */
+}
+
+.game-details {
+    text-align: center;  /* Centraliza o texto dentro do bloco */
+}
+
+.game-details a {
+    display: inline-block;
+    margin-top: 5px;  /* Distância entre o nome do jogo e o link */
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.game-details a:hover {
+    text-decoration: underline;
+}
+</style>
+        <div class='card'>
+    <div class='game-info'>
+        <img src='images/$fotojogo' $nomejogo ?>
+        <div class='game-details'>
+            <span>$nomejogo</span>
+            <a href='addcarrinho.php?idjogos=<?= $id ?>'>Adicionar ao carrinho!</a>
+        </div>
+    </div>
+</div>
+";
     }
-    echo "</table>";
-} else {
-    echo "Nenhum post encontrado.";
+
+    echo "          </div>
+                </td>
+            </tr>
+          </table>";
 }
 mysqli_close($con);
 ?>
-                   <span>
-                    usuario1
-                   </span>
-                  </div>
-                 </div>
-                </div>
-                <div class="game-card">
-                 <img alt="" height="150" src="images/hollowknighted.jpg" width="300" class="imagem"/>
-                 <div class="game-info">
-                  <img alt="Time to Morp game icon" height="40" src="images/darklegendsed.jpg" width="40"/>
-                  <div>
-                   <span>
-                    Jogo2
-                   </span>
-                   <span>
-                    usuario2
-                   </span>
-                  </div>
-                 </div>
-                </div>
-                <div class="game-card">
-                    <img alt="Time to Morp game cover image" height="150" src="images/hollowknighted.jpg " class="imagem" width="300"/>
-                    <div class="game-info">
-                     <img alt="Time to Morp game icon" height="40" src="images/darklegendsed.jpg" width="40"/>
-                     <div>
-                    <span>
-                     Jogo3
-                    </span>
-                    <span>
-                    usuario3
-                    </span>
-                    </div>
-                    </div>
-                    </div>
-                    <div class="game-card">
-                        <img alt="Time to Morp game cover image" height="150" src="images/hollowknighted.jpg"class="imagem" width="300"/>
-                        <div class="game-info">
-                         <img alt="Time to Morp game icon" height="40" src="images/darklegendsed.jpg" width="40"/>
-                         <div>
-                          <span>
-                           Jogo4
-                          </span>
-                          <span>
-                           usuario4
-                          </span>
-                         </div>
-                        </div>
-                       </div>
-                       <div class="game-card">
-                        <img alt="" height="150" src="images/hollowknighted.jpg" width="300" class="imagem"/>
-                        <div class="game-info">
-                         <img alt="Time to Morp game icon" height="40" src="images/darklegendsed.jpg" width="40"/>
-                         <div>
-                          <span>
-                           Jogo2
-                          </span>
-                          <span>
-                           usuario2
-                          </span>
-                         </div>
-                        </div>
-                       </div>
-                       <div class="game-card">
-                        <img alt="" height="150" src="images/hollowknighted.jpg" width="300" class="imagem"/>
-                        <div class="game-info">
-                         <img alt="Time to Morp game icon" height="40" src="images/darklegendsed.jpg" width="40"/>
-                         <div>
-                          <span>
-                           Jogo2
-                          </span>
-                          <span>
-                           usuario2
-                          </span>
-                         </div>
-                        </div>
-                       </div>
-                       <div class="game-card">
-                        <img alt="" height="150" src="images/hollowknighted.jpg" width="300" class="imagem"/>
-                        <div class="game-info">
-                         <img alt="Time to Morp game icon" height="40" src="images/darklegendsed.jpg" width="40"/>
-                         <div>
-                          <span>
-                           Jogo2
-                          </span>
-                          <span>
-                           usuario2
-                          </span>
-                         </div>
-                        </div>
-                       </div>
-                       <div class="game-card">
-                        <img alt="" height="150" src="images/hollowknighted.jpg" width="300" class="imagem"/>
-                        <div class="game-info">
-                         <img alt="Time to Morp game icon" height="40" src="images/darklegendsed.jpg" width="40"/>
-                         <div>
-                          <span>
-                           Jogo2
-                          </span>
-                          <span>
-                           usuario2
-                          </span>
-                         </div>
-                        </div>
-                       </div>
         </main>
         <section>
         </section>
